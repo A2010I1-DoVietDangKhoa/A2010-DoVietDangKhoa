@@ -1,0 +1,12 @@
+BEGIN
+	Input n
+	Input a1, a2, a3, a4... an
+	max = a1
+	FOR i=2, i<n, i++
+		IF max<ai
+			max=ai
+	ENDIF
+	ENDFOR
+	Display max
+END
+		

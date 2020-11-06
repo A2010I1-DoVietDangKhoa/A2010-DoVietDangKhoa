@@ -1,0 +1,7 @@
+BEGIN
+	Input DiemToan
+	Input DiemLy
+	Input DiemHoa
+	DiemTB = (DiemToan + DiemLy + DiemHoa)/3
+	Display DiemTB
+END

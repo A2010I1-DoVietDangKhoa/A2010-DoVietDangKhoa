@@ -1,0 +1,14 @@
+BEGIN
+	Input a
+	Input b
+	Input c
+	IF a>b
+		IF a>c
+			Display "a la so lon nhat"
+	ELSE IF a<b
+		IF b>c
+			Display "b la so lon nhat"
+		ELSE
+			Display "c la so lon nhat"
+	ENDIF
+END

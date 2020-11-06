@@ -1,0 +1,14 @@
+BEGIN
+	Input Score
+	IF Score >= 75
+		Display "Loai A"
+	ELSEIF Score <75 AND Score>=60
+		Display "Loai B"
+	ELSEIF Score <60 AND Score>=45
+		Display "Loai C"
+	ELSEIF Score <45 AND Score>=35
+		Display "Loai D"
+	ELSEIF Score <35
+		Display "Loai E"
+	ENDIF
+END
