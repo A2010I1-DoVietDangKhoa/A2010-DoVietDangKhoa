@@ -1,0 +1,2 @@
+Cú pháp của câu lệnh clone: git clone + đường link của repo muốn clone
+Ý nghĩa: Dùng để sao chép 1 remote repo về local repo của mình

@@ -1,0 +1,6 @@
+git init: khởi tạo local repo mới
+git remote add origin: kết nối tới Remote Repository
+git add README.md: đưa file README.md vào trong chỉ mục của Git
+git commit -m "Add README.md file": lưu lại các thay đổi và chú thích thay đổi
+git push origin master: đẩy các thay đổi ở local repo lên remote repo
+https://github.com/A2010I1-DoVietDangKhoa/my-new-project
