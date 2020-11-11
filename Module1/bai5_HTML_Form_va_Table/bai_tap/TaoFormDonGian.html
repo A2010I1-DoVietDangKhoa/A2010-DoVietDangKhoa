@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tao form don gian</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        body{
+            background-color: aquamarine;
+        }
+        label{
+            color: blue;
+            padding: 5px;
+        }
+        form{
+            padding: 5px;
+            display: inline-block;
+            width: 500px;
+            align:center
+        }
+        div.form1{
+            text-align: center;
+        }
+        div.inputcheck{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form1">
+        <form method="get" style="background-color: white">
+            <h1 style="background-color: orangered;color: white;">SỞ THÍCH CỦA BẠN</h1>
+            <br>
+            <label>Họ và tên</label>
+            <input type="text" name="yourname">
+            <br><br>
+            <label>Email</label>
+            <input type="text" name="email">
+            <br><br>
+            <div class="inputcheck">
+                <label style="color: blue">Sở thích</label>
+            <input type="checkbox" name="hobby"> Thể thao
+            <input type="checkbox" name="hobby"> Âm nhạc
+            <input type="checkbox" name="hobby"> Đọc sách
+            <br>
+            <input type="checkbox" name="hobby"> Lướt web
+            <input type="checkbox" name="hobby"> Chơi game
+            <input type="checkbox" name="hobby"> Điện ảnh
+            <br>
+            <input type="checkbox" name="hobby"> Du lịch
+            </div>
+            <input type="submit" value="Gửi thông tin">
+            <input type="reset" value="Nhập lại">
+        </form>
+    </div>
+    <div class="form2">
+        <form method="get" style="background-color: #fff19c">
+            <h1 style="background-color: #45ffe1;color: blue;">ĐĂNG KÝ HỌC VIÊN</h1>
+            <br>
+            <label>Họ và tên</label>
+            <input type="text" name="yourname">
+            <br><br>
+            <label>Ngày sinh</label>
+            <input type="text" name="dateofbirth">
+            <br><br>
+            <label>Giới tính</label>
+            <input type="radio" name="gender">Nam
+            <input type="radio" name="gender">Nữ
+            <br><br>
+            <label>Địa chỉ</label>
+            <textarea cols="50" rows="3" name="address"></textarea>
+            <br><br>
+            <label>Lớp</label>
+            <select name="class">
+                <option value="10">Lớp 10</option>
+                <option value="11">Lớp 11</option>
+                <option value="12">Lớp 12</option>
+            </select>
+            <br><br>
+            <label>Email</label>
+            <input type="text" name="email">
+            <br><br>
+            <label>Email</label>
+            <input type="text" name="email">
+            <br><br>
+            <label>Điện thoại</label>
+            <input type="text" name="phone">
+            <br><br>
+            <input type="submit" value="Đăng ký">
+            <input type="reset" value="Nhập lại">
+        </form>
+    </div>
+</body>
+</html>
