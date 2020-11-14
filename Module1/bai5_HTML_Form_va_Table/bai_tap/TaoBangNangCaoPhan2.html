@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bảng nâng cao (Phần 2)</title>
+    <style>
+        h1{
+            font-family: Arial,sans-serif;
+            text-align: center;
+            color: blue;
+        }
+        tr:first-child{
+            color: white;
+        }
+        tr:first-child th:first-child{
+            background-color: red;
+        }
+        tr:first-child th:last-child{
+            background-color: blue;
+        }
+        tr:first-child th:nth-child(2){
+            background-color: orange;
+        }
+        tr:first-child th:nth-child(3){
+            background-color: orange;
+        }
+        tr:first-child th:nth-child(4){
+            background-color: orange;
+        }
+        tr:first-child th:nth-child(5){
+            background-color: orange;
+        }
+        tr:first-child th:nth-child(6){
+            background-color: orange;
+        }
+        table{
+            border-collapse: collapse;
+            align:center;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        td{
+            width: 80px;
+            height: 50px;
+        }
+        table, tr:nth-child(1), td {
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+            border-left: 3px solid white;
+            border-right: 3px solid white;
+        }
+        table, tr:nth-child(2), td {
+            border-top: 3px solid white;
+            border-bottom: 3px solid gray;
+            border-left: 3px solid white;
+            border-right: 3px solid white;
+        }
+        tr.border td {
+            border: 3px solid grey;
+        }
+        label{
+            font-size: 20px;
+        }
+        small{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tháng 10 - October</h1>
+    <table >
+        <tr>
+            <th>C.Nhật</th>
+            <th>T.Hai</th>
+            <th>T.Ba</th>
+            <th>T.Tư</th>
+            <th>T.Năm</th>
+            <th>T.Sáu</th>
+            <th>T.Bảy</th>
+        </tr>
+        <tr>
+            <td style="color: red">Sun</td>
+            <td>Mon</td>
+            <td>Tue</td>
+            <td>Wed</td>
+            <td>Thu</td>
+            <td>Fri</td>
+            <td style="color: blue">Sat</td>
+        </tr>
+        <tr class="border">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><label>1</label><small>13</small></td>
+            <td><label>2</label><small>14</small></td>
+            <td><label style="color: blue">3</label><small>15</small></td>
+        </tr>
+        <tr class="border">
+            <td><label style="color: red">4</label><small>16</small></td>
+            <td><label>5</label><small>17</small></td>
+            <td><label>6</label><small>18</small></td>
+            <td><label>7</label><small>19</small></td>
+            <td><label>8</label><small>20</small></td>
+            <td><label>9</label><small>21</small></td>
+            <td><label style="color: blue">10</label><small>22</small></td>
+        </tr>
+        <tr class="border">
+            <td><label style="color: red">11</label><small>23</small></td>
+            <td><label>12</label><small>24</small></td>
+            <td><label>13</label><small>25</small></td>
+            <td><label>14</label><small>26</small></td>
+            <td><label>15</label><small>27</small></td>
+            <td><label>16</label><small>28</small></td>
+            <td><label style="color: blue">17</label><small>29</small></td>
+        </tr>
+        <tr class="border">
+            <td><label style="color: red">18</label><small>1.9</small></td>
+            <td><label>19</label><small>2</small></td>
+            <td><label>20</label><small>3</small></td>
+            <td><label>21</label><small>4</small></td>
+            <td><label>22</label><small>5</small></td>
+            <td><label>23</label><small>6</small></td>
+            <td><label style="color: blue">24</label><small>7</small></td>
+        </tr>
+        <tr class="border">
+            <td><label style="color: red">25</label><small>8</small></td>
+            <td><label>26</label><small>9</small></td>
+            <td><label>27</label><small>10</small></td>
+            <td><label>28</label><small>11</small></td>
+            <td><label>29</label><small>12</small></td>
+            <td><label>30</label><small>13</small></td>
+            <td><label style="color: blue">31</label><small>14</small></td>
+        </tr>
+    </table>
+</body>
+</html>
