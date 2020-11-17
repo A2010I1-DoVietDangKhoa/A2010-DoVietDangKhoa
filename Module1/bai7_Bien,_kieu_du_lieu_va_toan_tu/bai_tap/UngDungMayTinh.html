@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+    <style>
+        button{
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <input type="text" id="numberA" name="numberA">
+        <input type="text" id="numberB" name="numberB"><br>
+        <button type="button" onclick="calc(1)" id="1">Cộng (+)</button>
+        <button type="button" onclick="calc(2)" id="2">Trừ (-)</button>
+        <button type="button" onclick="calc(3)" id="3">Nhân (X)</button>
+        <button type="button" onclick="calc(4)" id="4">Chia (/)</button>
+        <br><br>
+        <label>Result </label><span id="result"></span>
+    </form>
+    <script>
+        function calc(bnum) {
+            let a = document.getElementById("numberA").value;
+            let b = document.getElementById("numberB").value;
+            let result;
+            if(!isNaN(a)){
+                if(!isNaN(b)){
+                    if(bnum == 1){
+                        result = parseInt(a) + parseInt(b);
+                        document.getElementById("result").innerText="addition: " + result;
+                    }
+                    else if(bnum == 2){
+                        result = parseInt(a) - parseInt(b);
+                        document.getElementById("result").innerText="subtraction: " + result;
+                    }
+                    else if(bnum == 3){
+                        result = parseInt(a) * parseInt(b);
+                        document.getElementById("result").innerText="multiplication: " + result;
+                    }
+                    else if(bnum == 4){
+                        result = parseInt(a) / parseInt(b);
+                        document.getElementById("result").innerText="division: " + result;
+                    }
+                }
+                else {
+                    alert("Hãy nhập số!");
+                }
+            }
+            else {
+                alert("Hãy nhập số!");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biến, kiểu dữ liệu và toán tử</title>
+    <style>
+    </style>
+</head>
+<body>
+    <form method="post" class="form1">
+        <h2>Bài 1</h2>
+        <label>Vật lý: </label>
+        <input type="text" name="physics" id="physics" style="margin-left: 40px"><br><br>
+        <label>Hóa họ:c </label>
+        <input type="text" name="chemistry" id="chemistry" style="margin-left: 40px"><br><br>
+        <label>Sinh học: </label>
+        <input type="text" name="biology" id="biology" style="margin-left: 40px"><br><br>
+        <button  type="button" onclick="scoreCalc()">Tính</button><br><br>
+        <label>Tổng: </label><span id="total"></span><br><br>
+        <label>Trung bình: </label><span id="average"></span>
+    </form>
+    <form method="post" class="form2">
+        <h2>Bài 2</h2>
+        <label>Celsius: </label>
+        <input type="text" name="celsius" id="celsius" style="margin-left: 40px"><br><br>
+        <label>Fahrenheit: </label><span id="fahrenheit"></span><br><br>
+        <button  type="button" onclick="temp()">Chuyển đổi</button>
+    </form>
+    <script src="bienkieudulieuvatoantu.js"></script>
+    <form method="post" class="form 3">
+        <h2>Bài 3 và Bài 4</h2>
+        <label>Bán kính hình tròn (cm): </label>
+        <input type="text" name="radius" id="radius" style="margin-left: 40px"><br><br>
+        <label>Chu vi: </label><span id="perimeter"></span><br><br>
+        <label>Diện tích: </label><span id="stretch"></span><br><br>
+        <button  type="button" onclick="circleCalc()">Tính</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+    <style>
+        select{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+    <label style="margin-right: 215px; margin-left: 50px">Amount</label>
+    <label style="margin-right: 50px">From Currency</label>
+    <label>To Currency</label><br>
+    <input type="text" id="amount" name="amount" style="margin-right: 150px">
+    <select id="from" style="margin-right: 50px">
+        <option value="VND">VND</option>
+        <option value="USD">USD</option>
+    </select>
+    <select id="to">
+        <option value="VND">VND</option>
+        <option value="USD">USD</option>
+    </select>
+    <button  type="button" onclick="exchangeFunction()">Convert</button>
+    <br><br>
+    <label>Result: </label><span id="display"></span>
+    </form>
+    <script src="moneyexchange.js"></script>
+</body>
+</html>
