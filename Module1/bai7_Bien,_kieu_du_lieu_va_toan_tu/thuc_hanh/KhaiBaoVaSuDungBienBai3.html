@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let a = prompt("Nhap so a:");
+        let b = prompt("Nhap so b:");
+        if(!isNaN(a)){
+            if(!isNaN(b)){
+                if(parseInt(a) % parseInt(b) == 0) {
+                    alert("a la boi so của b");
+                } else {
+                    alert("a khong phai la boi so của b");
+                }
+            }
+            else {
+                alert("Hay nhap so")
+            }
+        }
+        else {
+            alert("Hay nhap so");
+        }
+    </script>
+</body>
+</html>
