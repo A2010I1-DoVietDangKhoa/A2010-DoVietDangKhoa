@@ -1,115 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr">
 <head>
     <title>Slider Switch</title>
     <style>
-        .switch {
+        body{
+            font-size: 2em;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+
+        .check{
             position: relative;
+        }
+        .check::before{
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background-color: #ddd;
             display: inline-block;
-            width: 60px;
-            height: 34px;
+            top: -8px;
+            left: -30px;
+            border-radius: 25px;
+            box-shadow: 0 0 3px rgba(0,0,0,.5);
         }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* The slider */
-        .slider {
+        .check::after{
+            content: '';
+            width: 25px;
+            height: 25px;
+            background-color: #eee;
             position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
+            top: -8px;
+            border-radius: 25px;
+            left: -30px;
+            transition: 200ms;
         }
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
+        .check:checked::after{
+            left: -5px;
         }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
+        .check:checked::before{
+            background-color: #2c49c3;
         }
     </style>
 </head>
 <body>
-<label>Good  </label>
-<label class="switch">
-    <input type="checkbox" id="good" onclick="goodState()">
-    <span class="slider round"></span>
-</label><br>
-<label>Fast  </label>
-<label class="switch">
-    <input type="checkbox" id="fast" onclick="fastState()">
-    <span class="slider round"></span>
-</label><br>
-<label>Cheap </label>
-<label class="switch">
-    <input type="checkbox" id="cheap" onclick="cheapState()">
-    <span class="slider round"></span>
-</label><br>
+<div class="container">
+<input type="checkbox" class="check good" onchange="swap(this)">
+<label id="good">Good</label><br><br>
+<input type="checkbox" class="check fast" onchange="swap(this)">
+<label id="fast">Fast</label><br><br>
+<input type="checkbox" class="check cheap" onchange="swap(this)">
+<label id="cheap">Cheap</label><br>
+</div>
 <script>
-    let good = document.getElementById("good");
-    let fast = document.getElementById("fast").checked;
-    let cheap = document.getElementById("cheap").checked;
-    //let gcount = 0;
-    //let fcount = 0;
-    //let ccount = 0;
-    function goodState() {
-        let good1 = good.checked;
-        //gcount+=1;
-        //good = (gcount%2 != 0)? true : false;
-        console.log(good1);
+    let good = document.querySelector('.good');
+    let fast = document.querySelector('.fast');
+    let cheap = document.querySelector('.cheap');
+
+    function swap(el){
+        let isGood = good.checked;
+        let isFast = fast.checked;
+        let isCheap = cheap.checked;
+
+        if(isGood && isFast && isCheap && el == cheap){
+            fast.checked = false;
+        }
+        else if(isGood && isCheap && isFast && el == fast){
+            good.checked = false;
+        }
+        else if(isCheap && isFast && isGood && el == good){
+            cheap.checked = false;
+        }
 
     }
-    function fastState() {
-        ++fcount;
-        fast = (fcount%2 != 0)? true : false;
-        if(fast==false && cheap==false){
 
+    /*function fastState() {
+        let fast1 = fast.checked;
+        if(good==false && cheap==false){
+            if(fast1==true){
+                fast1=false;
+            }
+            else{
+                fast1=true;
+            }
+        }
+        else if(good==true && cheap==false){
+            if(fast1=true){
+                fast1=false;
+            }
+            else{
+                fast1=true;
+            }
+        }
+        else if(good==false && cheap==true){
+            if(fast1=true){
+                fast1=false;
+            }
+            else{
+                fast1=true;
+            }
+        }
+        else if(good==true && cheap==true){
+            if(fast1=true){
+                fast1=false;
+            }
+            else{
+                fast1=true;
+                cheap=false;
+            }
         }
     }
     function cheapState() {
-        ++ccount;
-        cheap = (ccount%2 != 0)? true : false;
-        if(good && fast && cheap){
-
+        let cheap1 = cheap.checked;
+        if(fast==false && good==false){
+            if(cheap1==true){
+                cheap1=false;
+            }
+            else{
+                cheap1=true;
+            }
         }
-    }
+        else if(fast==true && good==false){
+            if(cheap1=true){
+                cheap1=false;
+            }
+            else{
+                cheap1=true;
+            }
+        }
+        else if(fast==false && good==true){
+            if(cheap1=true){
+                cheap1=false;
+            }
+            else{
+                cheap1=true;
+            }
+        }
+        else if(fast==true && good==true){
+            if(cheap1=true){
+                cheap1=false;
+            }
+            else{
+                cheap1=true;
+                good=false;
+            }
+        }
+    }*/
 </script>
 </body>
 
