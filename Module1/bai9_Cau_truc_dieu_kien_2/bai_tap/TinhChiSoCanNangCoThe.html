@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính chỉ số cân nặng cơ thể</title>
+</head>
+<body>
+    <form method="post">
+        <label>Chiều cao (m)</label>
+        <input type="text" id="height" name="height"><br><br>
+        <label>Cân nặng (kg)</label>
+        <input type="text" id="weight" name="weight"><br><br>
+        <button type="button" onclick="calcBMI()">Tính BMI</button><br><br>
+        <label>BMI:</label><span id="bmi"></span><br>
+        <label>Xếp loại: </label><span id="class"></span>
+    </form>
+    <script>
+        function calcBMI() {
+            let h = document.getElementById("height").value;
+            let w = document.getElementById("weight").value;
+            let bmi = w/(h*h);
+            document.getElementById("bmi").innerText = " " + bmi;
+            if (bmi < 18)
+                document.getElementById("class").innerText = "Suy dinh dưỡng";
+            else if (bmi < 25.0)
+                document.getElementById("class").innerText = "Bình thường";
+            else if (bmi < 30.0)
+                document.getElementById("class").innerText = "Thừa cân";
+            else
+                document.getElementById("class").innerText = "Béo phì";
+        }
+    </script>
+</body>
+</html>

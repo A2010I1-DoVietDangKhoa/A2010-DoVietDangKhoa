@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính số ngày trong tháng</title>
+</head>
+<body>
+    <form method="post">
+        <input type="text" id="month" name="month"><button type="button" onclick="soNgay()">Tính số ngày</button>
+        <br>
+        <span id="result"></span>
+    </form>
+    <script>
+        function soNgay() {
+            let a = document.getElementById("month").value;
+            switch (parseInt(a)) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById("result").innerText = "Tháng " + a + " có 31 ngày";
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    document.getElementById("result").innerText = "Tháng " + a + " có 30 ngày";
+                    break;
+                case 2:
+                    document.getElementById("result").innerText = "Tháng " + a + " có 28 hoặc 29 ngày";
+                    break;
+                default:
+                    document.getElementById("result").innerText = "Tháng này không tồn tại";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
