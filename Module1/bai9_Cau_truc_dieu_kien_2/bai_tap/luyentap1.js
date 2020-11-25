@@ -99,8 +99,8 @@ function bai4() {
     let a = document.getElementById("numa").value;
     let b = document.getElementById("numb").value;
     let c = document.getElementById("numc").value;
-    if (a > b){
-        if(a > c){
+    if (parseInt(a) > parseInt(b)){
+        if(parseInt(a) > parseInt(c)){
             document.getElementById("result4").innerHTML = a + " là số lớn nhất.";
         }
         else{
@@ -108,7 +108,7 @@ function bai4() {
         }
     }
     else{
-        if(b > c){
+        if(parseInt(b) > parseInt(c)){
             document.getElementById("result4").innerHTML = b + " là số lớn nhất.";
         }
         else{

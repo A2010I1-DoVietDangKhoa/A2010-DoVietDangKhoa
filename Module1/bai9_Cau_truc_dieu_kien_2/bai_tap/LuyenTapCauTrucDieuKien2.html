@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 2</title>
+    <script src="luyentap2.js"></script>
+</head>
+<body>
+<div id="form1">
+    <h3>Bài 1</h3>
+    <form  method="post"  name="firstform">
+        <label>Nhập độ C:</label>
+        <input type="text" id="c"><br><br>
+        <button type="button" onclick="bai1()">Chuyển đổi</button><br><br>
+        <label>Độ F: </label><span id="result1"></span>
+    </form><br>
+</div>
+<div  id="form2" style="display: none">
+    <h3>Bài 2</h3>
+    <form  method="post"  name="secondform">
+        <label>Nhập meter:</label>
+        <input type="text" id="meter"><br><br>
+        <button type="button" onclick="bai2()">Chuyển đổi</button><br><br>
+        <label>Feet: </label><span id="result2"></span>
+    </form><br>
+</div>
+<div  id="form3" style="display: none">
+    <h3>Bài 3</h3>
+    <form  method="post"  name="thirdform">
+        <label>Nhập độ dài cạnh a (cm):</label>
+        <input type="text" id="canh"><br><br>
+        <button type="button" onclick="bai3()">Tính</button><br><br>
+        <label>Diện tích hình vuông: </label><span id="result3"></span>
+    </form><br>
+</div>
+<div  id="form4" style="display: none">
+    <h3>Bài 4</h3>
+    <form  method="post"  name="fourthform">
+        <label>Nhập cạnh thứ nhất (cm):</label>
+        <input type="text" id="canha"><br><br>
+        <label>Nhập cạnh thứ hai (cm):</label>
+        <input type="text" id="canhb"><br><br>
+        <button type="button" onclick="bai4()">Tính</button><br><br>
+        <label>Diện tích hình chữ nhật: </label><span id="result4"></span>
+    </form><br>
+</div>
+<div  id="form5" style="display: none">
+    <h3>Bài 5</h3>
+    <form  method="post"  name="fifthform">
+        <label>Nhập cạnh thứ nhất (cm):</label>
+        <input type="text" id="canhatg"><br><br>
+        <label>Nhập cạnh thứ hai (cm):</label>
+        <input type="text" id="canhbtg"><br><br>
+        <button type="button" onclick="bai5()">Tính</button><br><br>
+        <label>Diện tích tam giác vuông: </label><span id="result5"></span>
+    </form><br>
+</div>
+<div  id="form6" style="display: none">
+    <h3>Bài 6</h3>
+    <form  method="post"  name="sixthform">
+        <label>Nhập a:</label>
+        <input type="text" id="soa"><br><br>
+        <label>Nhập b:</label>
+        <input type="text" id="sob"><br><br>
+        <button type="button" onclick="bai6()">Tính</button><br><br>
+        <label>Phương trình: </label><span id="result61"></span><br>
+        <span id="result62"></span>
+    </form><br>
+</div>
+<div  id="form7" style="display: none">
+    <h3>Bài 7</h3>
+    <form  method="post"  name="seventhform">
+        <label>Nhập a:</label>
+        <input type="text" id="soa2"><br><br>
+        <label>Nhập b:</label>
+        <input type="text" id="sob2"><br><br>
+        <label>Nhập c:</label>
+        <input type="text" id="soc2"><br><br>
+        <button type="button" onclick="bai7()">Tính</button><br><br>
+        <label>Phương trình: </label><span id="result71"></span><br>
+        <span id="result72"></span>
+    </form><br>
+</div>
+
+<div id="form8" style="display: none">
+    <h3>Bài 8</h3>
+    <form method="post" name="eigthform">
+        <label>Nhập tuổi:</label>
+        <input type="text" id="age8"><br><br>
+        <button type="button" onclick="bai8()">Kiểm tra</button><br><br>
+        <span id="result8"></span>
+    </form><br>
+</div>
+
+<div id="form9" style="display: none">
+    <h3>Bài 9</h3>
+    <form method="post" name="ninthform">
+        <label>Nhập a:</label>
+        <input type="text" id="canha9"><br><br>
+        <label>Nhập b:</label>
+        <input type="text" id="canhb9"><br><br>
+        <label>Nhập c:</label>
+        <input type="text" id="canhc9"><br><br>
+        <button type="button" onclick="bai9()">Kiểm tra</button><br><br>
+        <span id="result9"></span>
+    </form><br>
+</div>
+
+<div id="form10" style="display: none">
+    <h3>Bài 10</h3>
+    <form method="post" name="tenthform">
+        <label>Nhập số kWh:</label>
+        <input type="text" id="kwh"><br><br>
+        <button type="button" onclick="bai10()">Tính tiền điện</button><br><br>
+        <label>Mức thu phí: </label><span id="result101"></span><br>
+        <label>Phí thu: </label><span id="result102"></span><br>
+    </form><br>
+</div>
+
+<div id="form11" style="display: none">
+    <h3>Bài 11</h3>
+    <form method="post" name="eleventhform">
+        <label>Nhập tổng thu nhập:</label>
+        <input type="text" id="income"><br><br>
+        <button type="button" onclick="bai11()">Tính thuế</button><br><br>
+        <label>Mức thu phí: </label><span id="result111"></span><br>
+        <label>Phí thu: </label><span id="result112"></span><br>
+    </form><br>
+</div>
+
+
+<div id="form12" style="display: none">
+    <h3>Bài 12</h3>
+    <form method="post" name="twelfthform">
+        <label>Lãi suất 5 tháng đầu: 5%</label><br>
+        <label>Lãi suất sau 5 tháng đầu: tăng 1% mỗi tháng</label><br><br>
+        <label>Nhập số tiền vay:</label>
+        <input type="text" id="amount"><br><br>
+        <label>Số tháng vay:</label>
+        <input type="text" id="month"><br><br>
+        <button type="button" onclick="bai12()">Tính lãi</button><br><br>
+        <label>Lãi suất: </label><span id="result121"></span>
+        <label>Tiền nợ: </label><span id="result122"></span>
+    </form><br>
+</div>
+
+<label>Select Form</label>
+<select id="select" onchange="setForm(this.value)">
+    <option value="1">Bài 1</option>
+    <option value="2">Bài 2</option>
+    <option value="3">Bài 3</option>
+    <option value="4">Bài 4</option>
+    <option value="5">Bài 5</option>
+    <option value="6">Bài 6</option>
+    <option value="7">Bài 7</option>
+    <option value="8">Bài 8</option>
+    <option value="9">Bài 9</option>
+    <option value="10">Bài 10</option>
+    <option value="11">Bài 11</option>
+    <option value="12">Bài 12</option>
+</select>
+</body>
+</html>
