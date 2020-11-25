@@ -153,22 +153,22 @@ function bai6() {
     }
     else if (a >= 30000000 && a < 40000000){
         document.getElementById("result51").innerHTML = "" + money;
-        document.getElementById("result52").innerHTML = "" + bonus1;
+        document.getElementById("result53").innerHTML = "" + bonus1;
         document.getElementById("result52").innerHTML = "Mức 1";
     }
     else if (a >= 40000000 && a < 50000000){
         document.getElementById("result51").innerHTML = "" + money;
-        document.getElementById("result52").innerHTML = "" + bonus2;
+        document.getElementById("result53").innerHTML = "" + bonus2;
         document.getElementById("result52").innerHTML = "Mức 2";
     }
     else if (a > 50000000){
         document.getElementById("result51").innerHTML = "" + money;
-        document.getElementById("result52").innerHTML = "" + bonus3;
+        document.getElementById("result53").innerHTML = "" + bonus3;
         document.getElementById("result52").innerHTML = "Mức 3";
     }
     else if (a < 10000000){
         document.getElementById("result51").innerHTML = "Làm việc chăm chỉ hơn.";
-        document.getElementById("result52").innerHTML = "Làm việc chăm chỉ hơn.";
+        document.getElementById("result53").innerHTML = "Làm việc chăm chỉ hơn.";
         document.getElementById("result52").innerHTML = "Làm việc chăm chỉ hơn.";
     }
 }
