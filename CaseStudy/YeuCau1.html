@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 1</title>
+</head>
+<body>
+    <div id="inputfield" style="float: left">
+        <form method="post" name="info">
+        <h2>Đặt phòng</h2>
+            <label>Tên: </label><input type="text" id="customerName"><br><br>
+            <label>CMND: </label><input type="text" id="cmnd"><br><br>
+            <label>Ngày tháng năm sinh: </label><input type="date" id="birthDay"><br><br>
+            <label>Email: </label><input type="text" id="email"><br><br>
+            <label>Địa chỉ: </label><br>
+            <textarea id="address" style="width: 400px; height: 75px"></textarea><br><br>
+            <label>Khách hàng loại: </label><select id="customerType">
+                <option value="standard">Thông thường</option>
+                <option value="silver">Bạc</option>
+                <option value="gold">Vàng</option>
+                <option value="platinum">Bạch kim</option>
+                <option value="diamond">Kim cương</option>
+            </select><br><br>
+            <label>Giảm giá: </label><select id="discountType">
+                <option value="0">Không có</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+            </select><br><br>
+            <label>Số lượng đi kèm: </label><input type="text" id="companySize"><br><br>
+            <label>Số ngày thuê: </label></label><input type="text" id="duration"><br><br>
+            <label>Loại dịch vụ: </label><select id="serviceType">
+                <option value="500">Villa 500$/ngày</option>
+                <option value="300">House 300$/ngày</option>
+                <option value="100">Room 100$/ngày</option>
+            </select><br><br>
+            <label>Loại phòng thuê: </label><select id="roomType">
+                <option value="normal">Thường</option>
+                <option value="business">Business</option>
+                <option value="vip">VIP</option>
+            </select><br><br>
+            <button type="button" onclick="calcPrice()">Tính giá phòng</button>
+        </form>
+    </div>
+    <div id="outputfield" style="float: right; margin-right: 80px">
+        <span id="namedisplay"></span><br><br>
+        <span id="iddisplay"></span><br><br>
+        <span id="birthdisplay"></span><br><br>
+        <span id="emaildisplay"></span><br><br>
+        <span id="addressdisplay"></span><br><br>
+        <span id="ctypedisplay"></span><br><br>
+        <span id="discountdisplay"></span><br><br>
+        <span id="companydisplay"></span><br><br>
+        <span id="durationdisplay"></span><br><br>
+        <span id="stypedisplay"></span><br><br>
+        <span id="rtypedisplay"></span><br><br>
+        <span id="totaldisplay"></span>
+    </div>
+    <script>
+
+        function calcPrice() {
+            let customerName = document.getElementById("customerName").value;
+            let ID = document.getElementById("cmnd").value;
+            let birthDay = document.getElementById("birthDay").value;
+            let email = document.getElementById("email").value;
+            let address = document.getElementById("address").value;
+            let customerType = document.getElementById("customerType").value;
+            let discountType = document.getElementById("discountType").value;
+            let companySize = document.getElementById("companySize").value;
+            let duration = document.getElementById("duration").value;
+            let serviceType = document.getElementById("serviceType").value;
+            let roomType = document.getElementById("roomType").value;
+            let price = parseInt(serviceType)*parseInt(duration)*(1 - parseInt(discountType)/100);
+            //console.log(price);
+            //console.log(serviceType);
+            //console.log(duration);
+            //console.log(discountType);
+            document.getElementById("namedisplay").innerHTML = "Tên khách hàng: " + customerName;
+            document.getElementById("iddisplay").innerHTML = "CMND: " + ID;
+            document.getElementById("birthdisplay").innerHTML = "Ngày tháng năm sinh: " + birthDay;
+            document.getElementById("emaildisplay").innerHTML = "Email: " + email;
+            document.getElementById("addressdisplay").innerHTML = "Địa chỉ: " + address;
+            switch (customerType) {
+                case "standard":
+                    document.getElementById("ctypedisplay").innerHTML = "Khách hành thông thường.";
+                    break;
+                case "silver":
+                    document.getElementById("ctypedisplay").innerHTML = "Khách hành Bạc.";
+                    break;
+                case "gold":
+                    document.getElementById("ctypedisplay").innerHTML = "Khách hành Vàng.";
+                    break;
+                case "platinum":
+                    document.getElementById("ctypedisplay").innerHTML = "Khách hành Bạch kim.";
+                    break;
+                case "diamond":
+                    document.getElementById("ctypedisplay").innerHTML = "Khách hành Kim cương.";
+                    break;
+            }
+            switch (discountType) {
+                case "0":
+                    document.getElementById("discountdisplay").innerHTML = "Không có ưu đãi.";
+                    break;
+                case "10":
+                    document.getElementById("discountdisplay").innerHTML = "Giảm giá 10%.";
+                    break;
+                case "20":
+                    document.getElementById("discountdisplay").innerHTML = "Giảm giá 20%.";
+                    break;
+                case "30":
+                    document.getElementById("discountdisplay").innerHTML = "Giảm giá 30%.";
+                    break;
+                case "40":
+                    document.getElementById("discountdisplay").innerHTML = "Giảm giá 40%.";
+                    break;
+            }
+            document.getElementById("companydisplay").innerHTML = "Số người đi cùng: " + companySize;
+            document.getElementById("durationdisplay").innerHTML = "Số ngày thuê: " + duration;
+            switch (parseInt(serviceType)) {
+                case 500:
+                    document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: Villa.";
+                    break;
+                case 300:
+                    document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: House.";
+                    break;
+                case 100:
+                    document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: Room.";
+                    break;
+            }
+            switch (roomType) {
+                case "normal":
+                    document.getElementById("rtypedisplay").innerHTML = "Phòng thường.";
+                    document.getElementById("totaldisplay").innerHTML = "Tổng tiền: " + price + "$";
+                    break;
+                case "business":
+                    document.getElementById("rtypedisplay").innerHTML = "Phòng thương gia, giá dịch vụ phát sinh 1000$.";
+                    document.getElementById("totaldisplay").innerHTML = "Tổng tiền: " + (price + 1000) + "$";
+                    break;
+                case "vip":
+                    document.getElementById("rtypedisplay").innerHTML = "Phòng VIP, giá dịch vụ phát sinh 2000$.";
+                    document.getElementById("totaldisplay").innerHTML = "Tổng tiền: " + (price + 2000) + "$";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

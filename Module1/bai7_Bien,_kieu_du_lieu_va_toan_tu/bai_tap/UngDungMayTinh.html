@@ -26,8 +26,7 @@
             let a = document.getElementById("numberA").value;
             let b = document.getElementById("numberB").value;
             let result;
-            if(!isNaN(a)){
-                if(!isNaN(b)){
+            if(!isNaN(a) && !isNaN(b)){
                     if(bnum == 1){
                         result = parseInt(a) + parseInt(b);
                         document.getElementById("result").innerText="addition: " + result;
@@ -45,10 +44,6 @@
                         document.getElementById("result").innerText="division: " + result;
                     }
                 }
-                else {
-                    alert("Hãy nhập số!");
-                }
-            }
             else {
                 alert("Hãy nhập số!");
             }

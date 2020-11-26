@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính google</title>
+</head>
+<body>
+    <form method="post">
+        <input style="width: 390px; height: 60px; text-align: right; font-size: 30px; margin: 2px" type="text" id="display"><br>
+        <button class="func" type="button">Rad</button>
+        <button class="func" type="button">Deg</button>
+        <button class="func" type="button">x!</button>
+        <button class="func" type="button" id="11" value="(" onclick="hienThi(11)">(</button>
+        <button class="func" type="button" id="12" value=")" onclick="hienThi(12)">)</button>
+        <button class="func" type="button" id="laydu" value="%" onclick="hienThi(laydu)">%</button>
+        <button class="func" type="reset">AC</button>
+        <br>
+        <button class="func" type="button">lnv</button>
+        <button class="func" type="button">sin</button>
+        <button class="func" type="button">ln</button>
+        <button class="number" type="button" id="7" value="7" onclick="hienThi(7)">7</button>
+        <button class="number" type="button" id="8" value="8" onclick="hienThi(8)">8</button>
+        <button class="number" type="button" id="9" value="9" onclick="hienThi(9)">9</button>
+        <button class="func" type="button" id="chia" value="/" onclick="hienThi(chia)">÷</button>
+        <br>
+        <button class="func" type="button">π</button>
+        <button class="func" type="button">cos</button>
+        <button class="func" type="button">log</button>
+        <button class="number" type="button" id="4" value="4" onclick="hienThi(4)">4</button>
+        <button class="number" type="button" id="5" value="5" onclick="hienThi(5)">5</button>
+        <button class="number" type="button" id="6" value="6" onclick="hienThi(6)">6</button>
+        <button class="func" type="button" id="nhan" value="*" onclick="hienThi(nhan)">x</button>
+        <br>
+        <button class="func" type="button">e</button>
+        <button class="func" type="button">tan</button>
+        <button class="func" type="button">√</button>
+        <button class="number" type="button" id="1" value="1" onclick="hienThi(1)">1</button>
+        <button class="number" type="button" id="2" value="2" onclick="hienThi(2)">2</button>
+        <button class="number" type="button" id="3" value="3" onclick="hienThi(3)">3</button>
+        <button class="func" type="button" id="tru" value="-" onclick="hienThi(tru)">-</button>
+        <br>
+        <button class="func" type="button"  id="data" value="ans" onclick="hienThi(ans)">Ans</button>
+        <button class="func" type="button">EXP</button>
+        <button class="func" type="button">x<sup>y</sup></button>
+        <button class="number" type="button" id="0" value="0" onclick="hienThi(0)">0</button>
+        <button class="number" type="button" id="10" value="." onclick="hienThi(10)">.</button>
+        <button style="background-color: #4285f4" type="button" id="ans" value="=" onclick="ansWer()">=</button>
+        <button class="func" type="button" id="cong" value="+" onclick="hienThi(cong)">+</button>
+        <br>
+    </form>
+    <link type="text/css" rel="stylesheet" href="maytinh.css">
+    <script src="maytinh.js"></script>
+</body>
+</html>
