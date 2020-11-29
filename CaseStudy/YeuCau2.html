@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 2</title>
+</head>
+<body>
+<div id="inputfield" style="float: left">
+    <form method="post" name="info">
+        <h2>Đặt phòng</h2>
+        <label>Tên: </label><input type="text" id="customerName" value="Nguyễn Văn A"><br><br>
+        <label>CMND: </label><input type="text" id="cmnd" value="123456789"><br><br>
+        <label>Ngày tháng năm sinh: </label><input type="date" id="birthDay"><br><br>
+        <label>Email: </label><input type="text" id="email" value="abc@gmail.com"><br><br>
+        <label>Địa chỉ: </label><br>
+        <textarea id="address" style="width: 400px; height: 75px"></textarea><br><br>
+        <label>Khách hàng loại: </label>
+        <select id="customerType">
+        <option value="0">Thông thường</option>
+        <option value="2">Bạc</option>
+        <option value="5">Vàng</option>
+        <option value="10">Bạch kim</option>
+        <option value="15">Kim cương</option>
+    </select><br><br>
+        <label>Giảm giá: </label>
+        <select id="discountType">
+        <option value="0">Không có</option>
+        <option value="10">10%</option>
+        <option value="20">20%</option>
+        <option value="30">30%</option>
+        <option value="40">40%</option>
+    </select><br><br>
+        <label>Số lượng đi kèm: </label><input type="text" id="companySize" value="10"><br><br>
+        <label>Số ngày thuê: </label></label><input type="text" id="duration" value="10"><br><br>
+        <label>Loại dịch vụ: </label>
+        <select id="serviceType">
+        <option value="500">Villa 500$/ngày</option>
+        <option value="300">House 300$/ngày</option>
+        <option value="100">Room 100$/ngày</option>
+    </select><br><br>
+        <label>Loại phòng thuê: </label>
+        <select id="roomType">
+        <option value="normal">Thường</option>
+        <option value="business">Business</option>
+        <option value="vip">VIP</option>
+    </select><br><br>
+        <button type="button" onclick="hienThi()">Hiển thị thông tin</button>
+        <button type="button" onclick="chinhSua()">Chỉnh sửa thông tin</button>
+        <button type="button" onclick="tinhTien()">Tính giá phòng</button>
+    </form>
+</div>
+<div id="outputfield" style="float: right; margin-right: 80px">
+    <span id="namedisplay"></span><br><br>
+    <span id="iddisplay"></span><br><br>
+    <span id="birthdisplay"></span><br><br>
+    <span id="emaildisplay"></span><br><br>
+    <span id="addressdisplay"></span><br><br>
+    <span id="addressdiscount"></span><br><br>
+    <span id="ctypedisplay"></span><br><br>
+    <span id="discountdisplay"></span><br><br>
+    <span id="companydisplay"></span><br><br>
+    <span id="durationdisplay"></span><br><br>
+    <span id="durationdiscount"></span><br><br>
+    <span id="stypedisplay"></span><br><br>
+    <span id="rtypedisplay"></span><br><br>
+    <span id="totaldisplay"></span>
+</div>
+<script>
+    document.getElementById("birthDay").defaultValue = "2020-01-01";
+    document.getElementById("address").defaultValue = "Việt Nam";
+    document.getElementById("customerName").readOnly = true;
+    document.getElementById("cmnd").readOnly = true;
+    document.getElementById("email").readOnly = true;
+    document.getElementById("birthDay").readOnly = true;
+    document.getElementById("companySize").readOnly = true;
+    document.getElementById("duration").readOnly = true;
+
+    function hienThi() {
+        document.getElementById("customerName").readOnly = true;
+        document.getElementById("cmnd").readOnly = true;
+        document.getElementById("email").readOnly = true;
+        document.getElementById("birthDay").readOnly = true;
+        document.getElementById("companySize").readOnly = true;
+        document.getElementById("duration").readOnly = true;
+    }
+
+    function chinhSua() {
+        document.getElementById("customerName").readOnly = false;
+        document.getElementById("cmnd").readOnly = false;
+        document.getElementById("email").readOnly = false;
+        document.getElementById("birthDay").readOnly = false;
+        document.getElementById("companySize").readOnly = false;
+        document.getElementById("duration").readOnly = false;
+    }
+
+    function tinhTien() {
+        let customerName = document.getElementById("customerName").value;
+        let ID = document.getElementById("cmnd").value;
+        let birthDay = document.getElementById("birthDay").value;
+        let email = document.getElementById("email").value;
+        let address = document.getElementById("address").value;
+        let customerType = document.getElementById("customerType").value;
+        let discountType = document.getElementById("discountType").value;
+        let companySize = document.getElementById("companySize").value;
+        let duration = document.getElementById("duration").value;
+        let serviceType = document.getElementById("serviceType").value;
+        let roomType = document.getElementById("roomType").value;
+        let price = parseInt(serviceType)*parseInt(duration)*(1 - parseInt(discountType)/100) - parseInt(customerType);
+        //console.log(price);
+        //console.log(serviceType);
+        //console.log(duration);
+        //console.log(discountType);
+        document.getElementById("namedisplay").innerHTML = "Tên khách hàng: " + customerName;
+        document.getElementById("iddisplay").innerHTML = "CMND: " + ID;
+        document.getElementById("birthdisplay").innerHTML = "Ngày tháng năm sinh: " + birthDay;
+        document.getElementById("emaildisplay").innerHTML = "Email: " + email;
+        document.getElementById("addressdisplay").innerHTML = "Địa chỉ: " + address;
+        switch (discountType) {
+            case "0":
+                document.getElementById("discountdisplay").innerHTML = "Không có ưu đãi.";
+                break;
+            case "10":
+                document.getElementById("discountdisplay").innerHTML = "Giảm giá 10%.";
+                break;
+            case "20":
+                document.getElementById("discountdisplay").innerHTML = "Giảm giá 20%.";
+                break;
+            case "30":
+                document.getElementById("discountdisplay").innerHTML = "Giảm giá 30%.";
+                break;
+            case "40":
+                document.getElementById("discountdisplay").innerHTML = "Giảm giá 40%.";
+                break;
+        }
+        switch (customerType) {
+            case "0":
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành thông thường, không có ưu đãi.";
+                break;
+            case "2":
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành Bạc, được giảm 2$.";
+                break;
+            case "5":
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành Vàng, được giảm 5$.";
+                break;
+            case "10":
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành Bạch kim, được giảm 10$.";
+                break;
+            case "15":
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành Kim cương, được giảm 15$.";
+                break;
+        }
+        document.getElementById("companydisplay").innerHTML = "Số người đi cùng: " + companySize;
+        document.getElementById("durationdisplay").innerHTML = "Số ngày thuê: " + duration;
+        if(duration < 2){
+            price = price + 0;
+            document.getElementById("durationdiscount").innerHTML = "Không có giảm giá."
+        }
+        else if(duration >= 2 && duration <= 4){
+            price = price - 10;
+            document.getElementById("durationdiscount").innerHTML = "Giảm 10$."
+        }
+        else if(duration >= 5 && duration <= 7){
+            price = price - 20;
+            document.getElementById("durationdiscount").innerHTML = "Giảm 20$."
+        }
+        else if(duration > 7){
+            price = price - 30;
+            document.getElementById("durationdiscount").innerHTML = "Giảm 30$."
+        }
+        switch (parseInt(serviceType)) {
+            case 500:
+                document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: Villa.";
+                break;
+            case 300:
+                document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: House.";
+                break;
+            case 100:
+                document.getElementById("stypedisplay").innerHTML = "Loại dịch vụ: Room.";
+                break;
+        }
+        switch (roomType) {
+            case "normal":
+                document.getElementById("rtypedisplay").innerHTML = "Phòng thường.";
+                price = price + 0;
+                break;
+            case "business":
+                document.getElementById("rtypedisplay").innerHTML = "Phòng thương gia, giá dịch vụ phát sinh 1000$.";
+                price = price + 1000;
+                break;
+            case "vip":
+                document.getElementById("rtypedisplay").innerHTML = "Phòng VIP, giá dịch vụ phát sinh 2000$.";
+                price = price + 2000;
+                break;
+        }
+        if(address.includes("Đà Nẵng")){
+            price = price - 20;
+            document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Đà Nẵng, giảm 20$."
+        }
+        else if(address.includes("Huế")){
+            price = price - 10;
+            document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Huế, giảm 10$."
+        }
+        else if(address.includes("Quảng Nam")){
+            price = price - 5;
+            document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Quảng Nam, giảm 5$."
+        }
+        else {
+            document.getElementById("addressdiscount").innerHTML = "Khách hàng không đến từ nơi được giảm giá."
+        }
+        document.getElementById("totaldisplay").innerHTML = "Tổng tiền: " + price + "$";
+    }
+</script>
+</body>
+</html>
