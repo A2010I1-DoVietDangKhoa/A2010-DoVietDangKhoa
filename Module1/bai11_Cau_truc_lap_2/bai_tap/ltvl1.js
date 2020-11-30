@@ -215,7 +215,7 @@ function bai7() {
 function bai8() {
     document.getElementById("result81").innerHTML = "";
     document.getElementById("result82").innerHTML = "";
-    let range = document.getElementById("range").value;
+    let range = prompt("Nhập vào khoảng từ 0 đến");
     let num = Math.floor(Math.random() * parseInt(range) + 1);
     let count = 0;
     while (count < 3){
