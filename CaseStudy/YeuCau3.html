@@ -124,6 +124,21 @@
         //console.log(serviceType);
         //console.log(duration);
         //console.log(discountType);
+        let tempName = "";
+        customerName = customerName.trim().toLowerCase();
+        for (let i = 0; i < customerName.length; i++){
+            if(customerName.charAt(i) === " " && customerName.charAt(i+1) === " "){
+                continue;
+            }
+            if(i === 0 || customerName.charAt(i-1) === " "){
+                //customerName = customerName.toLowerCase();
+                tempName += customerName.charAt(i).toUpperCase();
+                continue;
+            }
+            tempName += customerName.charAt(i);
+        }
+        //console.log(tempName);
+        customerName = tempName;
         document.getElementById("namedisplay").innerHTML = "Tên khách hàng: " + customerName;
         if(!isNaN(ID)){
             ID = Number.parseFloat(ID);
@@ -164,6 +179,15 @@
             document.getElementById("emaildisplay").innerHTML = "Email: " + email;
         }
         //document.getElementById("emaildisplay").innerHTML = "Email: " + email;
+        let tempAdd = "";
+        address = address.trim();
+        for (let i = 0; i < address.length; i++){
+            if(address.charAt(i) === " " && address.charAt(i+1) === " "){
+                continue;
+            }
+            tempAdd += address.charAt(i);
+        }
+        address = tempAdd;
         document.getElementById("addressdisplay").innerHTML = "Địa chỉ: " + address;
         switch (discountType) {
             case "0":
