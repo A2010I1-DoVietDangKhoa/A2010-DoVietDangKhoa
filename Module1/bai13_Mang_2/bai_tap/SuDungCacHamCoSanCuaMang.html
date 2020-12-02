@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sử dụng các hàm có sẵn của mảng</title>
+</head>
+<body>
+    <form method="post">
+        <button type="button" onclick="baiMot()">Bài 1</button>
+        <button type="button" onclick="baiHai()">Bài 2</button>
+        <button type="button" onclick="baiBa()">Bài 3</button><br><br>
+        <span id="display1"></span><br><br>
+        <span id="display2"></span><br><br>
+        <span id="display3"></span><br><br>
+    </form>
+    <script>
+        function baiMot() {
+            let myColor = ["Red", "Green", "White", "Black"];
+            let a = myColor.join(", ");
+            document.getElementById("display1").innerHTML = a;
+        }
+        function baiHai() {
+            let a = prompt("Nhập vào một số:");
+            let b = a.toString();
+            let c = [b[0]];
+
+            for (let i = 1; i < b.length; i++){
+                if (b[i - 1] % 2 === 0 && b[i] % 2 === 0){
+                    c.push('-', b[i]);
+                }
+                else{
+                    c.push(b[i]);
+                }
+            }
+            let d = c.join("");
+            document.getElementById("display2").innerHTML = d;
+        }
+        function baiBa() {
+            let b = prompt("Nhập vào 1 chuỗi:").toString();
+            let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let lower = "abcdefghijklmnopqrstuvwxyz";
+            let c = [];
+
+            for (let i = 0; i < b.length; i++){
+                    if(upper.includes(b[i])){
+                        let u = b[i].toLowerCase();
+                        c.push(u);
+                    }
+                    else if(lower.includes(b[i])){
+                        let l = b[i].toUpperCase();
+                        c.push(l);
+                    }
+                    else if(b.charAt(i) === " "){
+                        c.push(b[i]);
+                    }
+                }
+            document.getElementById("display2").innerHTML = c.join("");
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <form>
+        <h2>Bàn cờ caro</h2>
+        <span id="tableDisplay"></span><br><br>
+        <div id="player1" style="display: none">
+            <label>Người chơi 1</label><br>
+            <label>Nhập vị trí hàng: </label><input type="text" id="row1"><br>
+            <label>Nhập vị trí cột: </label><input type="text" id="col1">
+            <button type="button" onclick="submit1()">Xác nhận</button>
+        </div>
+        <div id="player2" style="display: none">
+            <label>Người chơi 2</label><br>
+            <label>Nhập vị trí hàng: </label><input type="text" id="row2"><br>
+            <label>Nhập vị trí cột: </label><input type="text" id="col2">
+            <button type="button" onclick="submit2()">Xác nhận</button>
+        </div>
+        <button type="button" onclick="start()">Bắt đầu</button>
+    </form>
+    <script>
+        let board = [];
+        let data = "";
+        for (let i = 0; i < 3; i++) {
+            board[i] = new Array(". ", ". ", ". ");
+        }
+
+        for (let i = 0; i < 3; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 3; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;";
+            }
+        }
+        function start() {
+            document.getElementById("tableDisplay").innerHTML = data;
+            document.getElementById("player1").style.display = "block";
+            document.getElementById("player2").style.display = "none";
+            // for (let i = 1; i < 10000000; i++) {
+            //     if (i % 2 !== 0) {
+            //         document.getElementById("player1").style.display = "block";
+            //         document.getElementById("player2").style.display = "none";
+            //     } else {
+            //         document.getElementById("player1").style.display = "none";
+            //         document.getElementById("player2").style.display = "block";
+            //     }
+            // }
+        }
+
+        function submit1() {
+            let a = document.getElementById("row1").value;
+            let b = document.getElementById("col1").value;
+            if (a -1 <= 2 && b -1 <= 2) {
+                data = "";
+                board[a-1][b-1] = "X ";
+                for (let i = 0; i < 3; i++) {
+                    data += "<br/>";
+                    for (let j = 0; j < 3; j++) {
+                        data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    }
+                }
+            } else {
+                alert("Hãy nhập vị trí đúng luật!");
+            }
+            document.getElementById("player1").style.display = "none";
+            document.getElementById("player2").style.display = "block";
+            //data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+            document.getElementById("tableDisplay").innerHTML = data;
+            setTimeout(check, 150);
+        }
+
+        function submit2() {
+            let a = document.getElementById("row2").value;
+            let b = document.getElementById("col2").value;
+            if (a -1 <= 2 && b -1 <= 2) {
+                data = "";
+                board[a-1][b-1] = "O ";
+                for (let i = 0; i < 3; i++) {
+                    data += "<br/>";
+                    for (let j = 0; j < 3; j++) {
+                        data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    }
+                }
+            } else {
+                alert("Hãy nhập vị trí đúng luật!");
+            }
+            document.getElementById("player1").style.display = "block";
+            document.getElementById("player2").style.display = "none";
+            //data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+            document.getElementById("tableDisplay").innerHTML = data;
+            setTimeout(check, 150);
+        }
+
+        function check() {
+            if(board[0][0] === "X " && board[0][1] === "X " && board[0][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if(board[0][0] === "O " && board[0][1] === "O " && board[0][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[0][0] === "X " && board[1][0] === "X " && board[2][0] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[0][0] === "O " && board[1][0] === "O " && board[2][0] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[0][1] === "X " && board[1][1] === "X " && board[2][1] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[0][1] === "O " && board[1][1] === "O " && board[2][1] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[1][0] === "X " && board[1][1] === "X " && board[1][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[1][0] === "O " && board[1][1] === "O " && board[1][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[0][2] === "X " && board[1][2] === "X " && board[2][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[0][2] === "O " && board[1][2] === "O " && board[2][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[2][0] === "X " && board[2][1] === "X " && board[2][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[2][0] === "O " && board[2][1] === "O " && board[2][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[0][0] === "X " && board[1][1] === "X " && board[2][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[0][0] === "O " && board[1][1] === "O " && board[2][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+            //
+            else if (board[2][0] === "X " && board[1][1] === "X " && board[0][2] === "X "){
+                alert("Người chơi 1 thắng!");
+            }
+            else if (board[2][0] === "O " && board[1][1] === "O " && board[0][2] === "O "){
+                alert("Người chơi 2 thắng!");
+            }
+        }
+    </script>
+</body>
+</html>

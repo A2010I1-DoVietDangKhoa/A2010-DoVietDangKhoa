@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+    <form>
+        <h3>Từ điển</h3>
+        <label>Nhập từ tiếng Anh: </label><input type="text" id="input"><br><br>
+        <label>Định nghĩa: </label><span id="output"></span><br><br>
+        <button type="button" onclick="transLate()">Dịch</button>
+    </form>
+    <script>
+        function transLate() {
+            let input = document.getElementById("input").value.toString();
+            let eng = ["hello", "good", "boy", "girl", "english"];
+            let vie = ["Xin chào", "Tốt", "Bé trai", "Bé gái", "Tiếng Anh"];
+            for (let i = 0; i < eng.length; i++){
+                if(eng[i] === input){
+                    document.getElementById("output").innerHTML = vie[i];
+                    break;
+                }
+                else {
+                    document.getElementById("output").innerHTML = "Không tìm thấy từ.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
