@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 1</title>
+</head>
+<body>
+    <button type="button" onclick="baitap1()">Bài 1</button>
+    <button type="button" onclick="baitap2()">Bài 2</button>
+    <button type="button" onclick="baitap3()">Bài 3</button>
+    <button type="button" onclick="baitap4()">Bài 4</button>
+    <button type="button" onclick="baitap5()">Bài 5</button>
+    <button type="button" onclick="baitap6()">Bài 6</button>
+    <button type="button" onclick="baitap7()">Bài 7</button>
+    <button type="button" onclick="baitap8()">Bài 8</button>
+    <button type="button" onclick="baitap9()">Bài 9</button><br><br>
+    <span id="result11"></span><br>
+    <span id="result12"></span><br>
+    <span id="result21"></span><br>
+    <span id="result22"></span><br>
+    <span id="result31"></span><br>
+    <span id="result32"></span><br>
+    <span id="result33"></span><br>
+    <span id="result41"></span><br>
+    <span id="result42"></span><br>
+    <span id="result51"></span><br>
+    <span id="result52"></span><br>
+    <span id="result6"></span><br>
+    <span id="result71"></span><br>
+    <span id="result72"></span><br>
+    <span id="result81"></span><br>
+    <span id="result82"></span><br>
+    <span id="result91"></span><br>
+    <span id="result92"></span><br>
+    <span id="result93"></span><br>
+<script>
+    function baitap1() {
+        let arr = [];
+        for(let i = 1; i < 11; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                arr.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        let count = 0;
+        for (let i = 0; i < arr.length; i++){
+            if(arr[i] >= 10){
+                count++;
+            }
+        }
+        document.getElementById("result11").innerHTML = "Chuỗi đã nhập: " + arr.join(", ");
+        document.getElementById("result12").innerHTML = "Số phần tử lớn hơn hoặc bằng 10: " + count;
+    }
+
+    function baitap2() {
+        let arr = [];
+        let check = false;
+        for(let i = 1; i < 11; i++) {
+            let a = parseInt(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                if (i === 1) {
+                    arr.push(a)
+                }
+                else {
+                    arr.forEach(function (num) {
+                        if(a === num){
+                           check = true;
+                        }
+                    });
+                    if(check){
+                        alert("Số đã tồn tại!");
+                        i--;
+                        check = false;
+                    }
+                    else {
+                        arr.push(a);
+                    }
+                }
+            }
+            else {
+                    alert("Hãy nhập số nguyên!");
+                    i--;
+                }
+
+            }
+        console.log(arr);
+        let max = Math.max.apply(Math, arr);
+        let index = arr.indexOf(max);
+        document.getElementById("result21").innerHTML = "Chuỗi đã nhập: " + arr.join(", ");
+        document.getElementById("result22").innerHTML = "Số lớn nhất là: " + max + " ở vị trí " + index;
+    }
+
+    function baitap3() {
+        let arr = [];
+        let l = prompt("Nhập số phần tử muốn tạo: ");
+        for(let i = 1; i <= l; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                arr.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        let total = 0;
+        for (let i = 0; i < arr.length; i++){
+            total += parseInt(arr[i]);
+        }
+        let max = Math.max.apply(Math, arr);
+        let average = total/arr.length;
+        document.getElementById("result31").innerHTML = "Chuỗi đã nhập: " + arr.join(", ");
+        document.getElementById("result32").innerHTML = "Số lớn nhất là: " + max;
+        document.getElementById("result33").innerHTML = "Giá trị trung bình: " + average;
+    }
+
+    function baitap4() {
+        let arr = [];
+        let l = prompt("Nhập số phần tử muốn tạo: ");
+        for(let i = 1; i <= l; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                arr.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        document.getElementById("result41").innerHTML = "Chuỗi đã nhập: " + arr.join(", ");
+        document.getElementById("result42").innerHTML = "Chuỗi đảo ngược: " + arr.reverse().join(", ");
+    }
+
+    function baitap5() {
+        let arr = [];
+        for(let i = 1; i < 11; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                arr.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        let count = 0;
+        for (let i = 0; i < arr.length; i++){
+            if(arr[i] < 0){
+                count++;
+            }
+        }
+        document.getElementById("result11").innerHTML = "Chuỗi đã nhập: " + arr.join(", ");
+        document.getElementById("result12").innerHTML = "Số phần tử âm: " + count;
+    }
+
+    function baitap6() {
+        let input = prompt("Nhập 1 số.");
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        let c = arr.join();
+        for(let i=0; i<arr.length; i++){
+            if(c.includes(input)){
+                alert(input + " có trong mảng.");
+                break;
+            }
+            else {
+                alert(input + " không có trong mảng.");
+                break;
+            }
+        }
+    }
+
+    function baitap7() {
+        let input = prompt("Nhập 1 số.");
+        let arr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+        let check = false;
+        document.getElementById("result71").innerHTML = "Chuỗi ban đầu: " + arr.join(", ");
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === input) {
+                    arr.splice(i, 1);
+                    check = true;
+                    //i--;
+                    document.getElementById("result72").innerHTML = "Chuỗi còn lại: " + arr.join(", ");
+                }
+            }
+            if (!check) {
+                document.getElementById("result72").innerHTML = "Không có phần tử trong chuỗi.";
+            }
+        //     alert(arr);
+        //     if(arr[i] !== input){
+        //         document.getElementById("result72").innerHTML = "Không có phần tử trong chuỗi.";
+        //         continue;
+        //     }
+        //     if(arr[i] === input){
+        //         arr.splice(i, 1);
+        //         document.getElementById("result72").innerHTML = "Chuỗi còn lại: " + arr.join(", ");
+        //         break;
+        //     }
+        // }
+        // //document.getElementById("result71").innerHTML = "Chuỗi còn lại: " + arr.join(", ");
+    }
+
+    function baitap8() {
+        let arr = [];
+        for(let i = 1; i < 11; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i));
+            if(Number.isInteger(a)) {
+                arr.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        document.getElementById("result81").innerHTML = "Chuỗi ban đầu: " + arr.join(", ");
+        arr.sort(function(a, b) {
+            return b - a;
+        });
+        document.getElementById("result82").innerHTML = "Chuỗi sau khi sắp xếp: " + arr.join(", ");
+    }
+
+    function baitap9() {
+        let arr1 = [];
+        let arr2 = [];
+        let arr3 = new Array(20);
+        for(let i = 1; i < 11; i++){
+            let a = parseFloat(prompt("Nhập vào phần tử thứ " + i + " của mảng 1:"));
+            if(Number.isInteger(a)) {
+                arr1.push(a);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        document.getElementById("result91").innerHTML = "Chuỗi thứ nhất: " + arr1.join(", ");
+        for(let i = 1; i < 11; i++){
+            let b = parseFloat(prompt("Nhập vào phần tử thứ " + i + " của mảng 2:"));
+            if(Number.isInteger(b)) {
+                arr2.push(b);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+                i--;
+            }
+        }
+        document.getElementById("result92").innerHTML = "Chuỗi thứ hai: " + arr2.join(", ");
+        arr3 = arr1.concat(arr2);
+        document.getElementById("result93").innerHTML = "Chuỗi nối: " + arr3.join(", ");
+    }
+</script>
+</body>
+</html>
