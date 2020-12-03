@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 2</title>
+</head>
+<body>
+    <button type="button" onclick="baitap1()">Bài 1</button>
+    <button type="button" onclick="baitap2()">Bài 2</button>
+    <button type="button" onclick="baitap3()">Bài 3</button>
+    <button type="button" onclick="baitap4()">Bài 4</button>
+    <button type="button" onclick="baitap5()">Bài 5</button>
+    <button type="button" onclick="baitap6()">Bài 6</button><br><br>
+
+    <span id="result21"></span><br>
+    <span id="result22"></span><br>
+    <span id="result31"></span><br>
+    <span id="result32"></span><br>
+    <span id="result33"></span><br>
+    <span id="result41"></span><br>
+    <span id="result42"></span><br>
+    <span id="result51"></span><br>
+    <span id="result52"></span><br>
+    <span id="result53"></span><br>
+    <span id="result61"></span><br>
+    <span id="result62"></span><br>
+
+    <script>
+        function baitap1() {
+            let a = [[1, 2, 1, 24],
+                [8, 11, 9, 4],
+                [7, 0, 7, 27],
+                [7, 4, 28, 14],
+                [3, 10, 26, 7]];
+
+            for (let i in a)
+            {
+                //document.write("row " + i);
+                console.log("row " + i);
+                for (let j in a[i])
+                {
+                    //document.write(" " + a[i][j]);
+                    console.log(" " + a[i][j]);
+                }
+            }
+        }
+
+        function baitap2() {
+            let arr = ["c", "o", "d", "e", " ", "g", "y", "m"];
+            document.getElementById("result21").innerHTML = "Chuỗi ban đầu: " + arr.join(", ");
+            document.getElementById("result22").innerHTML = "Chuỗi đảo ngược: " + arr.reverse().join(", ");
+        }
+
+        function baitap3() {
+            let arr = [];
+            let decoy = [];
+            let l = prompt("Nhập độ dài của mảng:");
+            for(let i = 1; i <= l; i++){
+                let a = prompt("Nhập vào phần tử thứ " + i);
+                let b = parseFloat(a);
+                arr.push(a);
+                decoy.push(b);
+            }
+            let count = 0;
+            for (let j = 0; j < decoy.length; j++){
+                if(Number.isInteger(decoy[j])){
+                    count++;
+                }
+            }
+            document.getElementById("result31").innerHTML = "Chuỗi ban đầu: " + arr.join(", ");
+            document.getElementById("result32").innerHTML = "Số ký tự số trong mảng: " + count;
+        }
+
+        function baitap4() {
+            let arr = [];
+            let a = prompt("Nhập vào một chuỗi bất kỳ: ");
+            arr.push(a);
+            let decoy = arr.toString().trim();
+            let count = 1;
+            for(let i = 0; i < decoy.length; i++){
+                if(decoy.charAt(i) === " "){
+                    count++;
+                }
+            }
+            document.getElementById("result41").innerHTML = "Chuỗi ban đầu: " + arr.join(", ");
+            document.getElementById("result42").innerHTML = "Số từ trong mảng: " + count;
+        }
+
+        function baitap5() {
+            let arr1 = [];
+            let a = prompt("Nhập vào chuỗi thứ nhất: ");
+            arr1.push(a);
+            let arr2 = [];
+            let b = prompt("Nhập vào chuỗi thứ hai: ");
+            arr2.push(b);
+            let decoy1 = arr1.toString();
+            let decoy2 = arr2.toString();
+            if(arr1.length !== arr2.length){
+                document.getElementById("result53").innerHTML = "2 chuỗi không giống nhau.";
+            }
+            else {
+                for (let i = 0; i < decoy1.length; i++){
+                    if(decoy1.charAt(i) === decoy2.charAt(i)){
+                        document.getElementById("result53").innerHTML = "2 chuỗi giống nhau.";
+                    }
+                    else if(decoy1.charAt(i) !== decoy2.charAt(i)){
+                        document.getElementById("result53").innerHTML = "2 chuỗi không giống nhau.";
+                        break;
+                    }
+                }
+            }
+            document.getElementById("result51").innerHTML = "Chuỗi 1: " + arr1.join("");
+            document.getElementById("result52").innerHTML = "Chuỗi 2: " + arr2.join("");
+        }
+
+        function baitap6() {
+            let arr = [];
+            let a = prompt("Nhập vào một chuỗi bất kỳ: ");
+            arr.push(a);
+            let decoy = arr.toString();
+            let temp = "";
+            for (let i = 0; i < decoy.length; i++){
+                if(decoy.charAt(i) === "-"){
+                    temp += "_";
+                    continue;
+                }
+                temp += decoy.charAt(i);
+            }
+            document.getElementById("result61").innerHTML = "Chuỗi ban đầu: " + arr.join("");
+            document.getElementById("result62").innerHTML = "Chuỗi sau khi chuyển đổi: " + temp;
+        }
+    </script>
+</body>
+</html>
