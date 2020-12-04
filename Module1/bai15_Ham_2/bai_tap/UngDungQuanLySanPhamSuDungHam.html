@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="productName">
+        <button type="button" onclick="add()">Add</button>
+        <button type="button" onclick="hienThi()">Show</button><br><br>
+        <span id="displayAmount"></span><br><br>
+        <span id="displayProduct"></span>
+    </form>
+    <script>
+        let arr = [];
+        function hienThi() {
+            document.getElementById("displayAmount").innerHTML = "Số lượng sản phẩm hiện tại: " + arr.length;
+            let table = "";
+            for (let i = 0; i<arr.length; i++){
+                table += arr[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+            }
+            document.getElementById("displayProduct").innerHTML = table;
+        }
+
+        function add() {
+            let a = document.getElementById("productName").value;
+            arr.push(a);
+            document.getElementById("productName").value = "";
+        }
+
+        function edit(i) {
+            let b = prompt("Nhập tên mới:");
+            arr[i] = b;
+            hienThi();
+        }
+
+        function remove(i) {
+            arr.splice(i, 1);
+            hienThi()
+        }
+    </script>
+</body>
+</html>
