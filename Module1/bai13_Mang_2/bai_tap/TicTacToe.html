@@ -62,11 +62,15 @@
                         data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
                     }
                 }
+                document.getElementById("player1").style.display = "none";
+                document.getElementById("player2").style.display = "block";
             } else {
                 alert("Hãy nhập vị trí đúng luật!");
+                document.getElementById("player1").style.display = "block";
+                document.getElementById("player2").style.display = "none";
             }
-            document.getElementById("player1").style.display = "none";
-            document.getElementById("player2").style.display = "block";
+            // document.getElementById("player1").style.display = "none";
+            // document.getElementById("player2").style.display = "block";
             //data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
             document.getElementById("tableDisplay").innerHTML = data;
             setTimeout(check, 150);
@@ -83,12 +87,16 @@
                     for (let j = 0; j < 3; j++) {
                         data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
                     }
+                    document.getElementById("player1").style.display = "block";
+                    document.getElementById("player2").style.display = "none";
                 }
             } else {
                 alert("Hãy nhập vị trí đúng luật!");
+                document.getElementById("player1").style.display = "none";
+                document.getElementById("player2").style.display = "block";
             }
-            document.getElementById("player1").style.display = "block";
-            document.getElementById("player2").style.display = "none";
+            // document.getElementById("player1").style.display = "block";
+            // document.getElementById("player2").style.display = "none";
             //data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
             document.getElementById("tableDisplay").innerHTML = data;
             setTimeout(check, 150);
