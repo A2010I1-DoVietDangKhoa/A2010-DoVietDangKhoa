@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 4</title>
+</head>
+<body>
+<form>
+    <button type="button" onclick="add()">Add</button>
+    <button type="button" onclick="hienThi()">Show</button><br><br>
+    <span id="displayAmount"></span><br><br>
+    <span id="displayCustomer"></span>
+</form>
+<script>
+    let arr = [];
+    function hienThi() {
+        document.getElementById("displayAmount").innerHTML = "Số khách hàng hiện tại: " + arr.length;
+        let table = "";
+        let arrsort = arr.sort();
+        for (let i = 0; i<arr.length; i++){
+            table += arrsort[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+        }
+        document.getElementById("displayCustomer").innerHTML = table;
+    }
+
+    function add() {
+        let num = prompt("Nhập số khách hàng muốn thêm");
+        let temp = "";
+        for(let i = 1; i <= num; i++){
+            let a = prompt("Nhập tên khách hàng thứ " + i);
+            a = a.trim().toLowerCase();
+            for(let j = 0; j<a.length; j++){
+                if(a.charAt(j) === " " && a.charAt(j+1) === " "){
+                    continue;
+                }
+                else if(j === 0 || a.charAt(j-1) === " "){
+                    temp += a.charAt(j).toUpperCase();
+                    continue;
+                }
+                temp += a.charAt(j);
+            }
+            arr.push(temp);
+            temp = "";
+        }
+    }
+
+    function edit(i) {
+        let b = prompt("Nhập tên mới:");
+        arr[i] = b;
+        hienThi();
+    }
+
+    function remove(i) {
+        arr.splice(i, 1);
+        hienThi()
+    }
+</script>
+</body>
+</html>
