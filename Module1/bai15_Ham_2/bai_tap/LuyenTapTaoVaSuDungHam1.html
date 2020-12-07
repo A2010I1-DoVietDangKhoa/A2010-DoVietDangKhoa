@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 1</title>
+</head>
+<body>
+    <button type="button" onclick="bai1()">Bài 1</button>
+    <button type="button" onclick="bai2()">Bài 2</button>
+    <button type="button" onclick="bai3()">Bài 3</button>
+    <button type="button" onclick="bai4()">Bài 4</button>
+    <button type="button" onclick="bai5()">Bài 5</button>
+    <br><br><span id="result21"></span>
+    <br><span id="result22"></span>
+    <br><span id="result5"></span>
+<script>
+    function bai1() {
+        alert("Xin chào.");
+    }
+
+    function bai2() {
+        let a = parseInt(prompt("Nhập vào một số:"));
+        if(!isNaN(a)){
+            document.getElementById("result21").innerHTML = "Số trước khi tăng: " + a;
+            let b = a + 1;
+            document.getElementById("result22").innerHTML = "Số sau khi tăng: " + b;
+        }
+        else {
+            alert("Hãy nhập số.");
+        }
+    }
+
+    function bai3() {
+        let a = parseInt(prompt("Nhập vào số thứ nhất: "));
+        let b = parseInt(prompt("Nhập vào số thứ hai: "));
+        function add(num1, num2) {
+            if (!isNaN(num1) && !isNaN(num2)){
+                if(num1 <= num2){
+                    let c = num1 + num2;
+                    alert("Tổng của 2 số là: " + c);
+                }
+                else {
+                    alert("Số thứ nhất lớn hơn số thứ hai.");
+                }
+            }
+            else {
+                alert("Hãy nhập số.");
+            }
+        }
+        add(a, b);
+    }
+
+    function bai4() {
+        function addNumbers() {
+            let firstNum = 4;
+            let secondNum = 8;
+            let result = firstNum + secondNum;
+            return result;
+        }
+        let result = 0;
+        alert(result);
+        result = addNumbers();
+        alert(result);
+    }
+
+    function bai5() {
+        let a = prompt("Hãy nhập tên sao:").toString();
+        function checkName(name) {
+            let star = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe ", "Regulus"];
+            let constellation = ["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+            for (let i = 0; i < star.length; i++){
+                if(star[i] === name){
+                    document.getElementById("result5").innerHTML = "Sao " + star[i] + " thuộc chòm sao " + constellation[i];
+                    break;
+                }
+                else {
+                    document.getElementById("result5").innerHTML = "Không tìm thấy chòm sao.";
+                }
+            }
+        }
+        checkName(a);
+    }
+</script>
+</body>
+</html>
