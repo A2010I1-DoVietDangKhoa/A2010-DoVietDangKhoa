@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+    <script>
+        let degreeCelsius = function (deg) {
+            this.degree = deg;
+
+            this.setDegree = function(degree){
+                if(degree < -273){
+                    alert("Số quá nhỏ!");
+                }
+                else {
+                    this.degree = degree;
+                }
+            };
+
+            this.toFahrenheit = function () {
+                return (this.degree*1.8) + 32;
+            };
+
+            this.toKelvin = function () {
+                return this.degree + 273;
+            };
+        };
+
+        let a = new degreeCelsius();
+        //a.setDegree(parseFloat(prompt("Nhập vào độ C:")));
+        a.setDegree(25);
+        alert("Chuyển sang độ F: " + a.toFahrenheit());
+        alert("Chuyển sang độ F: " + a.toKelvin());
+    </script>
+</body>
+</html>

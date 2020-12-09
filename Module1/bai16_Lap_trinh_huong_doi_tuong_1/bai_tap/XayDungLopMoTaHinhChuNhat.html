@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1500px" height="800px" style="border:1px solid #d3d3d3;"></canvas>
+    <script>
+        let myRectangle = function (width, height) {
+            this.width = width;
+            this.height = height;
+            this.getParameter = function () {
+                return (this.width + this.height)*2;
+            };
+            this.getArea = function () {
+                return this.width*this.height;
+            }
+        };
+        let rectangle = new myRectangle(Math.random() *501, Math.random() *501);
+        function createRectangle(){
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            let x = rectangle.width;
+            let y = rectangle.height;
+            ctx.beginPath();
+            ctx.beginPath();
+            ctx.rect(Math.random() *window.innerWidth, Math.random() *window.innerHeight, x, y);
+            ctx.stroke();
+            ctx.stroke();
+        }
+
+        createRectangle();
+        console.log(rectangle.getParameter());
+        console.log(rectangle.getArea());
+    </script>
+</body>
+</html>
