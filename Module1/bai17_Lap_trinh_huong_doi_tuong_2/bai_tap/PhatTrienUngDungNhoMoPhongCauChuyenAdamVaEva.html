@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name, gender, weight) {
+                this.name = name;
+                this.gender = gender;
+                this.weight = weight;
+            };
+
+            setGender(person){
+                if(this.gender === true){
+                    this.gender = "Male";
+                }
+                else{
+                    this.gender = "Female";
+                }
+            }
+
+            eatApple(apple) {
+                  if (apple.bites > 0){
+                        this.weight += 1;
+                        console.log(this.name + " took a bite. " + this.name + "'s current weight: " + this.weight);
+                        apple.beEaten();
+                  }
+                  else {
+                      console.log("Uh oh, the apple is consumed. Prepare for divine punishment.");
+                  }
+            };
+
+            saySomething(){
+                console.log("Hello my name is " + this.name);
+            };
+
+            checkApple(apple){
+                return apple.bites;
+            };
+            getName(){
+                return this.name;
+            };
+            getGender(){
+                return this.gender;
+            };
+            getWeight(){
+                return this.weight;
+            };
+        }
+
+        class Apple{
+            constructor(bites) {
+                this.bites = bites;
+            }
+
+            beEaten(){
+                if(this.bites > 0){
+                    this.bites -= 1;
+                    console.log("Apple now has " + this.bites + " bites left");
+                }
+                else {
+                    console.log("Apple is already consumed.");
+                }
+            };
+
+            getBites(){
+                console.log("Apple has " + this.bites);
+            };
+        }
+
+        let adam = new Person("Adam", true, 60);
+        adam.setGender(adam);
+        console.log(adam.getName());
+        console.log(adam.getGender());
+        console.log(adam.getWeight());
+        adam.saySomething();
+        let eve = new Person("Eve", false, 55);
+        eve.setGender(eve);
+        console.log(eve.getName());
+        console.log(eve.getGender());
+        console.log(eve.getWeight());
+        eve.saySomething();
+        let forbiddenApple = new Apple(10);
+        forbiddenApple.getBites();
+        for (let i = forbiddenApple.bites; i >=0; i--){
+            adam.checkApple(forbiddenApple);
+            adam.eatApple(forbiddenApple);
+            adam.getWeight();
+            eve.checkApple(forbiddenApple);
+            eve.eatApple(forbiddenApple);
+            eve.getWeight();
+            if (forbiddenApple.bites === 0){
+                adam.eatApple(forbiddenApple);
+                break;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn</title>
+</head>
+<body>
+    <script>
+        class Switch{
+            constructor(status) {
+                this.status = status;
+                this.bulb = "";
+            }
+            switchButton(status){
+                if (status === true){
+                    this.status = "Switch ON";
+                }
+                else {
+                    this.status = "Switch OFF";
+                }
+            }
+
+            switchON(){
+                this.status = true;
+                this.switchButton(this.status);
+                this.bulb.turnON();
+            }
+            switchOFF(){
+                this.status = false;
+                this.switchButton(this.status);
+                this.bulb.turnOFF();
+            }
+            connectedToBulb(bulb){
+                this.bulb = bulb;
+            }
+        }
+
+        class Bulb{
+            constructor(status) {
+                this.status = status;
+            }
+
+            electricBulb(status){
+                if (status === true){
+                    this.status = "Bulb ON";
+                }
+                else {
+                    this.status = "Bulb OFF";
+                }
+            }
+
+            turnON(){
+                this.status = true;
+                this.electricBulb(this.status);
+            }
+            turnOFF(){
+                this.status = false;
+                this.electricBulb(this.status);
+            }
+        }
+        let bulb1 = new Bulb(false);
+        let switch1 = new Switch(false);
+        switch1.connectedToBulb(bulb1);
+        for (let i = 0; i< 10; i++){
+            switch1.switchON();
+            console.log(switch1.status);
+            console.log(bulb1.status);
+            switch1.switchOFF();
+            console.log(switch1.status);
+            console.log(bulb1.status);
+        }
+    </script>
+</body>
+</html>
