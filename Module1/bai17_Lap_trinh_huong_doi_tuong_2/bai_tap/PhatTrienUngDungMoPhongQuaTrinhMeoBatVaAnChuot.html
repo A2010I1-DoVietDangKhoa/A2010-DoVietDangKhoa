@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển ứng dụng mô phỏng lại quá trình mèo bắt chuột và ăn chuột</title>
+</head>
+<body>
+    <script>
+        class Rat{
+            constructor(name, weight, speed, status) {
+                this.name = name;
+                this.weight = weight;
+                this.speed = speed;
+                this.status = status;
+            }
+
+            ratGrowl(){
+                if(this.status === "alive") {
+                    console.log(this.name + ": Squeak squeak.");
+                }
+                else {
+                    console.log(this.name + " is already dead. Dead rat can't growl.");
+                }
+
+            }
+        }
+
+        class Cat{
+            constructor(name, weight, speed) {
+                this.name = name;
+                this.weight = weight;
+                this.speed = speed;
+            }
+
+            catGrowl(){
+                console.log(this.name + ": Meow meow.");
+            }
+
+            catchRat(rat){
+                if (this.speed > rat.speed){
+                    if(rat.status === "alive") {
+                        console.log(this.name +" caught and consumed " + rat.name);
+                        this.weight += rat.weight;
+                        console.log(this.name + " now weighs " + this.weight);
+                    }
+                    else {
+                        console.log(rat.name + " is already dead, yuck.");
+                    }
+                }
+                else {
+                    console.log(rat.name + " is too fast.");
+                }
+            }
+        }
+
+        let cat1 = new Cat("Tom", 15, 30);
+        let rat1 = new Rat("Jerry", 2, 15, "alive");
+        let rat2 = new Rat("Pip", 3, 40, "alive");
+        let rat3 = new Rat("Squeeky", 2, 15, "dead");
+        cat1.catGrowl();
+        rat1.ratGrowl();
+        rat2.ratGrowl();
+        rat3.ratGrowl();
+        cat1.catchRat(rat1);
+        cat1.catchRat(rat2);
+        cat1.catchRat(rat3);
+    </script>
+</body>
+</html>
