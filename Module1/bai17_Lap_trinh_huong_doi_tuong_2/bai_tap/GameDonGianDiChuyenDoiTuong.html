@@ -30,34 +30,86 @@
         };
         this.moveUp = function(){
             this.top -= 100;
-            console.log('ok: ' + this.left);
+            console.log('ok: ' + this.top);
         };
         this.moveDown = function(){
             this.top += 100;
-            console.log('ok: ' + this.left);
+            console.log('ok: ' + this.top);
         };
 
     }
 
-    let hero = new Hero('a5j79VWJ_700wa_0.gif', 20, 30, 200);
+    let hero = new Hero('a49XGKG3_700wa_0.gif', 0, 0, 200);
 
+    // function right() {
+    //     if (hero.left < window.innerWidth - hero.size && hero.top < window.innerHeight - hero.size) {
+    //         hero.moveRight();
+    //         document.getElementById('game').innerHTML = hero.getHeroElement();
+    //         setTimeout(right, 500)
+    //     }
+    // }
+    // function down() {
+    //     if (hero.left >= 0 + hero.size && hero.top < window.innerHeight - hero.size){
+    //         hero.moveDown();
+    //         document.getElementById('game').innerHTML = hero.getHeroElement();
+    //         setTimeout(down, 500)
+    //     }
+    // }
+    // function left() {
+    //     if ( hero.left >= 0 + hero.size && hero.top >= window.innerHeight - hero.size){
+    //         hero.moveLeft();
+    //         document.getElementById('game').innerHTML = hero.getHeroElement();
+    //         setTimeout(left, 500)
+    //     }
+    // }
+    // function up() {
+    //     if ( hero.left < window.innerWidth - hero.size && hero.top >= 0 + hero.size){
+    //         hero.moveUp();
+    //         document.getElementById('game').innerHTML = hero.getHeroElement();
+    //         setTimeout(down, 500)
+    //     }
+    // // }
+    // function start(){
+    //     if(hero.left <= window.innerWidth -hero.size && hero.top <= 0){
+    //         hero.moveRight();
+    //     }
+    //     else if (hero.left >= window.innerWidth -hero.size && hero.top <= window.innerHeight -hero.size){
+    //         hero.moveDown();
+    //     }
+    //     else if (hero.left >= 0 && hero.top >= window.innerHeight ){
+    //         hero.moveLeft();
+    //     }
+    //     else if (hero.left <= window.innerWidth && hero.top >= 0 + hero.size){
+    //         hero.moveUp();
+    //     }
+    //     document.getElementById('game').innerHTML = hero.getHeroElement();
+    //     setTimeout(start, 100);
+    //     console.log(hero.left);
+    //     console.log(hero.top);
+    // }
     function start(){
-        if(hero.left < window.innerWidth - hero.size && hero.top < window.innerHeight - hero.size){
+        if (hero.left < window.innerWidth - hero.size && 6*hero.top<window.innerHeight-hero.size) {
             hero.moveRight();
-        }
-        else if (hero.left >= window.innerWidth - hero.size && hero.top < window.innerHeight - hero.size){
+            //document.getElementById('game').innerHTML = hero.getHeroElement();
+            // setTimeout(start, 500);
+        }else if(hero.left>window.innerWidth - hero.size&&hero.top<window.innerHeight-hero.size) {
             hero.moveDown();
-        }
-        else if ( hero.left >= window.innerWidth - hero.size && hero.top >= window.innerHeight - hero.size){
+            //document.getElementById('game').innerHTML = hero.getHeroElement();
+            //setTimeout(start, 500);
+        }else if (hero.left > 0.2*hero.size&&hero.top>window.innerHeight-hero.size) {
             hero.moveLeft();
-        }
-        else if ( hero.left < window.innerWidth - hero.size && hero.top >= window.innerHeight - hero.size){
+            //document.getElementById('game').innerHTML = hero.getHeroElement();
+            // setTimeout(start, 500);
+        } else {
             hero.moveUp();
+            //document.getElementById('game').innerHTML = hero.getHeroElement();
+            // setTimeout(start, 500);
         }
         document.getElementById('game').innerHTML = hero.getHeroElement();
-        setTimeout(start, 500)
+        setTimeout(start, 100);
     }
-
+    console.log(hero.left);
+    console.log(hero.top);
     start();
 </script>
 </body>
