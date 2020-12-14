@@ -23,15 +23,14 @@
             let x = rectangle.width;
             let y = rectangle.height;
             ctx.beginPath();
-            ctx.beginPath();
             ctx.rect(Math.random() *window.innerWidth, Math.random() *window.innerHeight, x, y);
-            ctx.stroke();
             ctx.stroke();
         }
 
         createRectangle();
-        console.log(rectangle.getParameter());
-        console.log(rectangle.getArea());
+        console.log("Hình chữ nhật có chiều dài " + rectangle.width + " và chiều rộng " + rectangle.height);
+        console.log("Chu vi: " + rectangle.getParameter());
+        console.log("Diện tích: " + rectangle.getArea());
     </script>
 </body>
 </html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+    <script>
+        class Phone{
+            constructor(name) {
+                this.name = name;
+                this.battery = 10;
+                this.draft = [];
+                this.received = [];
+                this.sent = [];
+                this.status = true;
+            }
+
+            switchState(){
+                if(this.status === true){
+                    this.status = false;
+                    console.log("Điện thoại đang tắt");
+                }
+                else{
+                    this.status = true;
+                    console.log("Điện thoại đang bật");
+                }
+            }
+
+            checkState(){
+                if(this.status === true){
+                    console.log("Điện thoại đang bật");
+                }
+                else{
+                    console.log("Điện thoại đang tắt");
+                }
+                //console.log("Điện thoại đang ở trạng thái " + phone.status);
+            }
+
+            chargeBattery() {
+                if (this.battery < 10) {
+                    while (this.battery < 10) {
+                        this.battery += 1;
+                        console.log(this.battery);
+                    }
+                    console.log("Đã sạc xong.");
+                }
+                else {
+                        console.log("Pin đầy, không cần sạc.");
+                }
+
+            }
+
+            checkBattery(){
+                console.log("Pin của điện thoại " + this.name + " còn " + this.battery);
+            }
+
+            writeMessage(message){
+                //let a = message;
+                if(this.status === true){
+                    if(this.battery > 0){
+                        this.saveToDraft(message);
+                        this.battery--;
+                        return message;
+                    }
+                    else {
+                        console.log("Pin quá yếu.");
+                    }
+                }
+                else {
+                    console.log("Điện thoại đang tắt, không thể thực hiện.");
+                }
+
+                // this.saveToDraft(message);
+                // return message;
+            }
+
+            saveToDraft(message){
+                this.draft.push(message);
+            }
+
+            checkDraft(){
+                if(this.status === true){
+                    if(this.battery > 0){
+                        console.log("Hộp thư đang viết của "+ this.name + ": " + this.draft);
+                        this.battery--;
+                    }
+                    else {
+                        console.log("Pin quá yếu.");
+                    }
+                }
+                else {
+                    console.log("Điện thoại đang tắt, không thể thực hiện.");
+                }
+                //console.log(this.draft);
+            }
+
+            checkSent(){
+                if(this.status === true){
+                    if(this.battery > 0){
+                        console.log("Hộp thư đã gửi của "+ this.name + ": " + this.sent);
+                        this.battery--;
+                    }
+                    else {
+                        console.log("Pin quá yếu.");
+                    }
+                }
+                else {
+                    console.log("Điện thoại đang tắt, không thể thực hiện.");
+                }
+                //console.log(this.sent);
+            }
+
+            checkReceived(){
+                if(this.status === true){
+                    if(this.battery > 0){
+                        console.log("Hộp thư đã nhận của "+ this.name + ": " + this.received);
+                        this.battery--;
+                    }
+                    else {
+                        console.log("Pin quá yếu.");
+                    }
+                }
+                else {
+                    console.log("Điện thoại đang tắt, không thể thực hiện.");
+                }
+                //console.log(this.received);
+            }
+
+            sendMessage(message, phone){
+                if(this.status === true){
+                    if(this.battery > 0){
+                        phone.receiveMessage(message);
+                        this.saveToSent(message);
+                        this.battery--;
+                    }
+                    else {
+                        console.log("Pin quá yếu.");
+                    }
+                }
+                else {
+                    console.log("Điện thoại đang tắt, không thể thực hiện. ");
+                }
+                // phone.receiveMessage(message);
+                // this.saveToSent(message);
+            }
+
+            saveToSent(message){
+                this.sent.push(message);
+            }
+
+            receiveMessage(message){
+                this.received.push(message);
+            }
+        }
+
+        let nokia = new Phone("Nokia");
+        let iphone = new Phone("iPhone");
+        //nokia.checkBattery();
+        for(let i = 0; i<15; i++){
+            let a = nokia.writeMessage("Hello");
+            nokia.checkBattery();
+            nokia.sendMessage(a, iphone);
+        }
+        iphone.checkReceived();
+
+    </script>
+</body>
+</html>
