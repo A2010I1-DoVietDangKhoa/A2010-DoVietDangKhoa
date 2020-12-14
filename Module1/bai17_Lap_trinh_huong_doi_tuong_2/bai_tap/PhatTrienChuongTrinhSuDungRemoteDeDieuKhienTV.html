@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển chương trình sử dụng Remote để điều khiển Tivi</title>
+</head>
+<body>
+    <script>
+        class Remote{
+            constructor(name) {
+                this.name = name;
+                this.tele = '';
+            }
+
+            connectedToTV(tele){
+                this.tele = tele;
+                console.log("Remote " + this.name + " đã kết nối đến tivi " + this.tele.name);
+            }
+
+            turnTVON(){
+                if(this.tele.status === true){
+                    console.log("Tivi đã bật sẵn.");
+                }
+                else{
+                    this.tele.status = true;
+                    console.log("Tivi đã được remote bật.");
+                }
+            }
+
+            turnTVOFF() {
+                if (this.tele.status === false) {
+                    console.log("Tivi đã tắt sẵn.");
+                } else {
+                    this.tele.status = false;
+                    console.log("Tivi đã được remote tắt.");
+                }
+            }
+
+            changeTVChannel(channel){
+                if(this.tele.status === true) {
+                    this.tele.channel = channel;
+                    console.log("Chuyển đến kênh " + this.tele.channel);
+                }
+                else {
+                    console.log("Tivi đang tắt, không thể chuyển kênh.");
+                }
+            }
+
+            changeTVVolume(volume){
+                if(this.tele.status === true) {
+                    this.tele.volume += volume;
+                    if(volume >= 0) {
+                        console.log("Tăng âm lượng " + volume + " đơn vị.");
+                    }
+                    else {
+                        console.log("Giảm âm lượng " + (-volume) + " đơn vị.");
+                    }
+                }
+                else {
+                    console.log("Tivi đang tắt, không thể thay đổi âm lượng.");
+                }
+                //this.tele.volume = volume;
+            }
+        }
+
+        class Television{
+            constructor(name) {
+                this.name = name;
+                this.channel = 1;
+                this.volume = 20;
+                this.status = false;
+            }
+
+            turnON(){
+                if(this.status === true){
+                    console.log("Tivi đã bật sẵn.");
+                }
+                else{
+                    this.status = true;
+                    console.log("Tivi đã được bật.");
+                }
+            }
+
+            turnOFF(){
+                if(this.status === false){
+                    console.log("Tivi đã tắt sẵn.");
+                }
+                else{
+                    this.status = false;
+                    console.log("Tivi đã được tắt.");
+                }
+            }
+
+
+            setChannel(channel){
+                if(this.status === true){
+                    this.channel = channel;
+                }
+                else {
+                    console.log("Tivi đang tắt.");
+                }
+                //this.channel = channel;
+            }
+
+            setVolume(volume){
+                if(this.status === true){
+                    this.volume = volume;
+                }
+                else {
+                    console.log("Tivi đang tắt.");
+                }
+                //this.volume = volume;
+            }
+
+            getState(){
+                if(this.status === true){
+                    console.log("Tivi đang bật.");
+                }
+                else {
+                    console.log("Tivi đang tắt.");
+                }
+            }
+
+            getChannel(){
+                if(this.status === true){
+                    console.log("Đang chiếu kênh " + this.channel);
+                }
+                else {
+                    console.log("Tivi đang tắt.");
+                }
+            }
+
+            getVolume(){
+                if(this.status === true){
+                    console.log("Âm lượng: " + this.volume);
+                }
+                else {
+                    console.log("Tivi đang tắt.");
+                }
+            }
+        }
+
+        let remote1 = new Remote("007");
+        let television1 = new Television("LG");
+        remote1.connectedToTV(television1);
+        television1.getState();
+        television1.turnON();
+        television1.getState();
+        television1.setChannel(7);
+        television1.getChannel();
+        television1.setVolume(30);
+        television1.getVolume();
+        remote1.changeTVChannel(3);
+        television1.getChannel();
+        remote1.changeTVVolume(2);
+        television1.getVolume();
+        remote1.turnTVOFF();
+        television1.getState();
+
+    </script>
+</body>
+</html>
