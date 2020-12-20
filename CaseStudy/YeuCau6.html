@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 6</title>
+</head>
+<body>
+<h1>Quản lý khách hàng và nhân viên</h1>
+<div id="menu" style="float: left; display: block">
+    <form>
+        <h2>Chọn đối tượng muốn thao tác</h2>
+        <button type="button" id="beginCustomer" onclick="displayMenu(1)">Khách hàng</button>
+        <button type="button" id="beginEmployee" onclick="displayMenu(2)">Nhân viên</button><br><br>
+        <div id="customerMenu" style="display: none">
+            <button type="button" onclick="displayCustomerList()">Xem danh sách</button><br><br>
+            <span id="customerInfo"></span><br><br>
+            <button type="button" onclick="addCustomer()">Thêm khách hàng</button><br><br>
+            <button type="button" onclick="exitMenu()">Exit</button>
+        </div>
+        <div id="employeeMenu" style="display: none">
+            <button type="button" onclick="displayEmployeeList()">Xem danh sách</button><br><br>
+            <span id="employeeInfo"></span><br><br>
+            <button type="button" onclick="addEmployee()">Thêm nhân viên</button><br><br>
+            <button type="button" onclick="exitMenu()">Exit</button>
+        </div>
+    </form>
+</div>
+<div id="inputfield1" style="float: left; display: none">
+    <form method="post" name="info">
+        <h2>Thông tin khách hàng</h2>
+        <label>Tên: </label><input type="text" id="customerName"><br><br>
+        <label>CMND: </label><input type="text" id="customerID"><br><br>
+        <label>Ngày tháng năm sinh: </label><input type="date" id="customerBirthday"><br><br>
+        <label>Email: </label><input type="text" id="customerEmail"><br><br>
+        <label>Địa chỉ: </label><br>
+        <textarea id="customerAddress" style="width: 400px; height: 75px"></textarea><br><br>
+        <label>Khách hàng loại: </label>
+        <select id="customerType">
+            <option value="0">Thông thường</option>
+            <option value="2">Bạc</option>
+            <option value="5">Vàng</option>
+            <option value="10">Bạch kim</option>
+            <option value="15">Kim cương</option>
+        </select><br><br>
+        <label>Giảm giá: </label>
+        <select id="discountType">
+            <option value="0">Không có</option>
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="40">40%</option>
+        </select><br><br>
+        <label>Số lượng: </label><input type="text" id="companySize"><br><br>
+        <label>Số ngày thuê: </label></label><input type="text" id="duration"><br><br>
+        <label>Loại dịch vụ: </label>
+        <select id="serviceType">
+            <option value="500">Villa 500$/ngày</option>
+            <option value="300">House 300$/ngày</option>
+            <option value="100">Room 100$/ngày</option>
+        </select><br><br>
+        <label>Loại phòng thuê: </label>
+        <select id="roomType">
+            <option value="normal">Thường</option>
+            <option value="business">Business</option>
+            <option value="vip">VIP</option>
+        </select><br><br>
+        <div id= "caddbuttons" style="display: none">
+            <button type="button" onclick="confirmAddCustomer()">Thêm</button>
+            <button type="button" onclick="exitCustomerEdit()">Quay về</button>
+        </div>
+        <div id= "ceditbuttons" style="display: none">
+        </div>
+    </form>
+</div>
+<div id="inputfield2" style="float: left; display: none">
+    <h2>Thông tin nhân viên</h2>
+    <label>Tên: </label><input type="text" id="employeeName"><br><br>
+    <label>CMND: </label><input type="text" id="employeeID"><br><br>
+    <label>Ngày tháng năm sinh: </label><input type="date" id="employeeBirthday"><br><br>
+    <label>Email: </label><input type="text" id="employeeEmail"><br><br>
+    <label>Chức vụ: </label>
+    <select id="employeeType">
+        <option value="0">Thông thường</option>
+        <option value="200">Marketing</option>
+        <option value="300">Sale</option>
+        <option value="500">Manager</option>
+    </select><br><br>
+    <label>Địa chỉ: </label><br>
+    <textarea id="employeeAddress" style="width: 400px; height: 75px"></textarea><br><br>
+    <label>Số tháng làm việc: </label><input type="text" id="workDuration"><br><br>
+    <div id= "eaddbuttons" style="display: none">
+        <button type="button" onclick="confirmAddEmployee()">Thêm</button>
+        <button type="button" onclick="exitEmployeeEdit()">Quay về</button>
+    </div>
+    <div id= "eeditbuttons" style="display: none">
+    </div>
+</div>
+<div id="customerDetails" style="float: left; display: none">
+    <label>Tên khách hàng: </label>
+    <span id="cdName"></span><br><br>
+    <label>CMND: </label>
+    <span id="cdID"></span><br><br>
+    <label>Ngày tháng năm sinh: </label>
+    <span id="cdBirthday"></span><br><br>
+    <label>Email: </label>
+    <span id="cdEmail"></span><br><br>
+    <label>Địa chỉ: </label>
+    <span id="cdAddress"></span><br><br>
+    <label>Khách hàng loại: </label>
+    <span id="cdType"></span><br><br>
+    <label>Giảm giá: </label>
+    <span id="cdDiscount"></span><br><br>
+    <label>Số người: </label>
+    <span id="cdCompany"></span><br><br>
+    <label>Số ngày thuê: </label>
+    <span id="cdDuration"></span><br><br>
+    <label>Loại dịch vụ: </label>
+    <span id="cdService"></span><br><br>
+    <label>Loại phòng: </label>
+    <span id="cdRoom"></span><br><br>
+    <div id="customerDetailsButtons">
+    </div>
+</div>
+<div id="employeeDetails" style="float: left; display: none">
+    <label>Tên nhân viên: </label>
+    <span id="edName"></span><br><br>
+    <label>CMND: </label>
+    <span id="edID"></span><br><br>
+    <label>Ngày tháng năm sinh: </label>
+    <span id="edBirthday"></span><br><br>
+    <label>Email: </label>
+    <span id="edEmail"></span><br><br>
+    <label>Địa chỉ: </label>
+    <span id="edAddress"></span><br><br>
+    <label>Chức vụ: </label>
+    <span id="edPos"></span><br><br>
+    <label>Thời gian làm việc: </label>
+    <span id="edWorkduration"></span><br><br>
+    <div id="employeeDetailsButtons">
+    </div>
+</div>
+<div id="outputfield1" style="float: right; margin-right: 80px; display: none">
+    <label>Tên khách hàng: </label>
+    <span id="namedisplay1"></span><br><br>
+    <label>CMND: </label>
+    <span id="iddisplay1"></span><br><br>
+    <label>Ngày tháng năm sinh: </label>
+    <span id="birthdisplay1"></span><br><br>
+    <label>Email: </label>
+    <span id="emaildisplay1"></span><br><br>
+    <label>Địa chỉ: </label>
+    <span id="addressdisplay1"></span><br><br>
+    <span id="addressdiscount"></span><br><br>
+    <label>Khách hàng loại: </label>
+    <span id="ctypedisplay"></span><br><br>
+    <label>Giảm giá: </label>
+    <span id="discountdisplay"></span><br><br>
+    <label>Số người: </label>
+    <span id="companydisplay"></span><br><br>
+    <label>Số ngày thuê: </label>
+    <span id="durationdisplay"></span><br><br>
+    <span id="durationdiscount"></span><br><br>
+    <label>Loại dịch vụ: </label>
+    <span id="stypedisplay"></span><br><br>
+    <label>Loại phòng: </label>
+    <span id="rtypedisplay"></span><br><br>
+    <label>Tổng tiền: </label>
+    <span id="totaldisplay"></span>
+</div>
+<div id="outputfield2" style="float: right; margin-right: 80px; display: none">
+    <label>Tên nhân viên:</label>
+    <span id="namedisplay2"></span><br><br>
+    <label>CMND: </label>
+    <span id="iddisplay2"></span><br><br>
+    <label>Ngày tháng năm sinh: </label>
+    <span id="birthdisplay2"></span><br><br>
+    <label>Email: </label>
+    <span id="emaildisplay2"></span><br><br>
+    <label>Địa chỉ: </label>
+    <span id="addressdisplay2"></span><br><br>
+    <label>Chức vụ: </label>
+    <span id="posdisplay2"></span><br><br>
+    <label>Số tháng làm việc: </label>
+    <span id="workdurationdisplay2"></span><br><br>
+    <label>Lương: </label>
+    <span id="salarydisplay"></span><br><br>
+    <label>Thưởng: </label>
+    <span id="bonusdisplay"></span><br><br>
+    <label>Tổng: </label>
+    <span id="total"></span>
+</div>
+<script>
+    let customerList = [];
+    let employeeList = [];
+
+    class Customer {
+        constructor() {
+            this.name = null;
+            this.cmnd = null;
+            this.birthday = null;
+            this.address = null;
+            this.email = null;
+            this.duration = null;
+            this.service = null;
+            this.discount = null;
+            this.type = null;
+            this.room = null;
+            this.company = null;
+        }
+
+        getName(){
+            return this.name;
+        }
+        getCmnd(){
+            return this.cmnd;
+        }
+        getBirthday(){
+            return this.birthday;
+        }
+        getAddress(){
+            return this.address;
+        }
+        getEmail(){
+            return this.email;
+        }
+        getDuration(){
+            return this.duration;
+        }
+        getDiscount(){
+            return this.discount;
+        }
+        getCompany(){
+            return this.company;
+        }
+        getService(){
+            return this.service;
+        }
+        getType(){
+            return this.type;
+        }
+        getRoom(){
+            return this.room;
+        }
+        setName(name){
+            this.name = name;
+        }
+        setCmnd(cmnd){
+            this.cmnd = cmnd;
+        }
+        setBirthday(date){
+            this.birthday = date;
+        }
+        setAddress(address){
+            this.address = address;
+        }
+        setEmail(email){
+            this.email = email;
+        }
+        setDuration(duration){
+            this.duration = duration;
+        }
+        setDiscount(discount){
+            //this.discount = parseInt(document.getElementById("discountType").value);
+            this.discount = discount;
+            // if(a == 0){
+            //     this.discount = "Không có giảm giá";
+            // }
+            // else if(a == 10){
+            //     this.discount = 10;
+            // }
+            // else if(a == 20){
+            //     this.discount = 20;
+            // }
+            // else if(a == 30){
+            //     this.discount = 30;
+            // }
+            // else if(a == 40){
+            //     this.discount = 40;
+            // }
+        }
+        setCompany(company){
+            this.company = company;
+        }
+        setService(service){
+            //this.service = parseInt(document.getElementById("serviceType").value);
+            this.service = service;
+            // if(a == 500){
+            //     this.service = "Villa";
+            // }
+            // else if(a == 300){
+            //     this.service = "House";
+            // }
+            // else if(a == 100){
+            //     this.service = "Room";
+            // }
+        }
+        setType(type){
+            //this.type = parseInt(document.getElementById("customerType").value);
+            this.type = type;
+            // if(a == 0){
+            //     this.type = "Thông thường";
+            // }
+            // else if(a == 2){
+            //     this.type = "Bạc";
+            // }
+            // else if(a == 5){
+            //     this.type = "Vàng";
+            // }
+            // else if(a == 10){
+            //     this.type = "Bạch kim";
+            // }
+            // else if(a == 15){
+            //     this.type = "Kim cương";
+            // }
+        }
+        setRoom(room){
+            //this.room = document.getElementById("roomType").value;
+            this.room = room;
+            // if (a == "normal"){
+            //     this.room = "Thường";
+            // }
+            // else if (a == "business"){
+            //     this.room = "Business";
+            // }
+            // else if (a == "vip"){
+            //     this.room = "VIP";
+            // }
+        }
+    }
+
+    class Employee {
+        constructor() {
+            this.name = null;
+            this.cmnd = null;
+            this.birthday = null;
+            this.address = null;
+            this.email = null;
+            this.pos = null;
+            this.duration = null;
+        }
+        getName(){
+            return this.name;
+        }
+        getCmnd(){
+            return this.cmnd;
+        }
+        getBirthday(){
+            return this.birthday;
+        }
+        getAddress(){
+            return this.address;
+        }
+        getEmail(){
+            return this.email;
+        }
+        getPos(){
+            return this.pos;
+        }
+        getDuration(){
+            return this.duration;
+        }
+        setName(name){
+            //this.name = document.getElementById("employeeName").value;
+            this.name = name;
+        }
+        setCmnd(cmnd){
+            //this.cmnd = document.getElementById("employeeID").value;
+            this.cmnd = cmnd;
+        }
+        setBirthday(date){
+            //this.birthday = document.getElementById("employeeBirthday").value;
+            this.birthday = date;
+        }
+        setAddress(address){
+            //this.address = document.getElementById("employeeAddress").value;
+            this.address = address;
+        }
+        setEmail(email){
+            //this.email = document.getElementById("employeeEmail").value;
+            this.email = email;
+        }
+        setPos(pos){
+            //this.pos = parseInt(document.getElementById("employeeType").value);
+            this.pos = pos;
+            // if(a == 0){
+            //     this.pos = "Nhân viên thường";
+            // }
+            // else if(a == 200){
+            //     this.pos = "Marketing";
+            // }
+            // else if(a == 300){
+            //     this.pos = "Sale";
+            // }
+            // else if(a == 500){
+            //     this.pos = "Manager";
+            // }
+        }
+        setDuration(duration){
+            //this.duration = document.getElementById("workDuration").value;
+            this.duration = duration;
+        }
+    }
+    // document.getElementById("customerName").readOnly = true;
+    // document.getElementById("customerID").readOnly = true;
+    // document.getElementById("customerBirthday").readOnly = true;
+    // document.getElementById("customerEmail").readOnly = true;
+    // document.getElementById("customerAddress").readOnly = true;
+    // document.getElementById("companySize").readOnly = true;
+    // document.getElementById("duration").readOnly = true;
+    // document.getElementById("serviceType").disabled = true;
+    // document.getElementById("discountType").disabled = true;
+    // document.getElementById("customerType").disabled = true;
+    // document.getElementById("roomType").disabled = true;
+    // document.getElementById("employeeName").readOnly = true;
+    // document.getElementById("employeeID").readOnly = true;
+    // document.getElementById("employeeBirthday").readOnly = true;
+    // document.getElementById("employeeAddress").readOnly = true;
+    // document.getElementById("employeeBirthday").readOnly = true;
+    // document.getElementById("employeeEmail").readOnly = true;
+    // document.getElementById("employeeType").disabled = true;
+    // document.getElementById("workDuration").readOnly = true;
+    function displayMenu(a) {
+        switch (a) {
+            case 1:
+                document.getElementById("customerMenu").style.display = "block";
+                document.getElementById("employeeMenu").style.display = "none";
+                break;
+            case 2:
+                document.getElementById("employeeMenu").style.display = "block";
+                document.getElementById("customerMenu").style.display = "none";
+                break;
+        }
+    }
+
+    function displayCustomerList() {
+        document.getElementById("customerDetails").style.display = "none";
+        document.getElementById("inputfield1").style.display = "none";
+        let table = "";
+        table += '<table border="0">\n' +
+            '            <tr>\n' +
+            '                <th>STT</th>\n' +
+            '                <th>Tên khách hàng</th>\n' +
+            '                <th colspan="2"></th>\n' +
+            '            </tr>';
+        for (let i = 0; i<customerList.length; i++){
+            table += '<tr>\n' +
+                '            <td>' + (i+1) + '</td>\n' +
+                '            <td>' + customerList[i].name + '</td>\n' +
+                '            <td><button type="button" onclick="checkCustomer(' + i + ')">Xem thông tin</button></td>\n' +
+                //'            <td><button type="button" onclick="makeReceipt(' + i + ')">Tính tiền</button></td>\n' +
+                // '            <td><button type="button" onclick="editCustomer(' + i + ')">Sửa thông tin</button></td>\n' +
+                '            <td><button type="button" onclick="removeCustomer(' + i + ')">Xóa khách hàng</button></td>\n' +
+                '        </tr>';
+            //table += arr[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+        }
+        table += '</table>';
+        document.getElementById("customerInfo").innerHTML = table;
+    }
+
+    function displayEmployeeList() {
+        let table = "";
+        table += '<table border="0">\n' +
+            '            <tr>\n' +
+            '                <th>STT</th>\n' +
+            '                <th>Tên nhân viên</th>\n' +
+            '                <th colspan="2"></th>\n' +
+            '            </tr>';
+        for (let i = 0; i<employeeList.length; i++){
+            table += '<tr>\n' +
+                '            <td>' + (i+1) + '</td>\n' +
+                '            <td>' + employeeList[i].name + '</td>\n' +
+                '            <td><button type="button" onclick="checkEmployee(' + i + ')">Xem thông tin</button></td>\n' +
+                // '            <td><button type="button" onclick="editEmployee(' + i + ')">Sửa thông tin</button></td>\n' +
+                '            <td><button type="button" onclick="removeEmployee(' + i + ')">Xóa nhân viên</button></td>\n' +
+                '        </tr>';
+            //table += arr[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+        }
+        table += '</table>';
+        document.getElementById("employeeInfo").innerHTML = table;
+    }
+
+    function checkName(name) {
+        let temp = "";
+        if(name !== null && name!== "") {
+            let a = name.trim().toLowerCase();
+            for (let j = 0; j < a.length; j++) {
+                if (a.charAt(j) === " " && a.charAt(j + 1) === " ") {
+                    continue;
+                } else if (j === 0 || a.charAt(j - 1) === " ") {
+                    temp += a.charAt(j).toUpperCase();
+                    continue;
+                }
+                temp += a.charAt(j);
+            }
+        }
+        return temp;
+    }
+
+    function checkID(ID) {
+        if(!isNaN(ID)){
+            ID = Number.parseFloat(ID);
+            if(Number.isInteger(ID)){
+                if(ID > 100000000 && ID < 999999999){
+                    return true;
+                }
+                else {
+                    return false;
+                    //alert("CMND không đúng định dạng.");
+                }
+            }
+            else {
+                return false;
+                //alert("CMND không đúng định dạng.");
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    function checkAddress(address) {
+        let tempAdd = "";
+        address = address.trim();
+        for (let i = 0; i < address.length; i++){
+            if(address.charAt(i) === " " && address.charAt(i+1) === " "){
+                continue;
+            }
+            tempAdd += address.charAt(i);
+        }
+        return tempAdd;
+    }
+
+    function checkEmail(email) {
+        let checkValid = false;
+        let regexEmail = /\S+@\S+\.\S+/;
+        do{
+            if(regexEmail.test(email)){
+
+                checkValid = true;
+            }
+            else {
+                checkValid = false;
+                break;
+            }
+        }while(!checkValid);
+        return checkValid;
+    }
+
+    function checkCompany(company) {
+        if(!isNaN(company)){
+            company = Number.parseFloat(company);
+            if(Number.isInteger(company)) {
+                if (company > 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    function checkDuration(duration) {
+        if(!isNaN(duration)){
+            duration = Number.parseFloat(duration);
+            if(Number.isInteger(duration)){
+                if (duration > 0){
+                    return true
+                }
+                else {
+                    return false;                }
+            }
+            else {
+                return false;            }
+        }
+        else {
+            return false;        }
+    }
+</script>
+<script src="customer.js"></script>
+<script src="employee.js"></script>
+</body>
+</html>

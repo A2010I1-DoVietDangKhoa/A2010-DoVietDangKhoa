@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu cầu 5</title>
+    <style>
+        button{
+            background: #48e05b;
+            color: #FFFFFF;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        tr:nth-child(odd){
+            background-color: #b2b3b5;
+        }
+        th:nth-child(1){
+            width: 30px;
+            height: 50px;
+            text-align: center;
+        }
+        th:nth-child(2){
+            width: 250px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="menuDisplay()">Hiển thị menu</button><br><br>
+    <button type="button" id="displayInfo" style="display: none" onclick="displayCustomer()">Xem thông tin</button><br><br>
+    <input type="text" style="display: none" id="newCustomer">
+    <button type="button" style="display: none" onclick="addCustomer()" id="addCustomer">Thêm khách hàng</button><br><br>
+    <span id="customerInfo" style="display: none"></span><br><br>
+    <button type="button" id="exit" style="display: none" onclick="exitMenu()">Exit</button>
+<script>
+    let customerArr = [];
+    function menuDisplay() {
+        document.getElementById("displayInfo").style.display = "inline-block";
+        document.getElementById("exit").style.display = "inline-block";
+    }
+
+    function displayCustomer() {
+        document.getElementById("newCustomer").style.display = "inline-block";
+        document.getElementById("addCustomer").style.display = "inline-block";
+        document.getElementById("customerInfo").style.display = "inline-block";
+        let table = "";
+        table += '<table border="0">\n' +
+            '            <tr>\n' +
+            '                <th>STT</th>\n' +
+            '                <th>Tên khách hàng</th>\n' +
+            '                <th colspan="2"></th>\n' +
+            '            </tr>';
+        for (let i = 0; i<customerArr.length; i++){
+            table += '<tr>\n' +
+                '            <td>' + (i+1) + '</td>\n' +
+                '            <td>' + customerArr[i] + '</td>\n' +
+                '            <td><button type="button" onclick="editCustomer(' + i + ')">Sửa thông tin</button></td>\n' +
+                '            <td><button type="button" onclick="removeCustomer(' + i + ')">Xóa khách hàng</button></td>\n' +
+                '        </tr>';
+            //table += arr[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+        }
+        table += '</table>';
+        document.getElementById("customerInfo").innerHTML = table;
+
+    }
+
+    function addCustomer() {
+        let a = document.getElementById("newCustomer").value;
+        let temp = "";
+        if(a !== null && a!== "") {
+            let b = a.trim().toLowerCase();
+            for(let j = 0; j<b.length; j++){
+                if(b.charAt(j) === " " && b.charAt(j+1) === " "){
+                    continue;
+                }
+                else if(j === 0 || b.charAt(j-1) === " "){
+                    temp += b.charAt(j).toUpperCase();
+                    continue;
+                }
+                temp += b.charAt(j);
+            }
+            customerArr.push(temp);
+        }
+        //temp = "";
+        document.getElementById("newCustomer").value = "";
+        displayCustomer();
+    }
+
+    function editCustomer(i) {
+        let b = prompt("Nhập tên mới:");
+        if(b !== null && b!== "") {
+            customerArr[i] = b;
+        }
+        displayCustomer();
+    }
+
+    function removeCustomer(i) {
+        let check = confirm("Xác nhận xóa khách hàng " + customerArr[i] + "?");
+        if(check) {
+            customerArr.splice(i, 1);
+        }
+        displayCustomer();
+    }
+
+    function exitMenu() {
+        document.getElementById("displayInfo").style.display = "none";
+        document.getElementById("newCustomer").style.display = "none";
+        document.getElementById("addCustomer").style.display = "none";
+        document.getElementById("customerInfo").style.display = "none";
+        document.getElementById("exit").style.display = "none";
+    }
+</script>
+</body>
+</html>
