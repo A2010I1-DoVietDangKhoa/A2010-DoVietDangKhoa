@@ -6,24 +6,18 @@ function addCustomer() {
     document.getElementById("caddbuttons").style.display = "block";
     document.getElementById("ceditbuttons").style.display = "none";
     document.getElementById("customerDetails").style.display = "none";
-    // document.getElementById("customerName").readOnly = false;
-    // document.getElementById("customerID").readOnly = false;
-    // document.getElementById("customerBirthday").readOnly = false;
-    // document.getElementById("customerEmail").readOnly = false;
-    // document.getElementById("customerAddress").readOnly = false;
-    // document.getElementById("companySize").readOnly = false;
-    // document.getElementById("duration").readOnly = false;
-    // document.getElementById("serviceType").disabled = false;
-    // document.getElementById("discountType").disabled = false;
-    // document.getElementById("customerType").disabled = false;
-    // document.getElementById("roomType").disabled = false;
 }
 
 function confirmAddCustomer() {
     let customer = new Customer();
     let a = document.getElementById("customerName").value;
         let name = checkName(a);
-        customer.setName(name);
+        if(name !== 1) {
+            customer.setName(name);
+        }
+        else {
+            alert("Tên khách hàng trống.");
+        }
         //customer.setName(temp);
     let ID = document.getElementById("customerID").value;
     let checkCMND = checkID(ID);
@@ -41,17 +35,19 @@ function confirmAddCustomer() {
     else {
         alert("Email khách hàng không hợp lệ.");
     }
-    // if (!checkValid){
-    //     alert("Email khách hàng không hợp lệ.");
-    // }
-    // else {
-    //     customer.setEmail(email);
-    //     checkEmail= true;
-    // }
+
     let address = document.getElementById("customerAddress").value;
     address = checkAddress(address);
     customer.setAddress(address);
-    customer.setBirthday(document.getElementById("employeeBirthday").value);
+    let date = document.getElementById("customerBirthday").value;
+    let checkDate = checkBirth(date);
+    if(checkDate){
+        customer.setBirthday(date);
+    }
+    else {
+        alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
+    }
+    //customer.setBirthday(document.getElementById("employeeBirthday").value);
     customer.setType(document.getElementById("customerType").value);
     customer.setDiscount(document.getElementById("discountType").value);
     customer.setRoom(document.getElementById("roomType").value);
@@ -74,7 +70,7 @@ function confirmAddCustomer() {
         alert("Số ngày không hợp lệ.");
     }
 
-    if(checkD === true && checkC === true && checkE === true && checkCMND === true){
+    if(checkD === true && checkC === true && checkE === true && checkCMND === true && checkDate === true){
         //temp = "";
         customerList.push(customer);
         document.getElementById("inputfield1").style.display = "none";
@@ -94,6 +90,8 @@ function confirmAddCustomer() {
 function exitCustomerEdit() {
     document.getElementById("inputfield1").style.display = "none";
     document.getElementById("customerMenu").style.display = "block";
+    document.getElementById("outputfield1").style.display = "none";
+    document.getElementById("outputfield2").style.display = "none";
     document.getElementById("menu").style.display = "block";
     document.getElementById("customerName").value = null;
     document.getElementById("customerID").value = null;
@@ -203,129 +201,48 @@ function editCustomer(i) {
 
 function confirmEditCustomer(i) {
     let a = document.getElementById("customerName").value;
-    let temp = "";
-    if(a !== null && a!== "") {
-        let b = a.trim().toLowerCase();
-        for(let j = 0; j<b.length; j++){
-            if(b.charAt(j) === " " && b.charAt(j+1) === " "){
-                continue;
-            }
-            else if(j === 0 || b.charAt(j-1) === " "){
-                temp += b.charAt(j).toUpperCase();
-                continue;
-            }
-            temp += b.charAt(j);
-        }
-        customerList[i].setName(temp);
+    let name = checkName(a);
+    if(name !== 1) {
+        customerList[i].setName(name);
+    }
+    else {
+        alert("Tên khách hàng trống.");
     }
     let ID = document.getElementById("customerID").value;
-    let checkID = false;
-    if(!isNaN(ID)){
-        ID = Number.parseFloat(ID);
-        if(Number.isInteger(ID)){
-            if(ID > 100000000 && ID < 999999999){
-                //customerList[i].setCmnd(ID);
-                checkID = true;
-            }
-            else {
-                alert("CMND không đúng định dạng.");
-            }
-        }
-        else {
-            alert("CMND không đúng định dạng.");
-        }
-    }
-    else {
+    let checkCmnd = checkID(ID);
+    if(!checkCmnd){
         alert("CMND không đúng định dạng.");
     }
+
+    let date = document.getElementById("customerBirthday").value;
+    let checkDate = checkBirth(date);
+    if(!checkDate){
+        alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
+    }
     let email = document.getElementById("customerEmail").value;
-    let checkEmail = false;
-    let checkValid = false;
-    let regexEmail = /\S+@\S+\.\S+/;
-    // for(let i = 0; i < email.length; i++){
-    //     if(email.charAt(i) === "@"){
-    //         countAt++;
-    //         for(let j = i + 1; j < email.length; j++){
-    //             if(email.charAt(j) === "."){
-    //                 countDot++;
-    //             }
-    //         }
-    //     }
-    // }
-    do{
-        if(regexEmail.test(email)){
-            // customerList[i].setEmail(email);
-            checkEmail= true;
-            checkValid = true;
-        }
-        else {
-            alert("Email khách hàng không hợp lệ.");
-            break;
-        }
-    }while(!checkValid);
+    let checkE = checkEmail(email);
+    if(!checkE){
+        alert("Email khách hàng không hợp lệ.");
+    }
 
-    // if (!checkValid){
-    //     alert("Email khách hàng không hợp lệ.");
-    // }
-    // else {
-    //     customer.setEmail(email);
-    //     checkEmail= true;
-    // }
-    let tempAdd = "";
     let address = document.getElementById("customerAddress").value;
-    address = address.trim();
-    for (let i = 0; i < address.length; i++){
-        if(address.charAt(i) === " " && address.charAt(i+1) === " "){
-            continue;
-        }
-        tempAdd += address.charAt(i);
-    }
-    let company = document.getElementById("companySize").value;
-    let checkCompany = false;
-    if(!isNaN(company)){
-        company = Number.parseFloat(company);
-        if(Number.isInteger(company)) {
-            if (company > 0) {
-                // customerList[i].setCompany(company);
-                checkCompany = true;
-            }
-            else {
-                alert("Số lượng không hợp lệ");
-            }
-        }
-        else {
-            alert("Số lượng không hợp lệ");
-        }
-    }
-    else {
-        alert("Số lượng không hợp lệ");
-    }
+    address = checkAddress(address);
+    customerList[i].setAddress(address);
 
+    let company = document.getElementById("companySize").value;
+    let checkC = checkCompany(company);
+    if(!checkC){
+        alert("Số người không hợp lệ.");
+    }
     let duration = document.getElementById("duration").value;
-    let checkDuration = false;
-    if(!isNaN(duration)){
-        duration = Number.parseFloat(duration);
-        if(Number.isInteger(duration)){
-            if (duration > 0){
-                //customerList[i].setDuration(duration);
-                checkDuration = true;
-            }
-            else {
-                alert("Số ngày không hợp lệ");
-            }
-        }
-        else {
-            alert("Số ngày không hợp lệ");
-        }
+    let checkD = checkDuration(duration);
+    if(!checkD){
+        alert("Số ngày không hợp lệ.");
     }
-    else {
-        alert("Số ngày không hợp lệ");
-    }
-    if(checkDuration === true && checkCompany === true && checkEmail === true && checkID === true){
+    if(checkD === true && checkC === true && checkE === true && checkCmnd === true && checkCmnd === true && checkDate === true){
         customerList[i].setCmnd(ID);
         customerList[i].setEmail(email);
-        customerList[i].setAddress(tempAdd);
-        customerList[i].setBirthday(document.getElementById("customerBirthday").value);
+        customerList[i].setBirthday(date);
         customerList[i].setType(document.getElementById("customerType").value);
         customerList[i].setDiscount(document.getElementById("discountType").value);
         customerList[i].setRoom(document.getElementById("roomType").value);

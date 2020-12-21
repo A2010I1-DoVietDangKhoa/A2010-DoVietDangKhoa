@@ -11,10 +11,14 @@ function addEmployee() {
 function confirmAddEmployee() {
     let employee = new Employee();
     let a = document.getElementById("employeeName").value;
-    if(a !== null && a!== "") {
         let name = checkName(a);
-        employee.setName(name);
-    }
+        if(name !== 1){
+            employee.setName(name);
+        }
+        else{
+            alert("Tên nhân viên trống.");
+        }
+
     let ID = document.getElementById("employeeID").value;
     let checkCMND = checkID(ID);
     if(checkCMND){
@@ -32,13 +36,7 @@ function confirmAddEmployee() {
         alert("Email nhân viên không hợp lệ.");
     }
 
-    // if (!checkValid){
-    //     alert("Email khách hàng không hợp lệ.");
-    // }
-    // else {
-    //     customer.setEmail(email);
-    //     checkEmail= true;
-    // }
+
     let duration = document.getElementById("workDuration").value;
     let checkD = checkDuration(duration);
     if(checkD){
@@ -50,9 +48,17 @@ function confirmAddEmployee() {
     let address = document.getElementById("employeeAddress").value;
     address = checkAddress(address);
     employee.setAddress(address);
-    employee.setBirthday(document.getElementById("employeeBirthday").value);
+
+    let date = document.getElementById("employeeBirthday").value;
+    let checkDate = checkBirth(date);
+    if(checkDate){
+        employee.setBirthday(date);
+    }
+    else {
+        alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
+    }
     employee.setPos(document.getElementById("employeeType").value);
-    if(checkD === true && checkE === true && checkCMND === true){
+    if(checkD === true && checkE === true && checkCMND === true && checkDate === true){
         employeeList.push(employee);
         document.getElementById("inputfield2").style.display = "none";
         document.getElementById("employeeMenu").style.display = "block";
@@ -70,6 +76,8 @@ function confirmAddEmployee() {
 function exitEmployeeEdit() {
     document.getElementById("inputfield2").style.display = "none";
     document.getElementById("employeeMenu").style.display = "block";
+    document.getElementById("outputfield1").style.display = "none";
+    document.getElementById("outputfield2").style.display = "none";
     document.getElementById("menu").style.display = "block";
     document.getElementById("employeeName").value = null;
     document.getElementById("employeeID").value = null;
@@ -107,6 +115,10 @@ function checkEmployee(i){
         '    <button type="button" onclick="exitEmployeeDetails()">Quay về</button>';
 }
 
+function exitEmployeeDetails() {
+    document.getElementById("employeeDetails").style.display = "none";
+}
+
 function editEmployee(i) {
     document.getElementById("eaddbuttons").style.display = "none";
     document.getElementById("employeeDetails").style.display = "none";
@@ -125,10 +137,15 @@ function editEmployee(i) {
 
 function confirmEditEmployee(i) {
     let a = document.getElementById("employeeName").value;
-    if(a !== null && a!== "") {
         let name = checkName(a);
-        employeeList[i].setName(name);
-    }
+        if(name !== 1){
+            employeeList[i].setName(name);
+        }
+        else {
+            alert("Tên nhân viên trống.");
+        }
+
+
     let ID = document.getElementById("employeeID").value;
     let checkCMND = checkID(ID);
     if(!checkCMND){
@@ -140,13 +157,12 @@ function confirmEditEmployee(i) {
         alert("Email nhân viên không hợp lệ.");
     }
 
-    // if (!checkValid){
-    //     alert("Email khách hàng không hợp lệ.");
-    // }
-    // else {
-    //     customer.setEmail(email);
-    //     checkEmail= true;
-    // }
+    let date = document.getElementById("employeeBirthday").value;
+    let checkDate = checkBirth(date);
+    if(!checkDate){
+        alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
+    }
+
     let duration = document.getElementById("workDuration").value;
     let checkD = checkDuration(duration);
     if(!checkD){
@@ -158,7 +174,7 @@ function confirmEditEmployee(i) {
         employeeList[i].setCmnd(ID);
         employeeList[i].setEmail(email);
         employeeList[i].setAddress(address);
-        employeeList[i].setBirthday(document.getElementById("employeeBirthday").value);
+        employeeList[i].setBirthday(date);
         employeeList[i].setPos(document.getElementById("employeeType").value);
         employeeList[i].setDuration(duration);
         document.getElementById("eaddbuttons").style.display = "none";
