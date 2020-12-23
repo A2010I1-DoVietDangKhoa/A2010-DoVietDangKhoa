@@ -330,11 +330,10 @@ function makeReceipt(i) {
         document.getElementById("discountdisplay").innerHTML = "40%.";
     }
 
-    document.getElementById("durationdisplay").innerHTML = "Số ngày thuê: " + duration;
-    if(Number.isInteger(duration)) {
+    document.getElementById("durationdisplay").innerHTML = "" + duration;
         if (duration < 2 && duration > 0) {
             //price = price + 0;
-            document.getElementById("durationdiscount").innerHTML = "Không có giảm giá.";
+            document.getElementById("durationdiscount").innerHTML = "Số ngày thuê không đủ để nhận ưu đãi.";
         } else if (duration >= 2 && duration <= 4) {
             price = price - 10;
             document.getElementById("durationdiscount").innerHTML = "Giảm 10$.";
@@ -345,7 +344,6 @@ function makeReceipt(i) {
             price = price - 30;
             document.getElementById("durationdiscount").innerHTML = "Giảm 30$.";
         }
-    }
 
     if(service == 500){
         document.getElementById("stypedisplay").innerHTML = "Villa.";
