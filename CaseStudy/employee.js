@@ -11,38 +11,34 @@ function addEmployee() {
 function confirmAddEmployee() {
     let employee = new Employee();
     let a = document.getElementById("employeeName").value;
-        let name = checkName(a);
-        if(name !== 1){
-            employee.setName(name);
-        }
-        else{
-            alert("Tên nhân viên trống.");
-        }
+    let name = checkName(a);
+    if (name !== 1) {
+        employee.setName(name);
+    } else {
+        alert("Tên nhân viên trống.");
+    }
 
     let ID = document.getElementById("employeeID").value;
     let checkCMND = checkID(ID);
-    if(checkCMND){
+    if (checkCMND) {
         employee.setCmnd(ID);
-    }
-    else {
+    } else {
         alert("CMND không đúng định dạng.");
     }
     let email = document.getElementById("employeeEmail").value;
     let checkE = checkEmail(email);
-    if(checkE){
+    if (checkE) {
         employee.setEmail(email);
-    }
-    else {
+    } else {
         alert("Email nhân viên không hợp lệ.");
     }
 
 
     let duration = document.getElementById("workDuration").value;
     let checkD = checkDuration(duration);
-    if(checkD){
+    if (checkD) {
         employee.setDuration(duration);
-    }
-    else {
+    } else {
         alert("Số tháng không hợp lệ.");
     }
     let address = document.getElementById("employeeAddress").value;
@@ -51,14 +47,13 @@ function confirmAddEmployee() {
 
     let date = document.getElementById("employeeBirthday").value;
     let checkDate = checkBirth(date);
-    if(checkDate){
+    if (checkDate) {
         employee.setBirthday(date);
-    }
-    else {
+    } else {
         alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
     }
     employee.setPos(document.getElementById("employeeType").value);
-    if(checkD === true && checkE === true && checkCMND === true && checkDate === true){
+    if (checkD === true && checkE === true && checkCMND === true && checkDate === true) {
         employeeList.push(employee);
         document.getElementById("inputfield2").style.display = "none";
         document.getElementById("employeeMenu").style.display = "block";
@@ -86,7 +81,7 @@ function exitEmployeeEdit() {
     document.getElementById("workDuration").value = null;
 }
 
-function checkEmployee(i){
+function checkEmployee(i) {
     document.getElementById("employeeDetails").style.display = "block";
     document.getElementById("inputfield2").style.display = "none";
     document.getElementById("edName").innerHTML = employeeList[i].getName();
@@ -96,21 +91,21 @@ function checkEmployee(i){
     document.getElementById("edBirthday").innerHTML = employeeList[i].getBirthday();
     document.getElementById("edWorkduration").innerHTML = employeeList[i].getDuration();
     let pos = employeeList[i].getPos();
-    if(pos == 0){
+    if (pos == 0) {
         document.getElementById("edPos").innerHTML = "Nhân viên thông thường.";
     }
-    if(pos == 200){
+    if (pos == 200) {
         document.getElementById("edPos").innerHTML = "Marketing.";
     }
-    if(pos == 300){
+    if (pos == 300) {
         document.getElementById("edPos").innerHTML = "Sale.";
     }
-    if(pos == 500){
+    if (pos == 500) {
         document.getElementById("edPos").innerHTML = "Manager.";
     }
 
 
-    document.getElementById("employeeDetailsButtons").innerHTML = '<button type="button" onclick="editEmployee('+i+')">Chỉnh sửa</button>\n' +
+    document.getElementById("employeeDetailsButtons").innerHTML = '<button type="button" onclick="editEmployee(' + i + ')">Chỉnh sửa</button>\n' +
         '            <button type="button" onclick="calcSalary(' + i + ')">Tính lương</button>\n' +
         '    <button type="button" onclick="exitEmployeeDetails()">Quay về</button>';
 }
@@ -131,46 +126,45 @@ function editEmployee(i) {
     document.getElementById("customerAddress").value = employeeList[i].getAddress();
     document.getElementById("workDuration").value = employeeList[i].getDuration();
 
-    document.getElementById("eeditbuttons").innerHTML = '<button type="button" onclick="confirmEditEmployee('+i+')">Xác nhận</button>\n' +
-        '            <button type="button" onclick="exitEmployeeEdit()">Quay về</button>'    ;
+    document.getElementById("eeditbuttons").innerHTML = '<button type="button" onclick="confirmEditEmployee(' + i + ')">Xác nhận</button>\n' +
+        '            <button type="button" onclick="exitEmployeeEdit()">Quay về</button>';
 }
 
 function confirmEditEmployee(i) {
     let a = document.getElementById("employeeName").value;
-        let name = checkName(a);
-        if(name !== 1){
-            employeeList[i].setName(name);
-        }
-        else {
-            alert("Tên nhân viên trống.");
-        }
+    let name = checkName(a);
+    if (name !== 1) {
+        employeeList[i].setName(name);
+    } else {
+        alert("Tên nhân viên trống.");
+    }
 
 
     let ID = document.getElementById("employeeID").value;
     let checkCMND = checkID(ID);
-    if(!checkCMND){
+    if (!checkCMND) {
         alert("CMND không đúng định dạng.");
     }
     let email = document.getElementById("employeeEmail").value;
     let checkE = checkEmail(email);
-    if(!checkE){
+    if (!checkE) {
         alert("Email nhân viên không hợp lệ.");
     }
 
     let date = document.getElementById("employeeBirthday").value;
     let checkDate = checkBirth(date);
-    if(!checkDate){
+    if (!checkDate) {
         alert("Ngày tháng năm sinh không đúng định dạng DD/MM/YYYY.");
     }
 
     let duration = document.getElementById("workDuration").value;
     let checkD = checkDuration(duration);
-    if(!checkD){
+    if (!checkD) {
         alert("Số tháng không hợp lệ.");
     }
     let address = document.getElementById("employeeAddress").value;
     address = checkAddress(address);
-    if(checkD === true && checkE === true && checkCMND === true){
+    if (checkD === true && checkE === true && checkCMND === true) {
         employeeList[i].setCmnd(ID);
         employeeList[i].setEmail(email);
         employeeList[i].setAddress(address);
@@ -187,7 +181,7 @@ function confirmEditEmployee(i) {
 
 function removeEmployee(i) {
     let check = confirm("Xác nhận xóa nhân viên " + employeeList[i].getName() + "?");
-    if(check) {
+    if (check) {
         employeeList.splice(i, 1);
     }
     displayEmployeeList();
@@ -197,8 +191,8 @@ function removeEmployee(i) {
 function calcSalary(i) {
     let pos = employeeList[i].getPos();
     let duration = employeeList[i].getDuration();
-    let salary = 2000*parseInt(duration);
-    let bonus = parseInt(pos)*parseInt(duration);
+    let salary = 2000 * parseInt(duration);
+    let bonus = parseInt(pos) * parseInt(duration);
     document.getElementById("outputfield2").style.display = "block";
     document.getElementById("outputfield1").style.display = "none";
     document.getElementById("namedisplay2").innerHTML = employeeList[i].getName();
@@ -208,20 +202,17 @@ function calcSalary(i) {
     document.getElementById("addressdisplay2").innerHTML = employeeList[i].getAddress();
 
 
-    if(pos == 0){
+    if (pos == 0) {
         document.getElementById("posdisplay2").innerHTML = "Nhân viên thông thường, không có thưởng thêm.";
-    }
-    else if(pos == 200){
+    } else if (pos == 200) {
         document.getElementById("posdisplay2").innerHTML = "Marketing, thưởng 200$/tháng.";
-    }
-    else if(pos == 300){
+    } else if (pos == 300) {
         document.getElementById("posdisplay2").innerHTML = "Sale, thưởng 300$/tháng.";
-    }
-    else if(pos == 500){
+    } else if (pos == 500) {
         document.getElementById("posdisplay2").innerHTML = "Manager, thưởng 500$/tháng.";
     }
 
     document.getElementById("salarydisplay").innerHTML = salary + "$";
     document.getElementById("bonusdisplay").innerHTML = bonus + "$";
-    document.getElementById("total").innerHTML = (salary+bonus) + "$";
+    document.getElementById("total").innerHTML = (salary + bonus) + "$";
 }

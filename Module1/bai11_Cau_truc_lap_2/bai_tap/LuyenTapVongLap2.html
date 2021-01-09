@@ -2,21 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>In ra các hình khác nhau của các hình tam giác</title>
 </head>
+<p id="hinh1"> hình tam giác 1</p>
+<p id="hinh2"> hình tam giác 2</p>
+<p id="hinh3">hình tam giác 3</p>
+<p id="hinh4">hình tam giác 4</p>
+<p id="hinh5">hình chữ nhật</p>
 <body>
 <script>
-    for(let i = 0; i <= 10; i++){
-        for (let j = 0; j <= 10; j++){
-            if(j>=i){
-                document.write("*");
-            }
-            else {
-                document.write(" ");
+    /// hình 1
+    let w=parseInt(prompt("Nhập vào độ rộng của hình tam giác/cạnh hình chữ nhật"));
+    let hinh ="";
+    for (let i=1;i<=w;i++){
+        for (let j=0;j<i;j++){
+            hinh +="* ";
+        }
+        hinh +="<br/>";
+    }
+    document.getElementById("hinh1").innerHTML="<pre>"+hinh+"<pre/>";
+
+
+    // hình 2///////////////////////////////////////////////////////////////
+    hinh ="";
+    for (let i=1;i<=w;i++){
+        for (let j=0;j<=w-i;j++){
+            hinh +="* ";
+        }
+        hinh +="<br/>";
+    }
+    document.getElementById("hinh2").innerHTML="<pre>"+hinh+"<pre/>";
+
+    //////hinh 3//////////////////////////////////////////////////////////
+    hinh ="";
+    for (let i=1;i<=w;i++){
+        for (let j=0;j<w-i;j++){
+            hinh +="  ";
+        }
+        for (let k=1;k<=i;k++){
+            hinh +="* ";
+        }
+
+        hinh +="<br/>";
+    }
+    document.write("<pre>"+hinh+"<pre/>");
+    ///////////// hinh4 ////////////////////////////////////////////////////
+    hinh ="";
+    for (let i=0;i<=w;i++){
+        for (let j=0;j<=i;j++){
+            hinh +="  ";
+        }
+        for (let k=1;k<=w-i;k++){
+            hinh +="* ";
+        }
+        hinh +="<br/>";
+    }
+    document.getElementById("hinh4").innerHTML="<pre>"+hinh+"<pre/>";
+    //////////////hinh chữ nhật////////////////////////////////////////////////////
+    hinh ="";
+    for (let i=1;i<=w;i++){
+        for (let j=1;j<=w;j++){
+            if(j===1||j===w||i===1||i===w){
+                hinh +="*";
+            }else {
+                hinh +=" ";
             }
         }
-        document.write("<br>");
+        hinh +="<br>";
     }
+    document.getElementById("hinh5").innerHTML="<pre>"+hinh+"<pre/>";
 </script>
+
 </body>
 </html>

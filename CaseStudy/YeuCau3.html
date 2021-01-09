@@ -8,10 +8,10 @@
 <div id="inputfield" style="float: left">
     <form method="post" name="info">
         <h2>Đặt phòng</h2>
-        <label>Tên: </label><input type="text" id="customerName" value="Nguyễn Văn A"><br><br>
-        <label>CMND: </label><input type="text" id="cmnd" value="123456789"><br><br>
-        <label>Ngày tháng năm sinh: </label><input type="date" id="birthDay"><br><br>
-        <label>Email: </label><input type="text" id="email" value="abc@gmail.com"><br><br>
+        <label>Tên: </label><input type="text" id="customerName"><br><br>
+        <label>CMND: </label><input type="text" id="cmnd"><br><br>
+        <label>Ngày tháng năm sinh: </label><input type="text" id="birthDay"><br><br>
+        <label>Email: </label><input type="text" id="email"><br><br>
         <label>Địa chỉ: </label><br>
         <textarea id="address" style="width: 400px; height: 75px"></textarea><br><br>
         <label>Khách hàng loại: </label>
@@ -30,8 +30,8 @@
             <option value="30">30%</option>
             <option value="40">40%</option>
         </select><br><br>
-        <label>Số lượng đi kèm: </label><input type="text" id="companySize" value="10"><br><br>
-        <label>Số ngày thuê: </label></label><input type="text" id="duration" value="10"><br><br>
+        <label>Số lượng đi kèm: </label><input type="text" id="companySize"><br><br>
+        <label>Số ngày thuê: </label></label><input type="text" id="duration"><br><br>
         <label>Loại dịch vụ: </label>
         <select id="serviceType">
             <option value="500">Villa 500$/ngày</option>
@@ -44,8 +44,6 @@
             <option value="business">Business</option>
             <option value="vip">VIP</option>
         </select><br><br>
-        <button type="button" onclick="hienThi()">Hiển thị thông tin</button>
-        <button type="button" onclick="chinhSua()">Chỉnh sửa thông tin</button>
         <button type="button" onclick="tinhTien()">Tính giá phòng</button>
     </form>
 </div>
@@ -66,46 +64,48 @@
     <span id="totaldisplay"></span>
 </div>
 <script>
-    document.getElementById("birthDay").defaultValue = "2020-01-01";
-    document.getElementById("address").defaultValue = "Việt Nam";
-    document.getElementById("customerName").readOnly = true;
-    document.getElementById("cmnd").readOnly = true;
-    document.getElementById("email").readOnly = true;
-    document.getElementById("address").readOnly = true;
-    document.getElementById("birthDay").readOnly = true;
-    document.getElementById("companySize").readOnly = true;
-    document.getElementById("duration").readOnly = true;
-    document.getElementById("serviceType").disabled = true;
-    document.getElementById("customerType").disabled = true;
-    document.getElementById("roomType").disabled = true;
+    // <button type="button" onclick="hienThi()">Hiển thị thông tin</button>
+    // <button type="button" onclick="chinhSua()">Chỉnh sửa thông tin</button>
+    // document.getElementById("birthDay").defaultValue = "2020-01-01";
+    // document.getElementById("address").defaultValue = "Việt Nam";
+    // document.getElementById("customerName").readOnly = true;
+    // document.getElementById("cmnd").readOnly = true;
+    // document.getElementById("email").readOnly = true;
+    // document.getElementById("address").readOnly = true;
+    // document.getElementById("birthDay").readOnly = true;
+    // document.getElementById("companySize").readOnly = true;
+    // document.getElementById("duration").readOnly = true;
+    // document.getElementById("serviceType").disabled = true;
+    // document.getElementById("customerType").disabled = true;
+    // document.getElementById("roomType").disabled = true;
 
-    function hienThi() {
-        document.getElementById("customerName").readOnly = true;
-        document.getElementById("cmnd").readOnly = true;
-        document.getElementById("email").readOnly = true;
-        document.getElementById("address").readOnly = true;
-        document.getElementById("birthDay").readOnly = true;
-        document.getElementById("companySize").readOnly = true;
-        document.getElementById("duration").readOnly = true;
-        document.getElementById("serviceType").disabled = true;
-        document.getElementById("customerType").disabled = true;
-        document.getElementById("roomType").disabled = true;
-
-    }
-
-    function chinhSua() {
-        document.getElementById("customerName").readOnly = false;
-        document.getElementById("cmnd").readOnly = false;
-        document.getElementById("email").readOnly = false;
-        document.getElementById("address").readOnly = false;
-        document.getElementById("birthDay").readOnly = false;
-        document.getElementById("companySize").readOnly = false;
-        document.getElementById("duration").readOnly = false;
-        document.getElementById("serviceType").disabled = false;
-        document.getElementById("customerType").disabled = false;
-        document.getElementById("roomType").disabled = false;
-
-    }
+    // function hienThi() {
+    //     document.getElementById("customerName").readOnly = true;
+    //     document.getElementById("cmnd").readOnly = true;
+    //     document.getElementById("email").readOnly = true;
+    //     document.getElementById("address").readOnly = true;
+    //     document.getElementById("birthDay").readOnly = true;
+    //     document.getElementById("companySize").readOnly = true;
+    //     document.getElementById("duration").readOnly = true;
+    //     document.getElementById("serviceType").disabled = true;
+    //     document.getElementById("customerType").disabled = true;
+    //     document.getElementById("roomType").disabled = true;
+    //
+    // }
+    //
+    // function chinhSua() {
+    //     document.getElementById("customerName").readOnly = false;
+    //     document.getElementById("cmnd").readOnly = false;
+    //     document.getElementById("email").readOnly = false;
+    //     document.getElementById("address").readOnly = false;
+    //     document.getElementById("birthDay").readOnly = false;
+    //     document.getElementById("companySize").readOnly = false;
+    //     document.getElementById("duration").readOnly = false;
+    //     document.getElementById("serviceType").disabled = false;
+    //     document.getElementById("customerType").disabled = false;
+    //     document.getElementById("roomType").disabled = false;
+    //
+    // }
 
     function tinhTien() {
         let customerName = document.getElementById("customerName").value;
@@ -147,19 +147,51 @@
                     document.getElementById("iddisplay").innerHTML = "CMND: " + ID;
                 }
                 else {
-                    document.getElementById("iddisplay").innerHTML = "CMND không đúng định dạng."
+                    alert("CMND không đúng định dạng.");
                 }
             }
             else {
-                document.getElementById("iddisplay").innerHTML = "CMND không đúng định dạng."
+                alert("CMND không đúng định dạng.");
             }
         }
         else {
-            document.getElementById("iddisplay").innerHTML = "CMND không đúng định dạng."
+            alert("CMND không đúng định dạng.");
         }
         //document.getElementById("iddisplay").innerHTML = "CMND: " + ID;
-        document.getElementById("birthdisplay").innerHTML = "Ngày tháng năm sinh: " + birthDay;
+        let checkValid = false;
+        console.log(birthDay);
+        if(birthDay.length === 10) {
+            if (birthDay.charAt(2) === "/" && birthDay.charAt(5) === "/") {
+                let day = birthDay.charAt(0).toString() + birthDay.charAt(1).toString();
+                let month = birthDay.charAt(3).toString() + birthDay.charAt(4).toString();
+                let year = birthDay.charAt(6).toString() + birthDay.charAt(7).toString() + birthDay.charAt(8).toString() + birthDay.charAt(9).toString();
+                console.log(day);
+                console.log(month);
+                console.log(year);
+                if(!isNaN(parseInt(day)) && !isNaN(parseInt(month)) && !isNaN(parseInt(year))){
+                    if(parseInt(day) <= 31 && parseInt(month) <=12 && parseInt(year) >= 1000){
+                        checkValid = true;
+                    }
 
+                }
+            }
+        }
+        // let regexBirth = /^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/;
+        // do{
+        //     if(regexBirth.test(birthDay)){
+        //         checkValid = true;
+        //     }
+        //     else {
+        //         checkValid = false;
+        //         break;
+        //     }
+        // }while(!checkValid);
+        if(checkValid) {
+            document.getElementById("birthdisplay").innerHTML = "Ngày tháng năm sinh: " + birthDay;
+        }
+        else {
+            alert("Ngày sinh sai định dạng.");
+        }
         let countAt = 0;
         let countDot = 0;
         for(let i = 0; i < email.length; i++){
@@ -173,7 +205,7 @@
             }
         }
         if (countAt !== 1 || countDot > 1){
-            document.getElementById("emaildisplay").innerHTML = "Email không hợp lệ.";
+            alert("Email không đúng định dạng.");
         }
         else {
             document.getElementById("emaildisplay").innerHTML = "Email: " + email;
@@ -208,7 +240,7 @@
         }
         switch (customerType) {
             case "0":
-                document.getElementById("etypedisplay").innerHTML = "Khách hành thông thường, không có ưu đãi.";
+                document.getElementById("ctypedisplay").innerHTML = "Khách hành thông thường, không có ưu đãi.";
                 break;
             case "2":
                 document.getElementById("ctypedisplay").innerHTML = "Khách hành Bạc, được giảm 2$.";
@@ -230,17 +262,17 @@
                     document.getElementById("companydisplay").innerHTML = "Số người đi cùng: " + companySize;
                 } else {
                     price = 0;
-                    document.getElementById("companydisplay").innerHTML = "Số người đi cùng không hợp lệ";
+                    alert("Số người đi cùng không hợp lệ");
                 }
             }
             else {
                 price = 0;
-                document.getElementById("companydisplay").innerHTML = "Số người đi cùng không hợp lệ";
+                alert("Số người đi cùng không hợp lệ");
             }
         }
         else {
             price = 0;
-            document.getElementById("companydisplay").innerHTML = "Số người đi cùng không hợp lệ";
+            alert("Số người đi cùng không hợp lệ");
         }
         //document.getElementById("companydisplay").innerHTML = "Số người đi cùng: " + companySize;
         //document.getElementById("durationdisplay").innerHTML = "Số ngày thuê: " + duration;
@@ -265,19 +297,19 @@
                     document.getElementById("durationdiscount").innerHTML = "Giảm 30$.";
                 } else if (duration <= 0) {
                     price = 0;
-                    document.getElementById("durationdisplay").innerHTML = "Số ngày thuê không hợp lệ.";
+                    alert("Số ngày thuê không hợp lệ.");
                     document.getElementById("durationdiscount").innerHTML = "";
                 }
             }
             else {
                 price = 0;
-                document.getElementById("durationdisplay").innerHTML = "Số ngày thuê không hợp lệ.";
+                alert("Số ngày thuê không hợp lệ.");
                 document.getElementById("durationdiscount").innerHTML = "";
             }
         }
         else {
             price = 0;
-            document.getElementById("durationdisplay").innerHTML = "Số ngày thuê không hợp lệ.";
+            alert("Số ngày thuê không hợp lệ.");
             document.getElementById("durationdiscount").innerHTML = "";
         }
         switch (parseInt(serviceType)) {

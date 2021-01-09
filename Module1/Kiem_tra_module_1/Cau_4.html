@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 4</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-color: black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #b2b3b5;
+            border-color: black;
+        }
+
+        th:first-child {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+        th:nth-child(2){
+            width: 200px;
+            height: 50px;
+            text-align: center;
+        }
+        th:nth-child(3){
+            width: 200px;
+            height: 50px;
+            text-align: center;
+        }
+        th:nth-child(4){
+            width: 300px;
+            height: 50px;
+            text-align: center;
+        }
+        th:nth-child(5){
+            width: 250px;
+            height: 50px;
+            text-align: center;
+        }
+        td:first-child{
+            text-align: center;
+            padding: 5px;
+        }
+        td:nth-child(n+2){
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body onload="displayCustomer()">
+<form>
+    <h1>Quản lý khách hàng</h1>
+    <button type="button" onclick="addCustomer()">Add</button>
+    <p id="displayProduct"></p>
+</form>
+<script>
+    class Customer{
+        constructor() {
+            this.id = null;
+            this.name = null;
+            this.phone = null;
+            this.address = null;
+            this.email = null;
+        }
+        getName() {
+            return this.name;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getPhone() {
+            return this.phone;
+        }
+
+        getAddress() {
+            return this.address;
+        }
+
+        getEmail() {
+            return this.email;
+        }
+        setName(name) {
+            this.name = name;
+        }
+
+        setId(id) {
+            this.id = id;
+        }
+
+        setPhone(phone) {
+            this.phone = phone;
+        }
+
+        setAddress(address) {
+            this.address = address;
+        }
+
+        setEmail(email) {
+            this.email = email;
+        }
+    }
+    let customerArr = [];
+    function displayCustomer() {
+        let table = "";
+        table += '<table border="1">\n' +
+            '            <tr>\n' +
+            '                <th>Mã</th>\n' +
+            '                <th>Tên</th>\n' +
+            '                <th>Số điện thoại</th>\n' +
+            '                <th>Địa chỉ</th>\n' +
+            '                <th>Email</th>\n' +
+            '            </tr>';
+        for (let i = 0; i<customerArr.length; i++){
+            table += '<tr>\n' +
+                '            <td>' + customerArr[i].getId() + '</td>\n' +
+                '            <td>' + customerArr[i].getName() + '</td>\n' +
+                '            <td>' + customerArr[i].getPhone() + '</td>\n' +
+                '            <td>' + customerArr[i].getAddress() + '</td>\n' +
+                '            <td>' + customerArr[i].getEmail() + '</td>\n' +
+                '        </tr>';
+            //table += arr[i] + ' ' + '<button type="button" onclick="edit(' + i + ')">Edit</button>' + ' ' + '<button type="button" onclick="remove(' + i +')">Delete</button>' + '<br>' + '<br>';
+        }
+        table += '</table>';
+        document.getElementById("displayProduct").innerHTML = table;
+    }
+
+    function addCustomer() {
+        let customer = new Customer();
+        customer.setId(prompt("Nhập mã khách hàng: "));
+        customer.setName(prompt("Nhập tên khách hàng: "));
+        customer.setPhone(prompt("Nhập số điện thoại khách hàng: "));
+        customer.setAddress(prompt("Nhập địa chỉ khách hàng: "));
+        customer.setEmail(prompt("Nhập email khách hàng: "));
+        customerArr.push(customer);
+        displayCustomer();
+    }
+
+
+</script>
+</body>
+</html>

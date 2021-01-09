@@ -16,34 +16,34 @@
         <textarea id="address" style="width: 400px; height: 75px"></textarea><br><br>
         <label>Khách hàng loại: </label>
         <select id="customerType">
-        <option value="0">Thông thường</option>
-        <option value="2">Bạc</option>
-        <option value="5">Vàng</option>
-        <option value="10">Bạch kim</option>
-        <option value="15">Kim cương</option>
-    </select><br><br>
+            <option value="0">Thông thường</option>
+            <option value="2">Bạc</option>
+            <option value="5">Vàng</option>
+            <option value="10">Bạch kim</option>
+            <option value="15">Kim cương</option>
+        </select><br><br>
         <label>Giảm giá: </label>
         <select id="discountType">
-        <option value="0">Không có</option>
-        <option value="10">10%</option>
-        <option value="20">20%</option>
-        <option value="30">30%</option>
-        <option value="40">40%</option>
-    </select><br><br>
+            <option value="0">Không có</option>
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="40">40%</option>
+        </select><br><br>
         <label>Số lượng đi kèm: </label><input type="text" id="companySize" value="10"><br><br>
         <label>Số ngày thuê: </label></label><input type="text" id="duration" value="10"><br><br>
         <label>Loại dịch vụ: </label>
         <select id="serviceType">
-        <option value="500">Villa 500$/ngày</option>
-        <option value="300">House 300$/ngày</option>
-        <option value="100">Room 100$/ngày</option>
-    </select><br><br>
+            <option value="500">Villa 500$/ngày</option>
+            <option value="300">House 300$/ngày</option>
+            <option value="100">Room 100$/ngày</option>
+        </select><br><br>
         <label>Loại phòng thuê: </label>
         <select id="roomType">
-        <option value="normal">Thường</option>
-        <option value="business">Business</option>
-        <option value="vip">VIP</option>
-    </select><br><br>
+            <option value="normal">Thường</option>
+            <option value="business">Business</option>
+            <option value="vip">VIP</option>
+        </select><br><br>
         <button type="button" onclick="hienThi()">Hiển thị thông tin</button>
         <button type="button" onclick="chinhSua()">Chỉnh sửa thông tin</button>
         <button type="button" onclick="tinhTien()">Tính giá phòng</button>
@@ -119,7 +119,7 @@
         let duration = document.getElementById("duration").value;
         let serviceType = document.getElementById("serviceType").value;
         let roomType = document.getElementById("roomType").value;
-        let price = parseInt(serviceType)*parseInt(duration)*(1 - parseInt(discountType)/100) - parseInt(customerType);
+        let price = parseInt(serviceType) * parseInt(duration) * (1 - parseInt(discountType) / 100) - parseInt(customerType);
         //console.log(price);
         //console.log(serviceType);
         //console.log(duration);
@@ -165,19 +165,16 @@
         }
         document.getElementById("companydisplay").innerHTML = "Số người đi cùng: " + companySize;
         document.getElementById("durationdisplay").innerHTML = "Số ngày thuê: " + duration;
-        if(duration < 2){
+        if (duration < 2) {
             price = price + 0;
             document.getElementById("durationdiscount").innerHTML = "Không có giảm giá."
-        }
-        else if(duration >= 2 && duration <= 4){
+        } else if (duration >= 2 && duration <= 4) {
             price = price - 10;
             document.getElementById("durationdiscount").innerHTML = "Giảm 10$."
-        }
-        else if(duration >= 5 && duration <= 7){
+        } else if (duration >= 5 && duration <= 7) {
             price = price - 20;
             document.getElementById("durationdiscount").innerHTML = "Giảm 20$."
-        }
-        else if(duration > 7){
+        } else if (duration > 7) {
             price = price - 30;
             document.getElementById("durationdiscount").innerHTML = "Giảm 30$."
         }
@@ -206,19 +203,16 @@
                 price = price + 2000;
                 break;
         }
-        if(address.includes("Đà Nẵng")){
+        if (address.includes("Đà Nẵng")) {
             price = price - 20;
             document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Đà Nẵng, được giảm 20$."
-        }
-        else if(address.includes("Huế")){
+        } else if (address.includes("Huế")) {
             price = price - 10;
             document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Huế, được giảm 10$."
-        }
-        else if(address.includes("Quảng Nam")){
+        } else if (address.includes("Quảng Nam")) {
             price = price - 5;
             document.getElementById("addressdiscount").innerHTML = "Khách hàng đến từ Quảng Nam, được giảm 5$."
-        }
-        else {
+        } else {
             document.getElementById("addressdiscount").innerHTML = "Khách hàng không đến từ nơi được giảm giá."
         }
         document.getElementById("totaldisplay").innerHTML = "Tổng tiền: " + price + "$";

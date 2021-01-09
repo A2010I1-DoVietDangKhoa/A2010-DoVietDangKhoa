@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 3</title>
+</head>
+<body>
+    <label>Mảng đã nhập: </label><span id="arrDisplay"></span><br><br>
+    <label>Số k: </label><span id="kDisplay"></span><br><br>
+    <span id="countDisplay"></span><br><br>
+    <label>Các cặp số chia hết cho k: </label><span id="resultDisplay"></span>
+</body>
+<script>
+    let arrNum = [];
+    let arrLength = prompt("Nhập số phần tử của mảng: ");
+    if (arrLength <= 50) {
+        for (let i = 1; i <= arrLength; i++) {
+            let arrEle = prompt("Nhập phần tử thứ " + i);
+            if (!isNaN(parseFloat(arrEle))) {
+                arrNum.push(arrEle);
+            } else {
+                alert("Hãy nhập số nguyên!");
+            }
+        }
+    }
+    document.getElementById("arrDisplay").innerHTML = arrNum.join(", ");
+    let k = prompt("Nhập số k: ");
+    if (!isNaN(parseFloat(k))) {
+        if (parseFloat(k) - parseInt(k) === 0 && parseFloat(k) > 0) {
+            document.getElementById("kDisplay").innerHTML = k;
+            let count = 0;
+            for (let i = 0; i < arrNum.length; i++) {
+                for (let j = 0; j < arrNum.length; j++) {
+                    if (i === j) {
+                        continue;
+                    }
+
+                    if ((parseFloat(arrNum[i]) + parseFloat(arrNum[j])) % parseFloat(k) === 0 && i < j) {
+                        let arrRes = [];
+                        arrRes.push(arrNum[i]);
+                        arrRes.push(arrNum[j]);
+                        count++;
+                        document.getElementById("resultDisplay").innerHTML += "(" + arrRes.join(", ") + "), ";
+                    }
+                }
+            }
+            document.getElementById("countDisplay").innerHTML = "Có " +count + " cặp số chia hết cho " + k;
+        } else {
+            alert("k phải là số nguyên dương!");
+        }
+    } else {
+        alert("k phải là số nguyên dương!");
+    }
+</script>
+</html>

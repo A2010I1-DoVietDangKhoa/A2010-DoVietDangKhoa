@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 1</title>
+</head>
+<body>
+    <label>Mảng đã nhập: </label><span id="arrDisplay"></span><br><br>
+    <label>Các phần tử là bội số của 3 và 5: </label><span id="numDisplay"></span><br><br>
+    <label>Tổng các phần tử là bội số của 3 và 5: </label><span id="resultDisplay"></span>
+</body>
+<script>
+    let arrNum = [];
+    let arrLength = prompt("Nhập số phần tử của mảng: ");
+    if (arrLength <= 20){
+        for(let i = 1; i<=arrLength; i++){
+            let arrEle = prompt("Nhập phần tử thứ " + i);
+            if(!isNaN(parseFloat(arrEle))){
+                arrNum.push(arrEle);
+            }
+            else {
+                alert("Hãy nhập số nguyên!");
+            }
+        }
+    }
+    else {
+        alert("Mảng chỉ chứa tối đa 20 phần tử!");
+    }
+
+    let totalNum = 0;
+    let arrRes = [];
+    for (let i = 0; i< arrNum.length; i++){
+        let testNum = parseFloat(arrNum[i]);
+        if (testNum % 3 === 0 && testNum % 5 === 0){
+            arrRes.push(testNum);
+            totalNum += testNum;
+    }
+    }
+    document.getElementById("arrDisplay").innerHTML = arrNum.join(", ");
+    document.getElementById("numDisplay").innerHTML = arrRes.join(", ");
+    document.getElementById("resultDisplay").innerHTML = arrRes.join(" + ") + " = " + totalNum;
+</script>
+</html>

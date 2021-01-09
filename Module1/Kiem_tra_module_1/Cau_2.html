@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+    <label>Điểm của học sinh: </label><span id="scoreDisplay"></span><br><br>
+    <label>Điểm sau khi làm tròn: </label><span id="roundedDisplay"></span><br><br>
+    <label>Kết quả: </label><span id="resultDisplay"></span>
+</body>
+<script>
+    function scoreRounder(score) {
+        if (score % 5 !== 0) {
+            let testScore = score;
+            while (testScore % 5 !== 0) {
+                testScore++;
+            }
+            if (testScore - score < 3) {
+                return testScore;
+            } else {
+                return score;
+            }
+        } else {
+            return score;
+        }
+    }
+
+    let inputScore = parseFloat(prompt("Nhập điểm học sinh: "));
+    console.log(inputScore);
+    if (!isNaN(inputScore)) {
+        document.getElementById("scoreDisplay").innerHTML = inputScore + "";
+        if (inputScore >= 48 && inputScore <= 100) {
+            let outputScore = scoreRounder(inputScore);
+            document.getElementById("roundedDisplay").innerHTML = outputScore;
+            if (outputScore >= 50) {
+                document.getElementById("resultDisplay").innerHTML = "Đạt.";
+            } else {
+                document.getElementById("resultDisplay").innerHTML = "Trượt.";
+            }
+        } else if (inputScore < 48 && inputScore >= 0) {
+            document.getElementById("resultDisplay").innerHTML = "Trượt.";
+        } else {
+            alert("Điểm số phải nằm trong khoảng từ 0 dến 100.");
+        }
+    } else {
+        alert("Hãy nhập số!");
+    }
+</script>
+</html>
