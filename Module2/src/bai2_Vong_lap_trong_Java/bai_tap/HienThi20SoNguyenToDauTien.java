@@ -6,12 +6,7 @@ public class HienThi20SoNguyenToDauTien {
         int count = 1;
 
         while (count<=20){
-            if(number == 2){
-                System.out.print(number + " ");
-                number++;
-                count++;
-                continue;
-            }
+
             int check = 0;
             for (int i = 1; i<= number; i++){
                 if (number % i ==0){
