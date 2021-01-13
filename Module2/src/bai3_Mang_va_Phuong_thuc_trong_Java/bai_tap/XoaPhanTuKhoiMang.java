@@ -30,14 +30,14 @@ public class XoaPhanTuKhoiMang {
                     j++;
                 }
             }
+            System.out.println("Array after change:");
+            for (int i = 0; i< array2.length; i++){
+                System.out.print(array2[i] + " ");
+            }
+
         } else {
             System.out.println("The value doesn't exist in the array");
         }
-        System.out.println("Array after change:");
-        for (int i = 0; i< array2.length; i++){
-            System.out.print(array2[i] + " ");
-        }
-
         }
     }
 

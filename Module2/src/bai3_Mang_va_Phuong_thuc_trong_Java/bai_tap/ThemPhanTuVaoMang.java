@@ -37,14 +37,15 @@ public class ThemPhanTuVaoMang {
                     array2[i] = array[i-1];
                 }
             }
+            System.out.println("Array after change:");
+            for (int i = 0; i< array2.length; i++){
+                System.out.print(array2[i] + " ");
+            }
         }
         else {
             System.out.println("Invalid index.");
         }
-        System.out.println("Array after change:");
-        for (int i = 0; i< array2.length; i++){
-            System.out.print(array2[i] + " ");
-        }
+        //array = array2;
 
     }
 }
