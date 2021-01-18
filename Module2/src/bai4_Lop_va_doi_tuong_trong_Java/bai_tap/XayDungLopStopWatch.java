@@ -3,7 +3,7 @@ package bai4_Lop_va_doi_tuong_trong_Java.bai_tap;
 import java.util.Date;
 import java.util.Scanner;
 
-public class XayDungLopStopWatch extends Thread {
+public class XayDungLopStopWatch {
     public static class StopWatch{
         private long startTime;
         private long endTime;
