@@ -3,7 +3,7 @@ package bai4_Lop_va_doi_tuong_trong_Java.bai_tap;
 import java.util.Date;
 import java.util.Scanner;
 
-public class XayDungLopStopWatch {
+public class XayDungLopStopWatch extends Thread {
     public static class StopWatch{
         private long startTime;
         private long endTime;
@@ -35,11 +35,18 @@ public class XayDungLopStopWatch {
             case 'y':
                 stopWatch.start();
                 System.out.println("Counting...");
-                System.out.println("Input \"stop\" if you want to stop.");
+                System.out.println("Input \"show\" if you want to show elapsed time, \"stop\" if you want to stop.");
                 String command;
                 do{
                     command = scanner.nextLine();
-                }while (!command.equals("stop"));
+                    if (command.equals("show")){
+                        stopWatch.end();
+                        System.out.println(stopWatch.getElapsedTime()/1000.0);
+                    }
+                    else if (command.equals("stop")){
+                        break;
+                    }
+                }while (true);
                 stopWatch.end();
                 System.out.println(stopWatch.getElapsedTime()/1000.0 + " seconds");
                 break;
