@@ -5,10 +5,10 @@ public class XayDungLopFan {
     private static final int medium = 2;
     private static final int fast = 3;
     public static class Fan{
-        int speed = slow;
-        boolean on = false;
-        int radius = 5;
-        String color = "blue";
+        private int speed = slow;
+        private boolean on = false;
+        private int radius = 5;
+        private String color = "blue";
 
         public Fan(){
 
@@ -67,7 +67,7 @@ public class XayDungLopFan {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Fan fan1 = new Fan();
         Fan fan2 = new Fan();
 

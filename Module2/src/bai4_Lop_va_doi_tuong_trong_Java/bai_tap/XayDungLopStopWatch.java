@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class XayDungLopStopWatch {
     public static class StopWatch{
-        public long startTime;
-        public long endTime;
+        private long startTime;
+        private long endTime;
 
         public StopWatch(){
 

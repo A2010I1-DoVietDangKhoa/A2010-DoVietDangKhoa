@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class XayDungLopQuadraticEquation {
     public static class QuadraticEquation{
-        double a, b, c;
+        private double a, b, c;
 
         public QuadraticEquation(){
 
