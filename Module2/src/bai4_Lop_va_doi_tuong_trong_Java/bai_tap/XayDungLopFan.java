@@ -56,12 +56,14 @@ public class XayDungLopFan {
 
         @Override
         public String toString() {
-            if(this.on){
-                return "Fan {Speed: " + this.getSpeed() + ", Color: " + this.getColor() + ", Radius: " + this.getRadius()
+            if (this.on) {
+                return "Fan {Speed: " + this.getSpeed()
+                        + ", Color: " + this.getColor()
+                        + ", Radius: " + this.getRadius()
                         + ", Status: ON}";
-            }
-            else {
-                return "Fan {Color: " + this.getColor() + ", Radius: " + this.getRadius()
+            } else {
+                return "Fan {Color: " + this.getColor()
+                        + ", Radius: " + this.getRadius()
                         + ", Status: OFF}";
             }
         }
