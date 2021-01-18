@@ -34,7 +34,8 @@ public class XayDungLopStopWatch {
             case 'Y':
             case 'y':
                 stopWatch.start();
-                System.out.println("Input \"stop\" if you want to stop counting.");
+                System.out.println("Counting...");
+                System.out.println("Input \"stop\" if you want to stop.");
                 String command;
                 do{
                     command = scanner.nextLine();
