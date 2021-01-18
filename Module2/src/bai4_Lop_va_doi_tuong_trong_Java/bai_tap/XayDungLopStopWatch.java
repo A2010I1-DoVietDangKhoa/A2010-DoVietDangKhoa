@@ -41,7 +41,7 @@ public class XayDungLopStopWatch {
                     command = scanner.nextLine();
                 }while (!command.equals("stop"));
                 stopWatch.end();
-                System.out.println("Millis: " + stopWatch.getElapsedTime());
+                System.out.println("Seconds: " + stopWatch.getElapsedTime()/1000.0);
                 break;
             case 'N':
             case 'n':
