@@ -1,11 +1,11 @@
 package bai4_Lop_va_doi_tuong_trong_Java.bai_tap;
 
 public class XayDungLopFan {
-    private static final int slow = 1;
-    private static final int medium = 2;
-    private static final int fast = 3;
+    private static final int SLOW = 1;
+    private static final int MEDIUM = 2;
+    private static final int FAST = 3;
     public static class Fan{
-        private int speed = slow;
+        private int speed = SLOW;
         private boolean on = false;
         private int radius = 5;
         private String color = "blue";
@@ -15,14 +15,14 @@ public class XayDungLopFan {
         }
 
         public String getSpeed() {
-            if(this.speed == slow){
-                return "slow";
+            if(this.speed == SLOW){
+                return "SLOW";
             }
-            else if(this.speed == medium){
-                return "medium";
+            else if(this.speed == MEDIUM){
+                return "MEDIUM";
             }
             else {
-                return "fast";
+                return "FAST";
             }
         }
 
@@ -73,12 +73,12 @@ public class XayDungLopFan {
         Fan fan1 = new Fan();
         Fan fan2 = new Fan();
 
-        fan1.setSpeed(fast);
+        fan1.setSpeed(FAST);
         fan1.setRadius(10);
         fan1.setColor("yellow");
         fan1.setOn(true);
 
-        fan2.setSpeed(medium);
+        fan2.setSpeed(MEDIUM);
         fan2.setRadius(5);
         fan2.setColor("blue");
         fan2.setOn(false);
