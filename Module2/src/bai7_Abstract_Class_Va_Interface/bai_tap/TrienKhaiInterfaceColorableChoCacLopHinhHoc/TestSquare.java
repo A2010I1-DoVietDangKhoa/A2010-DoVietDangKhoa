@@ -9,7 +9,7 @@ public class TestSquare {
         System.out.println(squareTest.getArea());
         System.out.println(squareTest.getPerimeter());
         System.out.println(squareTest.toString());
-        System.out.println(squareTest.HowToColor());
+        System.out.println(squareTest.howToColor());
         squareTest.setSide(20.0);
         squareTest.setColor("orange");
         squareTest.setFilled(false);
@@ -17,6 +17,6 @@ public class TestSquare {
         System.out.println(squareTest.getArea());
         System.out.println(squareTest.getPerimeter());
         System.out.println(squareTest.toString());
-        System.out.println(squareTest.HowToColor());
+        System.out.println(squareTest.howToColor());
     }
 }

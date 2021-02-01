@@ -22,9 +22,9 @@ public class TestColorable {
             shapes[i].getArea();
             if (shapes[i] instanceof Square){
 //                Colorable color = (Square) shapes[i];
-//                System.out.println(color.HowToColor());
+//                System.out.println(color.howToColor());
                 Square square2 = (Square) shapes[i];
-                System.out.println(square2.HowToColor());
+                System.out.println(square2.howToColor());
             }
         }
     }
