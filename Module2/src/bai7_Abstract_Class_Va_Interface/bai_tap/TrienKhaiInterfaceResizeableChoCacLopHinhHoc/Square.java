@@ -56,7 +56,8 @@ public class Square extends Rectangle implements Resizeable, Colorable {
     }
 
     @Override
-    public String HowToColor() {
+    public String howToColor() {
         return "Color all 4 sides.";
     }
+
 }
