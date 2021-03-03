@@ -64,9 +64,9 @@ public class ProductManager {
         return productList;
     }
 
-    public void sortProduct(){
-        Collections.sort(productList);
-    }
+//    public void sortProduct(){
+//        Collections.sort(productList);
+//    }
 }
 
 

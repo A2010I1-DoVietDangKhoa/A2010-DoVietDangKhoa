@@ -1,6 +1,9 @@
 package bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework.phanArrayList;
+import bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework.PriceComparatorAscend;
+import bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework.PriceComparatorDescend;
 import bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework.Product;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -98,11 +101,36 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.println("Before sorting: ");
-                    productManager.displayAllProduct();
-                    System.out.println("After sorting: ");
-                    productManager.sortProduct();
-                    productManager.displayAllProduct();
+                    System.out.println("Choose sorting type: " +
+                            "\n1. Ascending." +
+                            "\n2. Descending." +
+                            "\n3. Go back.");
+                    int choiceSort = scanner.nextInt();
+                    switch (choiceSort){
+                        case 1:
+                            System.out.println("Before sorting: ");
+                            productManager.displayAllProduct();
+                            PriceComparatorAscend ascend = new PriceComparatorAscend();
+                            Collections.sort(ProductManager.productList, ascend);
+                            System.out.println("After sorting: ");
+                            productManager.displayAllProduct();
+                            break;
+
+                        case 2:
+                            System.out.println("Before sorting: ");
+                            productManager.displayAllProduct();
+                            PriceComparatorDescend descend = new PriceComparatorDescend();
+                            Collections.sort(ProductManager.productList, descend);
+                            System.out.println("After sorting: ");
+                            productManager.displayAllProduct();
+                            break;
+
+                        case 3:
+                            break;
+
+                        default:
+                            System.out.println("Invalid choice");
+                    }
                     break;
 
                 case 8:

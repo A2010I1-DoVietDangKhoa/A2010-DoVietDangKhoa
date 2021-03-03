@@ -1,6 +1,6 @@
 package bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework;
 
-public class Product implements Comparable<Product>{
+public class Product{
     private String name;
     private int id;
     private long price;
@@ -45,10 +45,10 @@ public class Product implements Comparable<Product>{
                 ", Price: " + this.price;
     }
 
-    @Override
-    public int compareTo(Product p) {
-        if (getId() > p.getId()) return 1;
-        else if (getId() < p.getId()) return -1;
-        else return 1;
-    }
+//    @Override
+//    public int compareTo(Product p) {
+//        if (getId() > p.getId()) return 1;
+//        else if (getId() < p.getId()) return -1;
+//        else return 1;
+//    }
 }
