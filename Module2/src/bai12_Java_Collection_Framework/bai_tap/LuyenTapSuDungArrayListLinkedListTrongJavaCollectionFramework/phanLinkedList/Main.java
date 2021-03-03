@@ -8,6 +8,11 @@ public class Main {
     public static void main(String[] args) {
         bai12_Java_Collection_Framework.bai_tap.LuyenTapSuDungArrayListLinkedListTrongJavaCollectionFramework.phanArrayList.ProductManager productManager = new ProductManager();
         Scanner scanner = new Scanner(System.in);
+//        productManager.addProduct(new Product("p1", 5, 22000));
+//        productManager.addProduct(new Product("p2", 6, 16000));
+//        productManager.addProduct(new Product("p3", 3, 32000));
+//        productManager.addProduct(new Product("p4", 1, 82000));
+
 
         while (true) {
             System.out.println("What do you want to do?: " +
@@ -15,9 +20,10 @@ public class Main {
                     "\n2. Search a product." +
                     "\n3. Delete a product." +
                     "\n4. Check a product." +
-                    "\n5. Show all product." +
-                    "\n6. Sort product list." +
-                    "\n7. Exit.");
+                    "\n5. Edit a product." +
+                    "\n6. Show all product." +
+                    "\n7. Sort product list." +
+                    "\n8. Exit.");
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -39,6 +45,7 @@ public class Main {
                     break;
 
                 case 3:
+                    productManager.displayAllProductName();
                     System.out.println("Input the product's name you want to delete: ");
                     scanner.nextLine();
                     String targetDelete = scanner.nextLine();
@@ -53,10 +60,47 @@ public class Main {
                     break;
 
                 case 5:
+                    productManager.displayAllProductName();
+                    System.out.println("Input the index of the product you want to check: ");
+                    int indexEdit = scanner.nextInt() - 1;
+                    productManager.displayProduct(indexEdit);
+                    System.out.println("Which attribute do you want to edit?: " +
+                            "\n1. ID." +
+                            "\n2. Name." +
+                            "\n3. Price." +
+                            "\n4. Go back.");
+                    int choiceEdit = scanner.nextInt();
+                    switch (choiceEdit){
+                        case 1:
+                            System.out.println("Input new ID: ");
+                            ProductManager.productList.get(indexEdit).setId(scanner.nextInt());
+                            break;
+
+                        case 2:
+                            System.out.println("Input new name: ");
+                            scanner.nextLine();
+                            ProductManager.productList.get(indexEdit).setName(scanner.nextLine());
+                            break;
+
+                        case 3:
+                            System.out.println("Input new price: ");
+                            ProductManager.productList.get(indexEdit).setPrice(scanner.nextLong());
+                            break;
+
+                        case 4:
+                            break;
+
+                        default:
+                            System.out.println("Invalid choice");
+                    }
+                    break;
+
+
+                case 6:
                     productManager.displayAllProduct();
                     break;
 
-                case 6:
+                case 7:
                     System.out.println("Before sorting: ");
                     productManager.displayAllProduct();
                     System.out.println("After sorting: ");
@@ -64,7 +108,7 @@ public class Main {
                     productManager.displayAllProduct();
                     break;
 
-                case 7:
+                case 8:
                     System.exit(0);
             }
         }
