@@ -11,7 +11,6 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         List<String> list = new ArrayList<>();
-
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             list.add(line);
