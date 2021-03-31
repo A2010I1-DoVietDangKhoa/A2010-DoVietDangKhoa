@@ -24,6 +24,18 @@ update customers
 set customerName = 'Dak Buh Lmao'
 where customerName = 'Atelier Graphique';
 
-
 alter table customers
 add column customerEmail varchar(30);
+
+select * from products;
+
+create table carTest(
+	carID int primary key auto_increment,
+	carName varchar(30),
+    carSpecs varchar(100)
+);
+
+insert into carTest
+values(1,'Lamborghini', 'Fast af boi');
+
+select * from carTest;
