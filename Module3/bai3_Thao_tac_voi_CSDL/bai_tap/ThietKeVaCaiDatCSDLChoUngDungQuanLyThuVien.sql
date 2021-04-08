@@ -62,3 +62,12 @@ values(1, 5),
 (3, 3),
 (4, 2),
 (5, 1);
+
+insert into book
+values(6, 'Test', 1, null);
+
+update book
+set fk_order_id = 5
+where book_name = 'Test';
+
+select * from book
