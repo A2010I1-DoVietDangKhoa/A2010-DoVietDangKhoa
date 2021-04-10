@@ -20,20 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83e640af-81d2-4642-8573-b6c1cdb6545e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/A2010-DoVietDangKhoa.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau2.html" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy/YeuCau2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau3.html" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy/YeuCau3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau6.html" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy/YeuCau6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy/employee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module1/bai11_Cau_truc_lap_2/bai_tap/HienThiCacSoNguyenToDauTien.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/bai11_Cau_truc_lap_2/bai_tap/HienThiCacSoNguyenToDauTien.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module1/bai11_Cau_truc_lap_2/bai_tap/LuyenTapVongLap2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/bai11_Cau_truc_lap_2/bai_tap/LuyenTapVongLap2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module1/bai14_Ham_1/thuc_hanh/ChuyenDoiNhietDo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/bai14_Ham_1/thuc_hanh/ChuyenDoiNhietDo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module1/bai15_Ham_2/bai_tap/KiemTraTuDoiXung.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/bai15_Ham_2/bai_tap/KiemTraTuDoiXung.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/YeuCau6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/customer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy/employee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module2/Module2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Module2/Module2.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +63,9 @@
       <option name="presentableId" value="Default" />
       <updated>1610114688682</updated>
       <workItem from="1610114691496" duration="50000" />
+      <workItem from="1614773082312" duration="48000" />
+      <workItem from="1614774254702" duration="10000" />
+      <workItem from="1614780757282" duration="7000" />
     </task>
     <servers />
   </component>
@@ -83,6 +82,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1610114739329">
