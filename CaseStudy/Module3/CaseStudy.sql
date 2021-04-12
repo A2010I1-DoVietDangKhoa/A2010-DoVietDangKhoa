@@ -85,7 +85,7 @@ create table hopdong(
     fk_idnhanvien int,
     foreign key (fk_idnhanvien) references nhanvien (idnhanvien),
     fk_idkhachhang int,
-    foreign key (fk_idkhachhang) references khachhang (idkhachhang),
+    foreign key (fk_idkhachhang) references khachhang (idkhachhang) on delete cascade on update cascade,
     fk_iddichvu int,
     foreign key (fk_iddichvu) references dichvu (iddichvu),
     ngaylamhopdong date,
@@ -105,7 +105,7 @@ create table dichvudikem(
 create table hopdongchitiet(
 	idhopdongchitiet int primary key,
     fk_idhopdong int,
-    foreign key (fk_idhopdong) references hopdong (idhopdong),
+    foreign key (fk_idhopdong) references hopdong (idhopdong) on delete cascade on update cascade,
     fk_iddichvudikem int,
     foreign key (fk_iddichvudikem) references dichvudikem (iddichvudikem),
     soluong int
@@ -147,6 +147,8 @@ values (1, 'Do Viet', 'Khoa', 2, 3, 2,'1998-09-06', '123456789', 90000000, '0794
  (7, 'Tran Thi', 'Ha', 2, 3, 2,'1997-11-07', '123456789', 90000000, '0794558312', 'abc@gmail.com',
  'Hai Chau, Da Nang, Viet Nam'),
  (8, 'Nguyen Do Tran Thi', 'Hoa', 3, 3, 1,'1993-12-31', '123456789', 90000000, '0794558312', 'abc@gmail.com',
+ 'Hai Chau, Da Nang, Viet Nam'),
+ (9, 'Nguyen', 'Hoa', 3, 3, 1,'1993-12-31', '123456789', 90000000, '0794558312', 'abc@gmail.com',
  'Hai Chau, Da Nang, Viet Nam');
  
  insert into loaidichvu
@@ -196,7 +198,7 @@ values (1, 'Do Viet', 'Khoa', 2, 3, 2,'1998-09-06', '123456789', 90000000, '0794
  (9, 'Room 3', 100, 2, 5, 1000000, 1, 3, 'Dang dung'),
  (10, 'Villa 4', 100, 2, 5, 1000000, 1, 1, 'Dang dung');
  insert into hopdong
- values(1, 1, 5, 9, '2018-06-01', '2018-07-10', 500000, 2000000),
+ values(1, 1, 5, 9, '2018-06-01', '2018-07-10', 500000, 12000000),
  (2, 1, 5, 8, '2019-11-01', '2019-11-10', 500000, 2000000),
  (3, 1, 5, 7, '2017-01-01', '2017-01-10', 500000, 2000000),
  (4, 1, 5, 6, '2019-01-01', '2019-01-10', 500000, 2000000),
@@ -205,16 +207,16 @@ values (1, 'Do Viet', 'Khoa', 2, 3, 2,'1998-09-06', '123456789', 90000000, '0794
  (7, 3, 8, 3, '2015-01-01', '2015-01-10', 500000, 2000000),
  (8, 3, 8, 2, '2018-01-01', '2018-01-10', 500000, 2000000),
  (9, 8, 14, 1, '2019-05-01', '2019-05-10', 500000, 2000000),
- (10, 8, 14, 1, '2020-01-01', '2020-01-10', 500000, 2000000),
+ (10, 8, 14, 1, '2020-01-01', '2020-01-10', 500000, 1000000),
  (11, 8, 14, 2, '2021-01-01', '2021-01-10', 500000, 2000000),
  (12, 6, 14, 3, '2018-01-01', '2018-01-10', 500000, 2000000),
  (13, 5, 6, 4, '2017-01-01', '2017-01-10', 500000, 2000000),
  (14, 4, 7, 5, '2018-01-01', '2018-01-10', 500000, 2000000),
  (15, 3, 9, 6, '2018-01-01', '2018-01-10', 500000, 2000000),
- (16, 2, 11, 7, '2016-01-01', '2016-01-10', 500000, 2000000),
+ (16, 2, 11, 7, '2016-01-01', '2016-01-10', 500000, 22000000),
  (17, 7, 2, 8, '2019-01-01', '2019-01-10', 500000, 2000000),
  (18, 8, 3, 9, '2020-01-01', '2020-01-10', 500000, 2000000),
- (19, 6, 4, 9, '2019-12-01', '2019-12-10', 500000, 2000000),
+ (19, 6, 4, 9, '2019-12-01', '2019-12-10', 500000, 12000000),
  (20, 3, 8, 9, '2018-01-01', '2018-01-10', 500000, 2000000),
  (21, 2, 1, 10, '2018-01-01', '2018-01-10', 500000, 2000000),
  (22, 6, 3, 10, '2018-01-01', '2018-01-10', 500000, 2000000);
@@ -273,9 +275,9 @@ values (1, 'Do Viet', 'Khoa', 2, 3, 2,'1998-09-06', '123456789', 90000000, '0794
  
 SELECT *
  from nhanvien
-where (tennhanvien like 'H%')
+where ((tennhanvien like 'H%')
  or (tennhanvien like 'K%')
- or (tennhanvien like '%T')
+ or (tennhanvien like 'T%'))
  AND char_length(honhanvien) + char_length(tennhanvien) <= 15;
  
  -- Cau 3
@@ -419,3 +421,117 @@ on bp.idbophan = nv.fk_idbophan
 where year(hd.ngaylamhopdong) = 2018 or year(hd.ngaylamhopdong) = 2019
 group by idnhanvien
 having solanlaphopdong <= 3;
+
+-- Cau 16
+
+delete from nhanvien
+where idnhanvien not in(
+select * from(
+select idnhanvien from nhanvien nv
+inner join hopdong hd
+on nv.idnhanvien = hd.fk_idnhanvien
+where (year(ngaylamhopdong) = 2017 
+	or year(ngaylamhopdong) = 2018 
+	or year(ngaylamhopdong) = 2019)
+    and idnhanvien is not null
+) as whatever
+);
+
+-- Cau 17
+
+update khachhang as kh
+inner join (
+select idkhachhang, tenkhachhang, fk_idloaikhach, sum(tongtien) as tongtien from khachhang kh
+inner join hopdong hd
+on kh.idkhachhang = hd.fk_idkhachhang
+group by tenkhachhang
+having tongtien >= 10000000 and fk_idloaikhach = 2) as B
+on kh.idkhachhang = B.idkhachhang
+set kh.fk_idloaikhach = 1;
+
+-- Cau 18
+
+delete khachhang, hopdong from khachhang inner join hopdong
+where fk_idkhachhang = idkhachhang
+and idkhachhang in(
+select * from(
+select idkhachhang from khachhang kh
+inner join hopdong hd
+on kh.idkhachhang = hd.fk_idkhachhang
+where year(ngaylamhopdong) < 2016
+    and idkhachhang is not null
+) as whatever
+);
+
+-- Cau 19
+update dichvudikem as dvdk inner join(
+select *, count(fk_iddichvudikem) from dichvudikem dvdk
+inner join hopdongchitiet hdct on dvdk.iddichvudikem = hdct.fk_iddichvudikem
+group by iddichvudikem
+having count(fk_iddichvudikem) >= 10) as whatever
+on dvdk.iddichvudikem = whatever.iddichvudikem
+set dvdk.gia = dvdk.gia * 2;
+
+-- Cau 20
+
+select idkhachhang, hokhachhang, tenkhachhang, email, sdt, ngaysinh, diachi from khachhang
+union all
+select idnhanvien, honhanvien, tennhanvien, email, sdt, ngaysinh, diachi from nhanvien;
+
+-- Cau 21
+
+create view v_nhanvien as 
+select nv.* from nhanvien nv
+where idnhanvien in(
+	select nv.idnhanvien from nhanvien nv
+    inner join hopdong hd
+    on nv.idnhanvien = hd.fk_idnhanvien
+    where year(hd.ngaylamhopdong) = 2019 and nv.diachi like '%Hai Chau%' and idnhanvien is not null
+);
+
+create view v_nhanvien as 
+select distinct nv.* from nhanvien nv
+inner join hopdong hd
+on nv.idnhanvien = hd.fk_idnhanvien
+where year(hd.ngaylamhopdong) = 2019 and nv.diachi like '%Hai Chau%';
+
+-- drop view v_nhanvien;
+
+select * from v_nhanvien;
+
+-- Cau 22
+
+update nhanvien
+set nhanvien.diachi = 'Lien Chieu, Da Nang, Viet Nam'
+where nhanvien.idnhanvien in (select idnhanvien from v_nhanvien);
+
+-- Cau 23
+
+DELIMITER //
+
+CREATE PROCEDURE sp_1
+
+(IN idkhachhang_in INT(11))
+
+BEGIN
+
+  delete from khachhang
+  where idkhachhang = idkhachhang_in;
+
+END //
+
+DELIMITER ;
+
+-- Cau 25
+
+delimiter //
+drop trigger if exists tr_1 //
+create trigger tr_1
+after delete on hopdong for each row
+begin
+	set @x = (select count(idhopdong) as count from hopdong);
+end;
+// delimiter ;
+set @x = 0;
+delete from hopdong where hopdong.idhopdong = 4;
+select @x as 'Total after delete';
