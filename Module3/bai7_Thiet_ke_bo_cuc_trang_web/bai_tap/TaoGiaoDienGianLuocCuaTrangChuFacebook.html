@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo giao diện giản lược của trang chủ Facebook</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        [class*="col-"] {
+            float: left;
+            padding: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            [class*="col-"] {
+                width: 100%;
+            }
+        }
+        .header{
+            background-color: gray;
+            position: fixed;
+            margin: 0;
+            padding:0;
+        }
+        #menu, #menu ul, #menu li{
+            padding:0;
+            margin:0;
+        }
+
+        #menu ul{
+            right: 0px;
+        }
+        #menu{
+            float: right;
+            text-align: center;
+        }
+
+        #menu li{
+            list-style: none;
+            position: relative;
+            width:150px;
+            height: 30px;
+            /*padding:0 20px;*/
+            background-color: gray;
+            line-height: 30px;
+            cursor:pointer;
+        }
+
+        #menu li a{
+            text-decoration:none;
+            color: black;
+        }
+
+        #menu li:hover{
+            background-color:white;
+        }
+
+        #menu ul ul{
+            position: absolute;
+            /*right:40px;*/
+            visibility:hidden;
+        }
+
+        #menu ul li:hover ul{
+            visibility:visible;
+        }
+
+        #menu li li{
+            width: 250px;
+        }
+
+        #noti, #noti ul, #noti li{
+            padding:0;
+            margin:0;
+        }
+        #noti{
+            float: right;
+            text-align: center;
+        }
+
+        #noti li{
+            list-style: none;
+            position: relative;
+            width: 100px;
+            height: 30px;
+            /*padding:0 20px;*/
+            background-color: gray;
+            line-height: 30px;
+            cursor:pointer;
+        }
+
+        #noti li a{
+            text-decoration:none;
+            color: black;
+        }
+
+        #noti li:hover{
+            background-color:white;
+        }
+
+        #noti ul ul{
+            position: absolute;
+            /*right:40px;*/
+            visibility:hidden;
+        }
+
+        #noti ul li:hover ul{
+            visibility:visible;
+        }
+        #noti li li {
+            width: 250px;
+        }
+        .icons{
+            position: relative;
+            display: inline-block;
+            /*margin-left: 10px;*/
+            /*margin-right: 10px;*/
+            /*margin-top: -7px;*/
+            /*margin-bottom: -3px;*/
+        }
+        .fas{
+            font-size: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        .fas:hover{
+            color: cornflowerblue;
+            background-color: white;
+        }
+        /*.sidenav {*/
+        /*    margin-top: 80px;*/
+        /*    height: 100%;*/
+        /*    width: 160px;*/
+        /*    position: fixed;*/
+        /*    z-index: 1;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    float: left;*/
+        /*    background-color: #111;*/
+        /*    overflow-x: hidden;*/
+        /*    !*padding-top: 20px;*!*/
+        /*}*/
+
+        /*.sidenav a {*/
+        /*    padding: 6px 8px 6px 16px;*/
+        /*    text-decoration: none;*/
+        /*    font-size: 25px;*/
+        /*    color: #818181;*/
+        /*    display: block;*/
+        /*}*/
+
+        /*.sidenav a:hover {*/
+        /*    color: #f1f1f1;*/
+        /*}*/
+
+        /*.sidemessages {*/
+        /*    margin-top: 80px;*/
+        /*    height: 100%;*/
+        /*    width: 160px;*/
+        /*    position: fixed;*/
+        /*    z-index: 1;*/
+        /*    top: 0;*/
+        /*    right: 0;*/
+        /*    float: right;*/
+        /*    background-color: #111;*/
+        /*    overflow-x: hidden;*/
+        /*    !*padding-top: 20px;*!*/
+        /*}*/
+
+        /*.sidemessages a {*/
+        /*    padding: 16px 16px 16px 16px;*/
+        /*    text-decoration: none;*/
+        /*    font-size: 25px;*/
+        /*    color: #818181;*/
+        /*    display: block;*/
+        /*}*/
+
+        /*.sidemessages a:hover {*/
+        /*    color: #f1f1f1;*/
+        /*}*/
+        .messages{
+            position: fixed;
+            float: right;
+        }
+        .contentImg{
+            width: 80%;
+        }
+        .contents{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-12 header">
+            <div class="row"></div>
+                <div class="col-3">
+                    <img src="Facebook%20App%20Logo%20free%20vector%20icons%20designed%20by%20Freepik.png" style="max-height: 25px;max-width: 25px; float: left;">
+                    <input type="text" style="float: left">
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-2"><i class="fas fa-home"></i></div>
+                        <div class="col-2"><i class="fas fa-store"></i></div>
+                        <div class="col-2"><i class="fas fa-users"></i></div>
+                        <div class="col-2"><i class="fas fa-tv"></i></div>
+                        <div class="col-2"><i class="fas fa-gamepad"></i></div>
+                        <div class="col-2"><i class="fas fa-star"></i></div>
+                    </div>
+<!--                    <img src="icons8-home-25.png" class="icons">-->
+<!--                    <img src="icons8-market-25.png" class="icons">-->
+<!--                    <img src="icons8-group-25.png" class="icons">-->
+<!--                    <img src="icons8-retro-tv-25.png" class="icons">-->
+<!--                    <img src="icons8-game-controller-25.png" class="icons">-->
+<!--                    <img src="icons8-star-25.png" class="icons">-->
+                </div>
+                <div class="col-3">
+                    <img src="download.jpg" style="float: right; height: 25px;width: 25px; margin-right: 10px; margin-top: 6px; margin-bottom: 2px">
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#">Messages</a>
+                                <ul>
+                                    <li><a href="#"><input type="text" placeholder="Search for message" style="width: 250px"></a></li>
+                                    <li><a href="#">Bủh</a></li>
+                                    <li><a href="#">Lmao</a></li>
+                                </ul></li>
+                        </ul>
+                    </div>
+                    <div id="noti">
+                        <ul>
+                            <li><a href="#">Notifications</a>
+                                <ul>
+                                    <li><a href="#"><input type="text" placeholder="Search for notification" style="width: 250px"></a></li>
+                                    <li><a href="#">Bủh</a></li>
+                                    <li><a href="#">Lmao</a></li>
+                                </ul></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 nav">
+<!--            <div class="sidenav">-->
+<!--                <a href="#about">About</a>-->
+<!--                <a href="#services">Services</a>-->
+<!--                <a href="#clients">Clients</a>-->
+<!--                <a href="#contact">Contact</a>-->
+<!--            </div>-->
+        </div>
+        <div class="col-6 contents">
+            <div class="row">
+                <div class="col-12">
+                    <img src="1576440798771.gif" class="contentImg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="a49XokYK_700wa_0.gif" class="contentImg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="ChooChoo.gif" class="contentImg">
+                </div>
+            </div>
+        </div>
+        <div class="col-3 messages">
+<!--            <div class="sidemessages">-->
+<!--                <a href="#about">About</a>-->
+<!--                <a href="#services">Services</a>-->
+<!--                <a href="#clients">Clients</a>-->
+<!--                <a href="#contact">Contact</a>-->
+<!--            </div>-->
+        </div>
+    </div>
+</body>
+</html>
