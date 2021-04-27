@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo landing page</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .nav-item{
+            font-size: 14px;
+        }
+        .form-inline{
+            font-size: 14px;
+        }
+        .nav-item:hover{
+            text-decoration: underline;
+        }
+        #navbardown{
+            margin-top: 10px;
+        }
+        #navbardown picture{
+            padding-left: 25%;
+            padding-right: 25%
+        }
+        #navbardown a{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#"><img src="RE1Mu3b.png" width="70%" height="70%"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Surface <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Computers
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Computers for Business
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Accessories
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Shop now
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Support</a>
+                            </li>
+                        </ul>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All Microsoft
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" id="searchInput" aria-label="Search">
+                                <button type="button" class="btn btn-light" id="searchButton">Search <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg></button>
+                            </form>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Cart <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">My account <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                                </svg></a>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-lg-12">
+                <picture>
+                    <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Home_Hero_Spring_21_color_V1.jpg?version=672b6412-c20f-66ff-49d7-10347a5ab07e" class="mscom-image" alt="New Surface Family" width="100%" height="auto">
+                </picture>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav justify-content-center" id="navbardown">
+                    <li class="nav-item">
+                        <picture>
+                            <img src="https://c.s-microsoft.com/en-us/CMSImages/SurfaceHome_Lg_LinkNav_Panel_2_image1.svg?version=9257ec5f-8430-88a9-e2cd-c455f7ce172c" class="mscom-image" alt="" width="50%" height="50%">
+                        </picture>
+                        <a class="nav-link" href="#" style="font-size: 20px">Compare devices</a>
+                    </li>
+                    <li class="nav-item">
+                        <picture>
+                            <img src="https://c.s-microsoft.com/en-us/CMSImages/SurfaceHome_Lg_LinkNav_Panel_2_image2.svg?version=da456df5-7733-1a20-6668-991b453cd479" class="mscom-image" alt="" width="50%" height="50%">
+                        </picture>
+                        <a class="nav-link" href="#" style="font-size: 20px">Help me choose</a>
+                    </li>
+                    <li class="nav-item">
+                        <picture>
+                            <img src="https://c.s-microsoft.com/en-us/CMSImages/SurfaceHome_Lg_LinkNav_Panel_2_image4.svg?version=f06b4b40-4b8b-535a-1bdc-60d370824ced" class="mscom-image" alt="" width="50%" height="50%">
+                        </picture>
+                        <a class="nav-link" href="#" style="font-size: 20px">Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <picture>
+                            <img src="https://c.s-microsoft.com/en-us/CMSImages/1920_Panel_LinkNav_PersonalShop_V2.svg?version=34def8c2-5109-9555-2860-db5f024de09c" class="mscom-image" alt="" width="50%" height="50%">
+                        </picture>
+                        <a class="nav-link" href="#" style="font-size: 20px">Surface at home</a>
+                    </li>
+                    <li class="nav-item">
+                        <picture>
+                            <img src="https://c.s-microsoft.com/en-us/CMSImages/1920_Panel_LinkNav_Briefcase_I_.svg?version=19243b0e-4d5a-e345-6747-92b9ef181fa2" class="mscom-image" alt="" width="50%" height="50%">
+                        </picture>
+                        <a class="nav-link" href="#" style="font-size: 20px">For business</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

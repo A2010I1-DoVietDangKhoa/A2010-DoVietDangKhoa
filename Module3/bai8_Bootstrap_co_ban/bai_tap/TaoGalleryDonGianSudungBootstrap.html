@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo gallery đơn giản sử dụng bootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        div.gallery{
+            border: 1px solid #1c7430;
+        }
+        div.panel-body img{
+            width: 100%;
+        }
+        .panel-footer{
+            text-align: center;
+        }
+        .embed-responsive{
+            padding: 0 10px;
+            float: left;
+            width: 24.99999%;
+        }
+        @media only screen and (max-width: 700px){
+            .embed-responsive {
+                width: 49.99999%;
+                /*margin: 6px 0;*/
+            }
+        }
+
+        @media only screen and (max-width: 500px){
+            .embed-responsive {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Responsive Image Gallery</h2>
+    <h4>Resize the browser window to see the effect.</h4>
+    <div class="embed-responsive">
+        <div class="gallery">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="525312.jpg" alt="loading"/></div>
+                <div class="panel-footer">
+                    Description here
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="embed-responsive">
+        <div class="gallery">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="525312.jpg" alt="loading"/></div>
+                <div class="panel-footer">
+                    Description here
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="embed-responsive">
+        <div class="gallery">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="525312.jpg" alt="loading"/></div>
+                <div class="panel-footer">
+                    Description here
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="embed-responsive">
+        <div class="gallery">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="525312.jpg" alt="loading"/></div>
+                <div class="panel-footer">
+                    Description here
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
