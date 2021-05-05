@@ -11,6 +11,10 @@
     <title>Divide by zero</title>
 </head>
 <body>
-<h1 style="color: red">Can't divide by zero!</h1>
+    <h1 style="color: red">Can't divide by zero!</h1>
+    <br><br>
+    <form action="/">
+        <button type="submit">Go back</button>
+    </form>
 </body>
 </html>

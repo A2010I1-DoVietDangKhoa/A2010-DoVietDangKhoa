@@ -11,5 +11,9 @@
     <c:out value="${numTwo}"></c:out>
     <c:out value="="></c:out>
     <c:out value="${result}"></c:out>
+    <br><br>
+    <form action="/">
+        <button type="submit">Go back</button>
+    </form>
 </body>
 </html>

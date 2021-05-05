@@ -12,5 +12,9 @@
 </head>
 <body>
     <h1 style="color: red">Please input numbers!</h1>
+    <br><br>
+    <form action="/">
+        <button type="submit">Go back</button>
+    </form>
 </body>
 </html>
