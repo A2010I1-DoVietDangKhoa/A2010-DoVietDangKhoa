@@ -40,16 +40,17 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findByName(String name) {
+    public ArrayList<Integer> findByName(String name) {
+        ArrayList<Integer> idList = new ArrayList<>();
         String searchName = name.toLowerCase();
-        int id = 1;
+        int id;
         for(Product p : productDB.values()){
             if(p.getProductName().toLowerCase().equals(searchName)){
                 id = p.getProductId();
-                break;
+                idList.add(id);
             }
         }
-        return productDB.get(id);
+        return idList;
     }
 
     @Override

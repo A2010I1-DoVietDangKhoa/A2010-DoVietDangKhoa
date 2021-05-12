@@ -10,7 +10,8 @@
     <a href="/products?action=create">Create new product</a>
 </p>
 <form method="get">
-    <label>Search product's name: </label><input type="text" name="search">
+    <input type="hidden" name="action" value="search">
+    <label>Search product's name: </label><input type="text" name="key">
     <button type="submit" href="/products?action=search">Search</button>
 </form>
 <table border="1">

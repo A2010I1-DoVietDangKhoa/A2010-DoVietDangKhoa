@@ -18,7 +18,7 @@ import java.util.List;
 public class ProductServlet extends HttpServlet {
 
     private ProductService productService = new ProductServiceImpl();
-    private ArrayList<Product> products = productService.getAllProduct();
+    //private ArrayList<Product> products = productService.getAllProduct();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -69,7 +69,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("products", products);
+        request.setAttribute("products", productService.getAllProduct());
         request.getRequestDispatcher("product/list.jsp").forward(request, response);
     }
 
@@ -93,7 +93,15 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         int price = Integer.parseInt(request.getParameter("price"));
-        Product product = new Product(products.size() + 1, name, description, price);
+        ArrayList<Product> products = productService.getAllProduct();
+        int max = 0;
+        for(Product p : products){
+            int id = p.getProductId();
+            if(id > max){
+                max = id;
+            }
+        }
+        Product product = new Product(max + 1, name, description, price);
         this.productService.addNewProduct(product);
         request.getRequestDispatcher("product/create.jsp").forward(request, response);
     }
@@ -150,25 +158,18 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        String searchName = request.getParameter("search").toLowerCase();
-        Product product = this.productService.findByName(searchName);
-        if(product == null){
+        String searchName = request.getParameter("key").toLowerCase();
+        ArrayList<Integer> idResult = this.productService.findByName(searchName);
+        ArrayList<Product> searchResult = new ArrayList<>();
+        for (int i : idResult){
+            searchResult.add(this.productService.findById(i));
+        }
+        if(idResult.isEmpty()){
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         else {
-            if(product.getProductId() == 1){
-                if(product.getProductName().toLowerCase().equals(searchName)){
-                    request.setAttribute("product", product);
-                    request.getRequestDispatcher("product/detail.jsp").forward(request, response);
-                }
-                else {
-                    request.getRequestDispatcher("error.jsp").forward(request, response);
-                }
-            }
-            else {
-                request.setAttribute("product", product);
-                request.getRequestDispatcher("product/detail.jsp").forward(request, response);
-            }
+            request.setAttribute("products", searchResult);
+            request.getRequestDispatcher("product/search_result.jsp").forward(request, response);
         }
     }
 }
