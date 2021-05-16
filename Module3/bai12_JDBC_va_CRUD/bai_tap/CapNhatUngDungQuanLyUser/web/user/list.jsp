@@ -6,18 +6,19 @@
     <title>User Management Application</title>
 </head>
 <body>
-<center>
+<div align="center">
     <h1>User Management</h1>
     <h2>
         <a href="/users?action=create">Add New User</a>
     </h2>
     <form method="get">
         <input type="hidden" name="action" value="search">
-        <label>Search user: </label><input type="text" name="key">
-        <button type="submit" href="/products?action=search">Search</button>
+        <label>Search user's country: </label><input type="text" name="key">
+        <button type="submit" href="/users?action=search">Search</button>
     </form>
-</center>
+</div>
 <div align="center">
+    <a href="/users?action=sort">Sort</a>
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>
         <tr>

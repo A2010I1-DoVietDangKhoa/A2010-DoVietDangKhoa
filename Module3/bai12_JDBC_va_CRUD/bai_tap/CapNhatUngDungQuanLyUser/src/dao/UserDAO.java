@@ -2,11 +2,8 @@ package dao;
 
 import model.User;
 import service.BaseRepository;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,8 @@ public class UserDAO implements IUserDAO{
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
-    private static final String SEARCH_USER_MYSQL = "select * from users where name = ?";
+    private static final String SEARCH_USER_MYSQL = "select * from users where country = ?";
+    private static final String SORT_USERS_SQL = "select * from users ORDER BY name";
 
     public UserDAO() {
     }
@@ -59,7 +57,7 @@ public class UserDAO implements IUserDAO{
     public User selectUser(int id) {
         User user = null;
         // Step 1: Establishing a Connection
-        try (Connection connection = baseRepository.getConnection();
+        try (
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
             preparedStatement.setInt(1, id);
@@ -85,6 +83,7 @@ public class UserDAO implements IUserDAO{
         // using try-with-resources to avoid closing resources (boiler plate code)
         List<User> users = new ArrayList<>();
         // Step 1: Establishing a Connection
+
         try (
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
@@ -107,23 +106,31 @@ public class UserDAO implements IUserDAO{
     }
 
     public boolean deleteUser(int id) throws SQLException {
-        boolean rowDeleted;
-        try (PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
+        boolean rowDeleted = false;
+        try {
+            Connection connection = baseRepository.getConnection();
+            PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);
             statement.setInt(1, id);
             rowDeleted = statement.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return rowDeleted;
     }
 
     public boolean updateUser(User user) throws SQLException {
-        boolean rowUpdated;
-        try (PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+        boolean rowUpdated = false;
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
             statement.setInt(4, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
+        }   catch (SQLException e) {
+            printSQLException(e);
         }
         return rowUpdated;
     }
@@ -144,9 +151,9 @@ public class UserDAO implements IUserDAO{
         }
     }
 
-    @Override
     public ArrayList<User> searchUsers(String searchName) throws SQLException {
         ArrayList<User> users = new ArrayList<>();
+        Connection connection = baseRepository.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USER_MYSQL);
         preparedStatement.setString(1, searchName);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -159,5 +166,25 @@ public class UserDAO implements IUserDAO{
         }
         return users;
     }
+
+    public ArrayList<User> sortUsers() throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        PreparedStatement  statement = connection.prepareStatement(SORT_USERS_SQL);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            int id = resultSet.getInt("id");
+            String userName = resultSet.getString("name");
+            String email = resultSet.getString("email");
+            String country = resultSet.getString("country");
+            users.add(new User(id, userName, email, country));
+        }
+        return users;
+    }
+
+//    public void sortUsers() throws SQLException {
+//        ArrayList<User> users = new ArrayList<>();
+//        PreparedStatement preparedStatement = connection.prepareStatement(SORT_USERS_SQL);
+//        preparedStatement.executeQuery(SORT_USERS_SQL);
+//    }
 }
 

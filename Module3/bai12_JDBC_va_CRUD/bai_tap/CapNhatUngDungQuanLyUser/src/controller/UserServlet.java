@@ -37,6 +37,12 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+//                case "sort":
+//                    sortUsers(request, response);
+//                    break;
+                default:
+                    listUser(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -63,6 +69,9 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "search":
                     searchUser(request, response);
+                    break;
+                case "sort":
+                    sortUsers(request, response);
                     break;
                 default:
                     listUser(request, response);
@@ -142,5 +151,12 @@ public class UserServlet extends HttpServlet {
         else {
             response.sendRedirect("error.jsp");
         }
+    }
+
+    private void sortUsers(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        List<User> listUser = userDAO.sortUsers();
+        request.setAttribute("listUser", listUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
+        dispatcher.forward(request, response);
     }
 }
