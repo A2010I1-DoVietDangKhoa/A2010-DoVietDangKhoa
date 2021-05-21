@@ -198,22 +198,18 @@ public class UserDAO implements IUserDAO{
     }
 
     public void addUserTransaction(User user, int[] permisions) {
-
-        Connection conn = null;
-        PreparedStatement pstmt = null;
+        PreparedStatement preparedStatement = null;
         PreparedStatement pstmtAssignment = null;
         ResultSet rs = null;
-
         try {
 
-            conn = baseRepository.getConnection();
-            conn.setAutoCommit(false);
-            pstmt = conn.prepareStatement(INSERT_USERS_SQL, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, user.getName());
-            pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getCountry());
-            int rowAffected = pstmt.executeUpdate();
-            rs = pstmt.getGeneratedKeys();
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getCountry());
+            int rowAffected = preparedStatement.executeUpdate();
+            rs = preparedStatement.getGeneratedKeys();
             int userId = 0;
             if (rs.next())
                 userId = rs.getInt(1);
@@ -225,23 +221,20 @@ public class UserDAO implements IUserDAO{
 
                         + "VALUES(?,?)";
 
-                pstmtAssignment = conn.prepareStatement(sqlPivot);
+                pstmtAssignment = connection.prepareStatement(sqlPivot);
 
                 for (int permisionId : permisions) {
-
                     pstmtAssignment.setInt(1, userId);
-
                     pstmtAssignment.setInt(2, permisionId);
-
                     pstmtAssignment.executeUpdate();
 
                 }
 
-                conn.commit();
+                connection.commit();
 
             } else {
 
-                conn.rollback();
+                connection.rollback();
 
             }
 
@@ -250,9 +243,9 @@ public class UserDAO implements IUserDAO{
 
             try {
 
-                if (conn != null)
+                if (connection != null)
 
-                    conn.rollback();
+                    connection.rollback();
 
             } catch (SQLException e) {
 
@@ -268,11 +261,11 @@ public class UserDAO implements IUserDAO{
 
                 if (rs != null) rs.close();
 
-                if (pstmt != null) pstmt.close();
+                if (preparedStatement != null) preparedStatement.close();
 
                 if (pstmtAssignment != null) pstmtAssignment.close();
 
-                if (conn != null) conn.close();
+                if (connection != null) connection.close();
 
             } catch (SQLException e) {
 
