@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.User;
 import repository.BaseRepository;
@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements IUserDAO{
+public class UserServiceImpl implements UserService {
 
     private BaseRepository baseRepository = new BaseRepository();
     private Connection connection = baseRepository.getConnection();
@@ -22,7 +22,7 @@ public class UserDAO implements IUserDAO{
     private static final String SEARCH_USER_MYSQL = "select * from users where country = ?";
     private static final String SORT_USERS_SQL = "select * from users ORDER BY name";
 
-    public UserDAO() {
+    public UserServiceImpl() {
     }
 
 //    protected Connection getConnection() {
@@ -58,8 +58,8 @@ public class UserDAO implements IUserDAO{
         User user = null;
         // Step 1: Establishing a Connection
         try (
-             // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
+                // Step 2:Create a statement using connection object
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
@@ -107,23 +107,23 @@ public class UserDAO implements IUserDAO{
 
     public List<User> selectAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        //Connection connection = baseRepository.getConnection();
+        Connection connection = baseRepository.getConnection();
         CallableStatement callableStatement = connection.prepareCall("{call get_all_user()}");
         ResultSet resultSet = callableStatement.executeQuery();
         while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String email = resultSet.getString("email");
-                String country = resultSet.getString("country");
-                users.add(new User(id, name, email, country));
-            }
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String email = resultSet.getString("email");
+            String country = resultSet.getString("country");
+            users.add(new User(id, name, email, country));
+        }
         return users;
     }
 
     public boolean deleteUser(int id) throws SQLException {
         boolean rowDeleted = false;
         try {
-            //Connection connection = baseRepository.getConnection();
+            Connection connection = baseRepository.getConnection();
             //PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);
             CallableStatement statement = connection.prepareCall("{call delete_user_by_id(?)}");
             statement.setInt(1, id);
@@ -195,6 +195,86 @@ public class UserDAO implements IUserDAO{
             users.add(new User(id, userName, email, country));
         }
         return users;
+    }
+
+    public void addUserTransaction(User user, int[] permisions) {
+        PreparedStatement preparedStatement = null;
+        PreparedStatement pstmtAssignment = null;
+        ResultSet rs = null;
+        try {
+
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getCountry());
+            int rowAffected = preparedStatement.executeUpdate();
+            rs = preparedStatement.getGeneratedKeys();
+            int userId = 0;
+            if (rs.next())
+                userId = rs.getInt(1);
+
+            if (rowAffected == 1) {
+
+
+                String sqlPivot = "INSERT INTO user_permision(user_id,permision_id) "
+
+                        + "VALUES(?,?)";
+
+                pstmtAssignment = connection.prepareStatement(sqlPivot);
+
+                for (int permisionId : permisions) {
+                    pstmtAssignment.setInt(1, userId);
+                    pstmtAssignment.setInt(2, permisionId);
+                    pstmtAssignment.executeUpdate();
+
+                }
+
+                connection.commit();
+
+            } else {
+
+                connection.rollback();
+
+            }
+
+        } catch (SQLException ex) {
+
+
+            try {
+
+                if (connection != null)
+
+                    connection.rollback();
+
+            } catch (SQLException e) {
+
+                System.out.println(e.getMessage());
+
+            }
+
+            System.out.println(ex.getMessage());
+
+        } finally {
+
+            try {
+
+                if (rs != null) rs.close();
+
+                if (preparedStatement != null) preparedStatement.close();
+
+                if (pstmtAssignment != null) pstmtAssignment.close();
+
+                if (connection != null) connection.close();
+
+            } catch (SQLException e) {
+
+                System.out.println(e.getMessage());
+
+            }
+
+        }
+
     }
 
 //    public void sortUsers() throws SQLException {

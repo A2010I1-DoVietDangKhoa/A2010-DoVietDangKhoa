@@ -1,6 +1,6 @@
 package controller;
 
-import dao.UserDAO;
+import service.UserServiceImpl;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -17,10 +17,10 @@ import java.util.List;
 @WebServlet(name = "UserServlet", urlPatterns = {"/users", "/"})
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private UserDAO userDAO;
+    private UserServiceImpl userDAO;
 
     public void init() {
-        userDAO = new UserDAO();
+        userDAO = new UserServiceImpl();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,4 +1,4 @@
-package dao;
+package service;
 
 import model.User;
 import repository.BaseRepository;
@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements IUserDAO{
+public class UserServiceImpl implements UserService {
 
     private BaseRepository baseRepository = new BaseRepository();
     private Connection connection = baseRepository.getConnection();
@@ -22,7 +22,7 @@ public class UserDAO implements IUserDAO{
     private static final String SEARCH_USER_MYSQL = "select * from users where country = ?";
     private static final String SORT_USERS_SQL = "select * from users ORDER BY name";
 
-    public UserDAO() {
+    public UserServiceImpl() {
     }
 
 //    protected Connection getConnection() {
@@ -195,86 +195,6 @@ public class UserDAO implements IUserDAO{
             users.add(new User(id, userName, email, country));
         }
         return users;
-    }
-
-    public void addUserTransaction(User user, int[] permisions) {
-        PreparedStatement preparedStatement = null;
-        PreparedStatement pstmtAssignment = null;
-        ResultSet rs = null;
-        try {
-
-            connection.setAutoCommit(false);
-            preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
-            preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
-            int rowAffected = preparedStatement.executeUpdate();
-            rs = preparedStatement.getGeneratedKeys();
-            int userId = 0;
-            if (rs.next())
-                userId = rs.getInt(1);
-
-            if (rowAffected == 1) {
-
-
-                String sqlPivot = "INSERT INTO user_permision(user_id,permision_id) "
-
-                        + "VALUES(?,?)";
-
-                pstmtAssignment = connection.prepareStatement(sqlPivot);
-
-                for (int permisionId : permisions) {
-                    pstmtAssignment.setInt(1, userId);
-                    pstmtAssignment.setInt(2, permisionId);
-                    pstmtAssignment.executeUpdate();
-
-                }
-
-                connection.commit();
-
-            } else {
-
-                connection.rollback();
-
-            }
-
-        } catch (SQLException ex) {
-
-
-            try {
-
-                if (connection != null)
-
-                    connection.rollback();
-
-            } catch (SQLException e) {
-
-                System.out.println(e.getMessage());
-
-            }
-
-            System.out.println(ex.getMessage());
-
-        } finally {
-
-            try {
-
-                if (rs != null) rs.close();
-
-                if (preparedStatement != null) preparedStatement.close();
-
-                if (pstmtAssignment != null) pstmtAssignment.close();
-
-                if (connection != null) connection.close();
-
-            } catch (SQLException e) {
-
-                System.out.println(e.getMessage());
-
-            }
-
-        }
-
     }
 
 //    public void sortUsers() throws SQLException {

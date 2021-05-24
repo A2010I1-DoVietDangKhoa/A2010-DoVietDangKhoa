@@ -1,4 +1,4 @@
-package service;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class BaseRepository {
     private Connection connection;
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/codegym_management";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "Khoadvd48!";
+    private String jdbcPassword = "12345678";
 
     public BaseRepository() {
         try {
