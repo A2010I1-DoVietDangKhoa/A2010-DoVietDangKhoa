@@ -2,7 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Employees list</title>
+    <title>Customers list</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
@@ -11,12 +12,11 @@
     <jsp:include page="header.jsp"/>
 </div>
 
-<h2 style="text-align: center; padding-top: 2%; padding-bottom: 1%">View Employees</h2>
-
+<h2 style="text-align: center; padding-top: 2%; padding-bottom: 1%">View Customers</h2>
 <div class="container-fluid" align="right">
     <form method="get" action="/customers?action=create">
         <input type="hidden" name="action" value="search">
-        <label>Search employee's name: </label><input type="text" name="key">
+        <label>Search user's country: </label><input type="text" name="key">
         <button type="submit" class="btn-primary">Search</button>
     </form>
 </div>
@@ -28,38 +28,33 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Birthday</th>
-            <th>Education</th>
-            <th>Division</th>
-            <th>Position</th>
             <th>Personal ID</th>
             <th>Phone</th>
             <th>Email</th>
             <th>Address</th>
-            <th>Salary</th>
+            <th>Gender</th>
+            <th>Type</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="employee" items="${listEmployee}">
+        <c:forEach var="customer" items="${searchResult}">
             <tr>
-                <td><c:out value="${employee.getId()}"></c:out></td>
-                <td><c:out value="${employee.getFirstName()}"></c:out></td>
-                <td><c:out value="${employee.getLastName()}"></c:out></td>
-                <td><c:out value="${employee.getDateOfBirth()}"></c:out></td>
-                <td><c:out value="${employee.getEducation()}"></c:out></td>
-                <td><c:out value="${employee.getDivision()}"></c:out></td>
-                <td><c:out value="${employee.getPosition()}"></c:out></td>
-                <td><c:out value="${employee.getPersonalID()}"></c:out></td>
-                <td><c:out value="${employee.getPhoneNumber()}"></c:out></td>
-                <td><c:out value="${employee.getEmail()}"></c:out></td>
-                <td><c:out value="${employee.getAddress()}"></c:out></td>
-                <td><c:out value="${employee.getSalary()}"></c:out></td>
-                <td><button class="btn-primary"><a style="color:white;" href="/employees?action=edit&id=${employee.getId()}">Edit</a></button></td>
-<%--                <td><button class="btn-danger"><a style="color:white;" href="/?action=delete&id=${employee.getId()}">Delete</a></button></td>--%>
+                <td><c:out value="${customer.getId()}"></c:out></td>
+                <td><c:out value="${customer.getFirstName()}"></c:out></td>
+                <td><c:out value="${customer.getLastName()}"></c:out></td>
+                <td><c:out value="${customer.getDateOfBirth()}"></c:out></td>
+                <td><c:out value="${customer.getPersonalID()}"></c:out></td>
+                <td><c:out value="${customer.getPhoneNumber()}"></c:out></td>
+                <td><c:out value="${customer.getEmail()}"></c:out></td>
+                <td><c:out value="${customer.getAddress()}"></c:out></td>
+                <td><c:out value="${customer.getGender()}"></c:out></td>
+                <td><c:out value="${customer.getCustomerType()}"></c:out></td>
+                <td><button class="btn-primary"><a style="color: white" href="/customers?action=edit&id=${customer.getId()}">Edit</a></button></td>
                 <td>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Delete
+                        <a style="color:white;" href="/customers?action=delete&id=${customer.getId()}">Delete</a>
                     </button>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -70,12 +65,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Delete employee?
+                                    Delete customer?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-danger">
-                                        <a style="color:white;" href="/employees?action=delete&id=${employee.getId()}">Delete</a></button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -86,10 +80,9 @@
         </tbody>
     </table>
     <button type="button" class="btn btn-outline-dark" style="float: right; text-decoration: none; color: red">
-        <a href="/employees?action=create" style="text-decoration: none">Create employee</a>
+        <a href="/?action=create" style="text-decoration: none">Create customer</a>
     </button>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

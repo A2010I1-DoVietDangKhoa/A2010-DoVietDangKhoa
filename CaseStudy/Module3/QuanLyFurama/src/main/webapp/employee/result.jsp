@@ -13,13 +13,6 @@
 
 <h2 style="text-align: center; padding-top: 2%; padding-bottom: 1%">View Employees</h2>
 
-<div class="container-fluid" align="right">
-    <form method="get" action="/customers?action=create">
-        <input type="hidden" name="action" value="search">
-        <label>Search employee's name: </label><input type="text" name="key">
-        <button type="submit" class="btn-primary">Search</button>
-    </form>
-</div>
 <div class="container-fluid">
     <table class="table">
         <thead class="table-dark">
@@ -41,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="employee" items="${listEmployee}">
+        <c:forEach var="employee" items="${searchResult}">
             <tr>
                 <td><c:out value="${employee.getId()}"></c:out></td>
                 <td><c:out value="${employee.getFirstName()}"></c:out></td>
@@ -56,10 +49,10 @@
                 <td><c:out value="${employee.getAddress()}"></c:out></td>
                 <td><c:out value="${employee.getSalary()}"></c:out></td>
                 <td><button class="btn-primary"><a style="color:white;" href="/employees?action=edit&id=${employee.getId()}">Edit</a></button></td>
-<%--                <td><button class="btn-danger"><a style="color:white;" href="/?action=delete&id=${employee.getId()}">Delete</a></button></td>--%>
+                    <%--                <td><button class="btn-danger"><a style="color:white;" href="/?action=delete&id=${employee.getId()}">Delete</a></button></td>--%>
                 <td>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Delete
+                        <a style="color:white;" href="/employees?action=delete&id=${employee.getId()}">Delete</a>
                     </button>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,8 +67,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-danger">
-                                        <a style="color:white;" href="/employees?action=delete&id=${employee.getId()}">Delete</a></button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>

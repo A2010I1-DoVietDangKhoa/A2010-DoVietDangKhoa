@@ -67,9 +67,9 @@ public class CustomerServlet extends HttpServlet {
                 case "delete":
                     deleteCustomer(request, response);
                     break;
-//                case "search":
-//                    searchUser(request, response);
-//                    break;
+                case "search":
+                    searchCustomer(request, response);
+                    break;
 //                case "sort":
 //                    sortUsers(request, response);
 //                    break;
@@ -165,12 +165,13 @@ public class CustomerServlet extends HttpServlet {
         else {
             checkColumn++;
         }
+        dispatcher.forward(request, response);
         if(checkColumn == 5) {
             customerService.insertCustomer(customer);
             request.getRequestDispatcher("customer/create.jsp");
+            dispatcher.forward(request, response);
             response.sendRedirect("/employees");
         }
-        dispatcher.forward(request, response);
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response)
@@ -245,11 +246,19 @@ public class CustomerServlet extends HttpServlet {
         else {
             checkColumn++;
         }
+        dispatcher.forward(request, response);
         if(checkColumn == 5) {
             customerService.updateCustomer(customer);
             request.getRequestDispatcher("customer/edit.jsp");
+            dispatcher.forward(request, response);
             response.sendRedirect("/customers");
         }
-        dispatcher.forward(request, response);
+    }
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String searchName = request.getParameter("key").toLowerCase();
+        ArrayList<Customer> searchResult = customerService.searchCustomers(searchName);
+        request.setAttribute("searchResult", searchResult);
+        request.getRequestDispatcher("customer/result.jsp").forward(request, response);
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import common.InputChecker;
+import model.Customer;
 import model.Employee;
 import service.EmployeeService;
 import service.EmployeeServiceImpl;
@@ -67,9 +68,9 @@ public class EmployeeServlet extends HttpServlet {
                 case "delete":
                     deleteEmployee(request, response);
                     break;
-//                case "search":
-//                    searchUser(request, response);
-//                    break;
+                case "search":
+                    searchEmployee(request, response);
+                    break;
 //                case "sort":
 //                    sortUsers(request, response);
 //                    break;
@@ -182,12 +183,13 @@ public class EmployeeServlet extends HttpServlet {
         else {
             checkColumn++;
         }
+        dispatcher.forward(request, response);
         if(checkColumn == 6) {
             employeeService.insertEmployee(employee);
             request.getRequestDispatcher("employee/create.jsp");
+            dispatcher.forward(request, response);
             response.sendRedirect("/employees");
         }
-        dispatcher.forward(request, response);
     }
 
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
@@ -286,10 +288,18 @@ public class EmployeeServlet extends HttpServlet {
         else {
             checkColumn++;
         }
+        dispatcher.forward(request, response);
         if(checkColumn == 6) {
             employeeService.updateEmployee(employee);
             request.getRequestDispatcher("employee/edit.jsp");
+            dispatcher.forward(request, response);
         }
-        dispatcher.forward(request, response);
+    }
+
+    private void searchEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String searchName = request.getParameter("key").toLowerCase();
+        ArrayList<Employee> searchResult = employeeService.searchEmployees(searchName);
+        request.setAttribute("searchResult", searchResult);
+        request.getRequestDispatcher("employee/result.jsp").forward(request, response);
     }
 }

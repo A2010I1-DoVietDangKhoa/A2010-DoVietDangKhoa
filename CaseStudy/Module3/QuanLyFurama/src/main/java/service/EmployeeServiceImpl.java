@@ -40,6 +40,8 @@ public class EmployeeServiceImpl implements EmployeeService{
             "employee_card = ?, employee_salary = ?, employee_phone = ?, employee_email = ?, employee_address = ?" +
             "where employee_id = ?";
 
+    private static final String SEARCH_EMPLOYEE_BY_NAME = "select * from employee where employee_lastname = ?";
+
     @Override
     public void insertEmployee(Employee employee) {
         try {
@@ -237,8 +239,18 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public ArrayList<Employee> searchEmployees(String name) throws SQLException {
-        return null;
+    public ArrayList<Employee> searchEmployees(String searchName) throws SQLException {
+        ArrayList<Employee> employees = new ArrayList<>();
+        Connection connection = baseRepository.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_EMPLOYEE_BY_NAME);
+        preparedStatement.setString(1, searchName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            Employee employee = new Employee();
+            createEmployeeFromDB(employee, resultSet);
+            employees.add(employee);
+        }
+        return employees;
     }
 
     @Override

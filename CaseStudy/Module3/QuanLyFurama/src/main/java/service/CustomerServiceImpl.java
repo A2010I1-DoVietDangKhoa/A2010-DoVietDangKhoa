@@ -3,6 +3,7 @@ package service;
 import model.Customer;
 import repository.BaseRepository;
 
+import javax.crypto.SealedObject;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class CustomerServiceImpl implements CustomerService{
             " customer_card = ?, customer_phone = ?,\n" +
             " customer_email = ?, customer_address = ?, customer_gender = ?\n" +
             "WHERE customer_id = ?";
+
+    private static final String SEARCH_CUSTOMER_BY_NAME = "select * from customer where customer_lastname = ?";
 
     public CustomerServiceImpl() {
     }
@@ -127,8 +130,8 @@ public class CustomerServiceImpl implements CustomerService{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER_INFO);
             ResultSet resultSet = preparedStatement.executeQuery();
-            Customer customer = new Customer();
             while (resultSet.next()){
+                Customer customer = new Customer();
                 createCustomerFromDB(resultSet, customer);
                 customers.add(customer);
             }
@@ -196,8 +199,18 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public ArrayList<Customer> searchCustomers(String name) throws SQLException {
-        return null;
+    public ArrayList<Customer> searchCustomers(String searchName) throws SQLException {
+        ArrayList<Customer> customers = new ArrayList<>();
+        Connection connection = baseRepository.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMER_BY_NAME);
+        preparedStatement.setString(1, searchName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            Customer customer = new Customer();
+            createCustomerFromDB(resultSet, customer);
+            customers.add(customer);
+        }
+        return customers;
     }
 
     @Override
