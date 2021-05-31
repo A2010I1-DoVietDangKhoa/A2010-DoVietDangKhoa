@@ -81,7 +81,7 @@
         </tbody>
     </table>
     <button type="button" class="btn btn-outline-dark" style="float: right; text-decoration: none; color: red">
-        <a href="/?action=create" style="text-decoration: none">Create customer</a>
+        <a href="/customers?action=create" style="text-decoration: none">Create customer</a>
     </button>
 </div>
 

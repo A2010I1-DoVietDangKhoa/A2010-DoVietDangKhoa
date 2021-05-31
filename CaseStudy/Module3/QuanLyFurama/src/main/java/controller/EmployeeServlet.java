@@ -237,6 +237,7 @@ public class EmployeeServlet extends HttpServlet {
         employee.setEmail(email);
         employee.setAddress(address);
         employee.setSalary(salary);
+
 //        request.setAttribute("firstname", firstName);
 //        request.setAttribute("lastname", lastName);
 //        request.setAttribute("email", email);
@@ -288,12 +289,14 @@ public class EmployeeServlet extends HttpServlet {
         else {
             checkColumn++;
         }
-        dispatcher.forward(request, response);
+        //dispatcher.forward(request, response);
         if(checkColumn == 6) {
             employeeService.updateEmployee(employee);
             request.getRequestDispatcher("employee/edit.jsp");
-            dispatcher.forward(request, response);
+            //dispatcher.forward(request, response);
+            //response.sendRedirect("/employees");
         }
+        dispatcher.forward(request, response);
     }
 
     private void searchEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputChecker {
-    private static final Pattern NAME_PATTERN = Pattern.compile("([A-Z])[a-z ]+");
+    private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Z].*");
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[\\w]*(@)[a-zA-z]+(.)[a-zA-Z]+");
     private static final Pattern ID_PATTERN = Pattern.compile("[0-9]{9}");
     private static final Pattern PHONE_PATTERN_1 = Pattern.compile("(091)[0-9]{7}");
@@ -20,13 +20,18 @@ public class InputChecker {
     }
 
     public boolean nameCheck(String name){
-        Matcher matcher = NAME_PATTERN.matcher(name);
-        if(matcher.matches()){
-            return true;
+        String[] list = name.split(" ");
+        Matcher matcher;
+        boolean check = false;
+        for (int i = 0; i < list.length; i++) {
+            matcher = NAME_PATTERN.matcher(list[i]);
+            if (matcher.matches()) {
+                check = true;
+            } else {
+                check = false;
+            }
         }
-        else {
-            return false;
-        }
+        return check;
     }
 
     public boolean idCheck(String id){

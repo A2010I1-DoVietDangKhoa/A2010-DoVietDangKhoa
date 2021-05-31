@@ -23,7 +23,7 @@
         <!--body-->
         <div class="col-lg-10">
             <legend style="text-align: center">EDIT EMPLOYEE</legend>
-            <form action="/employees?action=edit?id=${employee.getId()}" method="post" style="margin-top: 7%">
+            <form action="/employees?action=edit&id=${employee.getId()}" method="post" style="margin-top: 7%">
                 <div class="row" style="justify-content: center">
                     <div class="col-lg-4" style="margin-right: 3%">
                         <select class="form-select" aria-label="Default select example" name="education">

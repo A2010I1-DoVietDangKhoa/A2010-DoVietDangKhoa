@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService{
             "employee_card = ?, employee_salary = ?, employee_phone = ?, employee_email = ?, employee_address = ?" +
             "where employee_id = ?";
 
-    private static final String SEARCH_EMPLOYEE_BY_NAME = "select * from employee where employee_lastname = ?";
+    private static final String SEARCH_EMPLOYEE_BY_NAME = "select * from employee where employee_lastname =" + '%' + '?' + '%';
 
     @Override
     public void insertEmployee(Employee employee) {

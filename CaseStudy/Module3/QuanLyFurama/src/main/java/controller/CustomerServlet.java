@@ -209,6 +209,7 @@ public class CustomerServlet extends HttpServlet {
         customer.setAddress(address);
         customer.setCustomerType(type);
         customer.setGender(gender);
+
         request.setAttribute("customer", customer);
         int checkColumn = 0;
         if(!inputChecker.emailCheck(email) || email == null){
@@ -246,13 +247,11 @@ public class CustomerServlet extends HttpServlet {
         else {
             checkColumn++;
         }
-        dispatcher.forward(request, response);
         if(checkColumn == 5) {
             customerService.updateCustomer(customer);
             request.getRequestDispatcher("customer/edit.jsp");
-            dispatcher.forward(request, response);
-            response.sendRedirect("/customers");
         }
+        dispatcher.forward(request, response);
     }
 
     private void searchCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

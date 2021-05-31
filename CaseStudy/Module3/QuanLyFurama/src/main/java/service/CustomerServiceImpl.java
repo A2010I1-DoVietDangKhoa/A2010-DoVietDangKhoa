@@ -38,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService{
             " customer_email = ?, customer_address = ?, customer_gender = ?\n" +
             "WHERE customer_id = ?";
 
-    private static final String SEARCH_CUSTOMER_BY_NAME = "select * from customer where customer_lastname = ?";
+    private static final String SEARCH_CUSTOMER_BY_NAME = "select * from customer where customer_lastname =" + '%' + '?' + '%';
 
     public CustomerServiceImpl() {
     }
