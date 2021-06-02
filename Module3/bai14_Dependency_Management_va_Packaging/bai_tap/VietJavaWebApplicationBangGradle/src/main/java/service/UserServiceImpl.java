@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
         return rowDeleted;
     }
 
-    public boolean updateUser(User user) throws SQLException {
+    public boolean updateUser(User user) {
         boolean rowUpdated = false;
         try {
             CallableStatement callableStatement = connection.prepareCall("{call update_user_by_id(?, ?, ? ,?)}");
