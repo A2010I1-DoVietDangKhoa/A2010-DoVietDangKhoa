@@ -1,26 +1,34 @@
 package controller;
 
-import org.springframework.ui.ModelMap;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-
+@Controller
 public class CalculatorServlet {
-    @GetMapping("/calculates")
-    public ModelAndView showList(@RequestParam String input) {
-        ModelAndView modelAndView = new ModelAndView("calculate");
-        String result;
-        if (!isInteger(input) || input == null){
-            result = "Please input a valid number.";
+    @GetMapping("/")
+    public String getForm() {
+        return "index";
+    }
+
+    @GetMapping("/exchange")
+    public String convert(@RequestParam String rate, @RequestParam String usd, Model model) {
+        if(!isInteger(rate) || !isInteger(usd) || rate == null || usd == null){
+            String result = "Please input valid numbers.";
+            model.addAttribute("rate", rate);
+            model.addAttribute("usd", usd);
+            model.addAttribute("result", result);
         }
         else {
-            int amount = Integer.parseInt(input);
-            int converted = amount * 22000;
-            result = String.valueOf(converted);
+            int usdNum = Integer.parseInt(usd);
+            int rateNum = Integer.parseInt(rate);
+            int vnd = usdNum * rateNum;
+            model.addAttribute("rate", rate);
+            model.addAttribute("usd", usd);
+            model.addAttribute("vnd", vnd);
         }
-        modelAndView.addObject("result", result);
-        return modelAndView;
+        return "index";
     }
 
     public boolean isInteger(String strNum) {
