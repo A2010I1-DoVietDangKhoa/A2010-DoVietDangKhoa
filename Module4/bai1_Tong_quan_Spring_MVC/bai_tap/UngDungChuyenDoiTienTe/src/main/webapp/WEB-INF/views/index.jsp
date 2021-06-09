@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Currency Converter</h1><br>
-<form action="/exchange">
+<form action="/exchange", method="get">
       <label>Exchange Rate: </label>
       <input type="text" name="rate" id="exchange-rate" value="${rate}"><br>
       <label>USD: </label>

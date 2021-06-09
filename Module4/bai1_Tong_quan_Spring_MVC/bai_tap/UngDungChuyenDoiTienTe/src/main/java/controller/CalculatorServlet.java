@@ -3,16 +3,18 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalculatorServlet {
-    @GetMapping("/")
+    @GetMapping(value = "/")
     public String getForm() {
         return "index";
     }
 
-    @GetMapping("/exchange")
+    @GetMapping(value = "/exchange")
     public String convert(@RequestParam String rate, @RequestParam String usd, Model model) {
         if(!isInteger(rate) || !isInteger(usd) || rate == null || usd == null){
             String result = "Please input valid numbers.";
