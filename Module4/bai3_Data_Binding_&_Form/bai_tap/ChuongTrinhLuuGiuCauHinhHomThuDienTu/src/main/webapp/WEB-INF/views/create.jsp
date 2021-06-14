@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Create</h1>
-    <form:form modelAttribute="mailSetting" method="post">
+<%--    <a href="${s:mvcUrl('MailSettingController')}"></a>--%>
+    <form:form modelAttribute="mailSetting" action="/create" method="post">
         <label>Id: </label><form:input path="id"/><br><br>
         <label>Language: </label>
         <form:select path="language">
@@ -26,6 +27,12 @@
             <form:option value="50" label="50"/>
             <form:option value="100" label="100"/>
         </form:select><br><br>
+        <label>Spams filter: </label>
+        <form:hidden path="filter" value="false"/>
+        <form:checkbox path="filter" value="true" label="Enable spams filter"/><br><br>
+        <label>Signature: </label>
+        <form:input path="signature"/><br><br>
+        <button type="submit">Create</button><button><a href="/">Cancel</a></button>
     </form:form>
 </body>
 </html>

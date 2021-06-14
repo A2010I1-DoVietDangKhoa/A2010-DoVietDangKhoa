@@ -9,6 +9,10 @@
 <body>
 
     <h1>Mail Settings List</h1>
+
+    <c:if test='${requestScope["result"] != null}'>
+        <span style="color: deepskyblue" class="message">${requestScope["result"]}</span>
+    </c:if>
     <form:form method="get">
         <table>
             <tr>
