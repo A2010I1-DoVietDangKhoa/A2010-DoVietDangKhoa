@@ -6,17 +6,18 @@ import org.springframework.stereotype.Service;
 import model.MailSetting;
 import repository.MailSettingRepository;
 
+import java.util.List;
+
 @Service
 public class MailSettingServiceImpl implements MailSettingService{
-    private MailSettingService mailSettingService;
 
     @Autowired
     private MailSettingRepository mailSettingRepository;
 
-    @Bean
-    public MailSettingService mailSettingService(){
-        return new MailSettingServiceImpl();
-    }
+//    @Bean
+//    public MailSettingService mailSettingService(){
+//        return new MailSettingServiceImpl();
+//    }
 
     @Override
     public void add(MailSetting mailSetting) {
@@ -26,5 +27,17 @@ public class MailSettingServiceImpl implements MailSettingService{
     @Override
     public void update(MailSetting mailSetting) {
 
+    }
+
+    public List<MailSetting> getAll(){
+        return mailSettingRepository.getAll();
+    }
+
+    public MailSetting getById(int id){
+        return mailSettingRepository.getById(id);
+    }
+
+    public void updateMailSetting(int id, MailSetting mailSetting){
+        mailSettingRepository.updateMailSetting(id, mailSetting);
     }
 }

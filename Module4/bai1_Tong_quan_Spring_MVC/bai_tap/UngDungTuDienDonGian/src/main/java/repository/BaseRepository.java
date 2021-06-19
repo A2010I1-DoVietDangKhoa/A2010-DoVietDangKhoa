@@ -11,10 +11,10 @@ public class BaseRepository {
     private HashMap<String, String> dictionary = new HashMap<String, String>();
     //private BaseRepository baseRepository;
 
-//    @Bean
-//    public BaseRepository baseRepository(){
-//        return new BaseRepository();
-//    }
+    @Bean
+    public BaseRepository baseRepository(){
+        return new BaseRepository();
+    }
 
     public String getDefinition(String word){
         return dictionary.get(word.toLowerCase());

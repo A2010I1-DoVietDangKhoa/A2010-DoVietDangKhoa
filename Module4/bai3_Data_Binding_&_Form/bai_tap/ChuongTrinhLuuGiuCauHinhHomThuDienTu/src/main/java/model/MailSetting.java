@@ -19,6 +19,14 @@ public class MailSetting {
     public MailSetting() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getLanguage() {
         return language;
     }
@@ -31,19 +39,11 @@ public class MailSetting {
         return size;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setSize(int size) {
         this.size = size;
     }
 
-    public boolean isFilter() {
+    public boolean getFilter() {
         return filter;
     }
 

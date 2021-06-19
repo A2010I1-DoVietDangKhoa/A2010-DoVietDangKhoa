@@ -10,9 +10,9 @@
 
     <h1>Mail Settings List</h1>
 
-    <c:if test='${requestScope["result"] != null}'>
-        <span style="color: deepskyblue" class="message">${requestScope["result"]}</span>
-    </c:if>
+<%--    <c:if test='${requestScope["result"] != null}'>--%>
+<%--        <span style="color: deepskyblue" class="message">${requestScope["result"]}</span>--%>
+<%--    </c:if>--%>
     <form:form method="get">
         <table>
             <tr>
@@ -30,14 +30,14 @@
                     <td><c:out value="${mailSetting.getSize()}"></c:out></td>
                     <td><c:choose>
                         <c:when test = "${mailSetting.getFilter() == true}">
-                            ON
+                            <c:out value="ON"></c:out>
                         </c:when>
                         <c:otherwise>
-                            OFF
+                            <c:out value="OFF"></c:out>
                         </c:otherwise>
                     </c:choose></td>
-                    <td><c:out value="${mailSetting.getSigature()}"></c:out></td>
-                    <td><button><a href="/edit">Edit</a></button></td>
+                    <td><c:out value="${mailSetting.getSignature()}"></c:out></td>
+                    <td><button><a href="/edit/${mailSetting.getId()}">Edit</a></button></td>
                 </tr>
             </c:forEach>
         </table>
