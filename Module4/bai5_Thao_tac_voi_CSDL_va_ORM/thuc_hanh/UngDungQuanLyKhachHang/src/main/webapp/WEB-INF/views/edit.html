@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${product}" method="post">
+    <table>
+        <tr>
+            <td>
+                <input type="hidden" th:value="${product.getProductId()}" th:field="*{productId}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Name
+                    <input type="text" th:value="${product.getProductName()}" th:field="*{productName}"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Description:
+                    <input type="text" th:value="${product.getProductDesc()}" th:field="*{productDesc}">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Price:
+                    <input type="number" th:value="${product.getProductPrice()}" th:field="*{productPrice}">
+                </label>
+            </td>
+        </tr>
+    </table><br>
+    <a th:href="@{/}"><button>Cancel</button></a>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
