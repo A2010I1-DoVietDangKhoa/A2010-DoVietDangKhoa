@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog detail</title>
+</head>
+<body>
+<h1>Blog detail</h1>
+<p>
+    <a href="/">Blogs list</a>
+</p>
+<table>
+    <th:block th:object="${blog}">
+        <tr>
+            <td th:text="${blog.getTitle()}"></td>
+            <td th:text="${blog.getAuthor()}"></td>
+            <td th:text="${blog.getBlogBody()}"></td>
+            <td th:text="${blog.getAuthor()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
