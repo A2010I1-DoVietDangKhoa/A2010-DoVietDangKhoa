@@ -20,17 +20,17 @@ public class User {
     private Integer id;
 
     @Column(name = "first_name")
-    @NotEmpty
+    @NotEmpty(message = "")
     @Size(min = 5, max = 45, message = "Must be 5-45 characters long.")
     private String firstName;
 
     @Column(name = "last_name")
-    @NotEmpty
+    @NotEmpty(message = "")
     @Size(min = 5, max = 45, message = "Must be 5-45 characters long.")
     private String lastName;
 
     @Column(name = "phone")
-    @NotEmpty
+    @NotEmpty(message = "")
     @Pattern(regexp = "[0-9]{9}", message = "Phone number must has 9 digits.")
     private String phone;
 
