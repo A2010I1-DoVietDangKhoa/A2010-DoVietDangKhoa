@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{blogs/create}">Create new blog</a>
+<h1>Blogs</h1>
+
+<form method="post" th:action="@{/blogs/search}">
+    <input type="text" name="name">
+    <button type="submit">Search</button>
+</form>
+
+<form method="post" th:action="@{/blogs}">
+    <select id="category_select">
+        <option name="categoryId" th:each="category : ${categories}" th:value="${category.getId()}" th:text="${category.getName()}">
+        </option>
+    </select>
+    <button id="category_button">Show by category</button>
+</form>
+<table id="blog_list" border="1">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="blog : ${blogs}">
+        <tr>
+            <td><a th:href="@{/detail/__${blog.getId()}__}" th:text="${blog.getTitle()}"></a></td>
+            <td th:text="${blog.getAuthor()}"></td>
+            <td th:text="${blog.getCategory().getName()}"></td>
+            <td><a th:href="@{/edit/__${blog.getId()}__ }">Edit</a></td>
+            <td><a th:href="@{/delete/__${blog.getId()}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#category_button').click(function(){
+            $.ajax({
+                type: 'GET',
+                url: 'blogs?categoryName='+{select:$('#category_select').val()},
+                dataType: 'HTML',
+                success:function (data) {
+                    $('#blog_list').html(data);
+                }
+            })
+            })
+        })
+
+
+</script>
+</body>
+</html>
