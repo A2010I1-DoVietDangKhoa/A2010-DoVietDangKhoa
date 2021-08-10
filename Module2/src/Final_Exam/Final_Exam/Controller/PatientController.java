@@ -160,7 +160,7 @@ public class PatientController {
                 PatientVIP.writePatientVIP(patientVIP);
                 break;
             case 3:
-                Menu.displayMainMenu();
+                Final_Exam.Controller.Menu.displayMainMenu();
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -254,16 +254,16 @@ public class PatientController {
                         break;
                     }
                     else {
-                        Menu.displayMainMenu();
+                        Final_Exam.Controller.Menu.displayMainMenu();
                     }
                 }
             }
             if (!check) {
-                throw new MedicalRecordNotFound();
+                throw new Final_Exam.Controller.MedicalRecordNotFound();
             }
-        }catch (MedicalRecordNotFound m){
+        }catch (Final_Exam.Controller.MedicalRecordNotFound m){
             System.out.println("No case with the input ID found.");
-            Menu.displayMainMenu();
+            Final_Exam.Controller.Menu.displayMainMenu();
         }
     }
 

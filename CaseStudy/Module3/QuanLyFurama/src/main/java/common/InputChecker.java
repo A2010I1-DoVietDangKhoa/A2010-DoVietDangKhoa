@@ -44,6 +44,7 @@ public class InputChecker {
         }
     }
 
+
     public boolean phoneCheck(String phone){
         Matcher matcher1 = PHONE_PATTERN_1.matcher(phone);
         Matcher matcher2 = PHONE_PATTERN_2.matcher(phone);

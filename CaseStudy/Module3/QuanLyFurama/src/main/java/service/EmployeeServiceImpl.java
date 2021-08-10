@@ -35,9 +35,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     private static final String DELETE_EMPLOYEE = "delete from employee where employee_id = ?";
 
     private static final String UPDATE_EMPLOyEE = "update employee" +
-            "set employee_firstname = ?, employee_lastname = ?, fk_position_id = ?, fk_education_id = ?, fk_division_id = ?," +
+            " set  employee_firstname = ?, employee_lastname = ?, fk_position_id = ?, fk_education_id = ?, fk_division_id = ?," +
             " employee_birthday = ?,\n" +
-            "employee_card = ?, employee_salary = ?, employee_phone = ?, employee_email = ?, employee_address = ?" +
+            " employee_card = ?, employee_salary = ?, employee_phone = ?, employee_email = ?, employee_address = ?" +
             "where employee_id = ?";
 
     private static final String SEARCH_EMPLOYEE_BY_NAME = "select * from employee where employee_lastname =" + '%' + '?' + '%';

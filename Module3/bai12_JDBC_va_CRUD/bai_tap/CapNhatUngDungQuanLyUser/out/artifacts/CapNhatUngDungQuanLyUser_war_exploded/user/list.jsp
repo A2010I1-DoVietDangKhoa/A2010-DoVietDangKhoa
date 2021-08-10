@@ -18,7 +18,7 @@
     </form>
 </div>
 <div align="center">
-    <a href="/users?action=sort">sort</a>
+    <a href="/users?action=sort">Sort</a>
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>
         <tr>

@@ -14,7 +14,7 @@
 <h2 style="text-align: center; padding-top: 2%; padding-bottom: 1%">View Employees</h2>
 
 <div class="container-fluid" align="right">
-    <form method="get" action="/customers?action=create">
+    <form method="get" action="/customers?action=search">
         <input type="hidden" name="action" value="search">
         <label>Search employee's name: </label><input type="text" name="key">
         <button type="submit" class="btn-primary">Search</button>

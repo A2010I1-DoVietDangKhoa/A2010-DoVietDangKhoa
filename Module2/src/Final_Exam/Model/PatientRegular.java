@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class PatientRegular extends Patient{
+public class PatientRegular extends Final_Exam.Model.Patient {
     private long fee;
 
     public PatientRegular(int caseNum, String caseID, String patientName, String patientID,

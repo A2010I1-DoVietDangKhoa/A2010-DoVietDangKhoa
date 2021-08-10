@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class PatientVIP extends Patient{
+public class PatientVIP extends Final_Exam.Model.Patient {
     private String vipPackage;
     private String vipDuration;
 

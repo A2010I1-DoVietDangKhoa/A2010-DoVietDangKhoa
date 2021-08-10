@@ -359,4 +359,5 @@ inner join division dv on e.fk_division_id = dv.division_id;
 -- employee_card, employee_salary, employee_phone, employee_email, employee_address)
 -- values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 
+select * from customer where customer_lastname like '%khoa%';
  
