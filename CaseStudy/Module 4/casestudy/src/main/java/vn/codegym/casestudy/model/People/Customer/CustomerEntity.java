@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 import vn.codegym.casestudy.model.People.PeopleEntity;
 
 import javax.persistence.*;
@@ -26,7 +24,8 @@ public class CustomerEntity extends PeopleEntity{
     private Boolean gender;
 
     @Column(name = "customer_code")
-    @Pattern(regexp = "^(KH)[0-9]{4}&", message = "Customer code must follow KH-XXXX format.")
+    @Pattern(regexp = "^KH-\\d{4}$",
+            message = "Customer ID must be in KH-XXXX format.")
     private String customerCode;
 
     @Column(name = "address")

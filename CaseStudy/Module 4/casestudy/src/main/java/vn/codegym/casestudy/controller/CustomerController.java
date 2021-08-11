@@ -15,8 +15,12 @@ import vn.codegym.casestudy.model.People.Customer.CustomerEntity;
 import vn.codegym.casestudy.service.CustomerService;
 import vn.codegym.casestudy.service.CustomerTypeService;
 
-@Controller(value = "/customers")
-@SessionAttributes("user")
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
+@Controller
+@SessionAttributes("accountUser")
+@RequestMapping("/customers")
 public class CustomerController {
     private final CustomerService customerService;
     private final CustomerTypeService customerTypeService;
@@ -28,14 +32,16 @@ public class CustomerController {
         this.customerTypeService = customerTypeService;
     }
 
-    @GetMapping(value = "/list")
-    public String getList(@RequestParam String keyword, @PageableDefault(value = 4) Pageable pageable, Model model){
+    @GetMapping(value = "")
+    public String getList(@RequestParam Optional<String> keyword, @PageableDefault(value = 4) Pageable pageable, Model model){
         Page<CustomerEntity> customers;
-        if (keyword == null) {
-            keyword = "";
+        if (!keyword.isPresent()) {
+            customers = customerService.getList("", pageable);
         }
-        model.addAttribute("key", keyword);
-        customers = customerService.getList(keyword, pageable);
+        else {
+            customers = customerService.getList(keyword.get(), pageable);
+        }
+        model.addAttribute("keyword", keyword);
         model.addAttribute("list", customers);
         return "customers/list";
     }
@@ -85,9 +91,16 @@ public class CustomerController {
         }
     }
 
-    @PostMapping(value = "/delete/{id}")
-    public String delete(RedirectAttributes redirectAttributes, @PathVariable Integer id){
+    @GetMapping(value = "/delete/{id}")
+    public String delete(RedirectAttributes redirectAttributes, @PathVariable("id") Integer id){
         customerService.delete(id);
-        return "redirect:";
+        redirectAttributes.addFlashAttribute("message", "Deleted successfully!");
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/{id}")
+    public String viewCustomer(@PathVariable Integer id, Model model) {
+        model.addAttribute("customer", customerService.getOne(id));
+        return "customers/view";
     }
 }

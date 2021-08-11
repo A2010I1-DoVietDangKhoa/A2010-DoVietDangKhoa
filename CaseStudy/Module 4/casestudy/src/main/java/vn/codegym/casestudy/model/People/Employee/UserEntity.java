@@ -24,7 +24,7 @@ public class UserEntity {
     private String password;
 
     @Column(name = "enabled")
-    private Boolean isEnabled = true;
+    private Boolean isEnabled;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userEntity")
     private List<UserRoleEntity> userRoleEntities = new ArrayList<>();
@@ -32,4 +32,10 @@ public class UserEntity {
     @OneToOne
     @JoinColumn(name = "employee_id")
     private EmployeeEntity employeeEntity;
+
+    public UserEntity(String username) {
+        this.username = username;
+        this.password = "123456";
+        this.isEnabled = true;
+    }
 }

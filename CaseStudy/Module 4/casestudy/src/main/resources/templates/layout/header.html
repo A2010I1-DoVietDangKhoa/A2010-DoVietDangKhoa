@@ -51,7 +51,7 @@
                             <a href="/login" class="btn bg-transparent border-0 shadow-none p-0 pt-3">
                                 <i class="far fa-user-circle fa-2x"></i>
                             </a>
-                            <h6 th:if="${user.getUsername()}" th:text="${user.getEmployeeEntity().getName()}"></h6>
+<!--                            <h6 th:if="${}" th:text="${acc.getEmployeeEntity().getName()}"></h6>-->
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                             <a class="nav-link mx-2 text-white active" th:href="@{/employees}">Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-2 text-white" th:href="@{/customers/list}">Customer</a>
+                            <a class="nav-link mx-2 text-white" th:href="@{/customers}">Customer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-2 text-white" th:href="@{/services}">Service</a>
@@ -82,7 +82,7 @@
                 </div>
                 <form class="navbar-form navbar-right" method="get" id="searchForm">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="searchValue" name="key" placeholder="Search">
+                        <input type="text" class="form-control" id="searchValue" name="keyword" placeholder="Search">
                         <button id="searchBtn" class="btn btn-light" type="submit">
                             <i class="fa fa-search"></i>
                         </button>

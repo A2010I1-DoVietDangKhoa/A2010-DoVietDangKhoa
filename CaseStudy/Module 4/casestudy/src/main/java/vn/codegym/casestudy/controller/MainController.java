@@ -11,8 +11,8 @@ import vn.codegym.casestudy.service.UserService;
 
 import java.security.Principal;
 
-@Controller(value = "")
-@SessionAttributes("user")
+@Controller
+@SessionAttributes("accountUser")
 public class MainController {
     private final UserService userService;
 
@@ -21,7 +21,7 @@ public class MainController {
         this.userService = userService;
     }
 
-    @ModelAttribute("user")
+    @ModelAttribute("accountUser")
     public UserEntity getUser(Principal principal) {
         if (principal != null) {
             return userService.findByUsername(principal.getName());
@@ -35,11 +35,11 @@ public class MainController {
     }
 
     @GetMapping("/index")
-    public String showHomeLogined(@ModelAttribute("user") UserEntity userEntity, Principal principal, Model model) {
+    public String showHomeLogined(@ModelAttribute("accountUser") UserEntity userEntity, Principal principal, Model model) {
         String username = "";
         if (principal != null) {
             username = principal.getName();
-            model.addAttribute("user", userService.findByUsername(username));
+            model.addAttribute("accountUser", userService.findByUsername(username));
         }
         return "index";
     }

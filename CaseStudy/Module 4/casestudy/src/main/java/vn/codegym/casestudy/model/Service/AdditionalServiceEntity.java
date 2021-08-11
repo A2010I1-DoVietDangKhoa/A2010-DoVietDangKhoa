@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "additional_service")
 public class AdditionalServiceEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "service_name")

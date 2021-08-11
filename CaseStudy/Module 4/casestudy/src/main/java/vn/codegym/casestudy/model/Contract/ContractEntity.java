@@ -22,7 +22,7 @@ import java.util.Date;
 @Table(name = "contract")
 public class ContractEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "start_date")

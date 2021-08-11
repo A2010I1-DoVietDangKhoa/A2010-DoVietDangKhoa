@@ -48,6 +48,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void validateExistingCode(CustomerEntity customerEntity, Errors errors) {
         customerRepository.findByCustomerCode(customerEntity.getCustomerCode())
-                .ifPresent(cus -> errors.rejectValue("id", "duplicate.customer.id"));
+                .ifPresent(cus -> errors.rejectValue("customerCode", "duplicate.customer.id"));
     }
 }

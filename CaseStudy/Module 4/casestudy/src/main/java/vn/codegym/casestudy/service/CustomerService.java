@@ -13,5 +13,6 @@ public interface CustomerService {
     Page<CustomerEntity> getList(String keyword, Pageable pageable);
     CustomerEntity getOne(Integer id);
     void delete(Integer id);
+//    void delete(String code);
     void validateExistingCode(CustomerEntity customerEntity, Errors errors);
 }

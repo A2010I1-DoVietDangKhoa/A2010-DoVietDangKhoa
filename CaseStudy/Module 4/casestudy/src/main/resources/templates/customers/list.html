@@ -11,7 +11,7 @@
     <div class="row d-flex">
         <h2 class="col py-3">Customer List</h2>
         <div class="col text-right my-auto mr-3">
-            <a th:href="@{/customer/create}" class="btn btn-success p-1">
+            <a th:href="@{/customers/create}" class="btn btn-success p-1">
                 <i class="fas fa-plus"></i> <span>Add New Customer</span>
             </a>
         </div>
@@ -41,6 +41,7 @@
         <tbody>
         <tr th:each="customer, iterStat : ${list}">
             <td class="pl-1 pr-0 align-middle" th:text="${(list.size * list.number) + iterStat.count}"></td>
+            <td style="display: none" th:text="${customer.getId()}"></td>
             <td class="pl-1 pr-0 align-middle" th:text="${customer.getCustomerCode()}"></td>
             <td class="pl-1 pr-0 align-middle" th:text="${customer.getName()}"></td>
             <td class="pl-1 pr-0 align-middle" th:text="${customer.getCustomerTypeEntity().getName()}"></td>
@@ -74,16 +75,16 @@
         </div>
         <ul class="pagination">
             <li class="page-item">
-                <a th:href="@{/customers(key = ${key}, page=${list.number - 1})}" th:if="${list.hasPrevious()}"
+                <a th:href="@{/customers(keyword = ${keyword}, page=${list.number - 1})}" th:if="${list.hasPrevious()}"
                    class="page-link">
                     <i class="fa fa-angle-double-left"></i>
                 </a>
             </li>
             <li class="page-item" th:each="i: ${#numbers.sequence(0, list.totalPages - 1)}">
-                <a class="page-link" th:href="@{/customer(key = ${key}, page = ${i})}" th:text="${i + 1}"></a>
+                <a class="page-link" th:href="@{/customer(keyword = ${keyword}, page = ${i})}" th:text="${i + 1}"></a>
             </li>
             <li class="page-item">
-                <a th:href="@{/customer(key = ${key}, page=${list.number + 1})}" th:if="${list.hasNext()}"
+                <a th:href="@{/customer(keyword = ${keyword}, page=${list.number + 1})}" th:if="${list.hasNext()}"
                    class="page-link">
                     <i class="fa fa-angle-double-right"></i>
                 </a>
@@ -97,19 +98,57 @@
 
 <script>
 
+    // $(document).ready(function () {
+    //     $("#searchForm").attr("action", "/customers");
+    //
+    //     $(".alert").delay(2000).slideUp(800, function () {
+    //         $(this).alert('close');
+    //     });
+    //
+    //     $(".delete").click(function () {
+    //         $.ajax({
+    //             type:"POST",
+    //             url:"/customers/delete/" + $(this).val(),
+    //             dataType:"HTML",
+    //             success: function (data) {
+    //                 $("#deleteModalBody").html(data);
+    //                 $("#deleteModal").showModal();
+    //                 // $("#deleteForm").attr("action", "/customers/delete/" + $(this).val());
+    //                 // $("#deleteModalBody").html("<p>Do you really want to delete this customer?<br>This process cannot be undone.</p>");
+    //             }
+    //         })
+    //         // $("#deleteForm").attr("action", "/customers/delete/" + $(this).val());
+    //         // $("#deleteModalBody").html("<p>Do you really want to delete this customer?<br>This process cannot be undone.</p>");
+    //     });
+    //
+    //     function actionDelete(id) {
+    //         $.ajax({
+    //             type:"POST",
+    //             url:"/customers/delete/" + $(this).val(),
+    //             dataType: "HTML",
+    //             success: function (data) {
+    //                 $("#customerTable").html(data);
+    //             }
+    //         })
+    //     }
+    // });
+
     $(document).ready(function () {
-        $("#searchForm").attr("action", "/customer");
+        $("#searchForm").attr("action", "/customers");
 
         $(".alert").delay(2000).slideUp(800, function () {
             $(this).alert('close');
         });
 
         $(".delete").click(function () {
-            $("#deleteForm").attr("action", "/customer/" + $(this).val() + "/delete");
+            $("#deleteForm").attr("action", "/customers/delete/" + $(this).val());
             $("#deleteModalBody").html("<p>Do you really want to delete this customer?<br>This process cannot be undone.</p>");
         });
-    });
 
+        $('#deleteForm').submit(function(){
+            $('button[type=submit]', this).attr('disabled', 'disabled');
+        });
+    });
 </script>
 
 </body>

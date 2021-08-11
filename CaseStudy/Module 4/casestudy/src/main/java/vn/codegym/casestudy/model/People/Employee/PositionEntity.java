@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "position")
 public class PositionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "position_name")
