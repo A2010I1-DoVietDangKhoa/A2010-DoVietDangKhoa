@@ -32,7 +32,7 @@ export class CountdownTimerComponent implements OnInit {
         this.clearTimer();
       }
       else {
-        this.message = '${this.remainingTime} seconds left.'
+        this.message = `${this.remainingTime} seconds left.`
       }
     }, 1000);
     if (this.remainingTime <= 0){
@@ -42,12 +42,12 @@ export class CountdownTimerComponent implements OnInit {
 
   stop(){
     this.clearTimer();
-    this.message = 'Pausing at ${this.remainingTime} seconds.'
+    this.message = `Pausing at ${this.remainingTime} seconds.`
   }
 
   reset(){
     this.clearTimer();
     this.remainingTime = this.seconds;
-    this.message = 'Click to start the countdown.'
+    this.message = `Click to start the countdown.`
   }
 }
