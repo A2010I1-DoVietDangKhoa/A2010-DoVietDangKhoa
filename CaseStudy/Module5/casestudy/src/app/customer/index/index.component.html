@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="text-center">Customers Page</h3>
+
+  <a href="#" routerLink="/customer/create/" class="btn btn-success">Create New Customer</a>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Gender</th>
+      <th>Personal ID</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Address</th>
+<!--      <th>Type</th>-->
+      <th width="220px">Action</th>
+    </tr>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.dateOfBirth }}</td>
+      <td [ngSwitch]="customer.gender">
+        <span *ngSwitchCase="1">Male</span>
+        <span *ngSwitchCase="2">Female</span>
+        <span *ngSwitchCase="0">Unknown</span>
+      </td>
+      <td>{{ customer.personalId }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.address }}</td>
+<!--      <td>{{ customer.customerType }}</td>-->
+      <td>
+        <a href="#" [routerLink]="['/customer/', customer.id, 'view']" class="btn btn-info">View</a>
+        <a href="#" [routerLink]="['/customer/', customer.id, 'edit']" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="delete(customer.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

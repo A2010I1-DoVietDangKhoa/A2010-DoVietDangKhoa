@@ -1,0 +1,42 @@
+<div class="container">
+  <h3 class="text-center">View Customer</h3>
+
+  <div>
+    <strong>ID</strong>
+    <p>{{ customer.id }}</p>
+  </div>
+  <div>
+    <strong>Name</strong>
+    <p>{{ customer.name }}</p>
+  </div>
+  <div>
+    <strong>Gender</strong>
+    <div *ngIf="customer.gender === 1">
+      <p>Male</p>
+    </div>
+    <div *ngIf="customer.gender === 2">
+      <p>Female</p>
+    </div>
+    <div *ngIf="customer.gender === 0">
+      <p>Unknown</p>
+    </div>
+  </div>
+  <div>
+    <strong>Personal ID</strong>
+    <p>{{ customer.personalId }}</p>
+  </div>
+  <div>
+    <strong>Phone</strong>
+    <p>{{ customer.phone }}</p>
+  </div>
+  <div>
+    <strong>Email</strong>
+    <p>{{ customer.email }}</p>
+  </div>
+  <div>
+    <strong>Address</strong>
+    <p>{{ customer.address }}</p>
+  </div>
+
+  <a href="#" routerLink="/customer" class="btn btn-primary">Back</a>
+</div>
