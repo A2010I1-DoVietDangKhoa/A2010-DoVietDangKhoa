@@ -48,7 +48,7 @@ export class EditComponent implements OnInit {
   submit(){
     if (this.form.valid) {
       this.customerService.update(this.id, this.form.value).subscribe(res => {
-        this.router.navigateByUrl('/index/')
+        this.router.navigate(['customer/index'])
       })
     }
   }

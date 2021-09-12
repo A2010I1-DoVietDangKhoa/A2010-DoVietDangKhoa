@@ -5,11 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CustomerModule} from "./customer/customer.module";
 import {HttpClientModule} from "@angular/common/http";
+import { HomeComponent } from './home/home.component';
+import {HeaderComponent} from "./header/header.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        HeaderComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

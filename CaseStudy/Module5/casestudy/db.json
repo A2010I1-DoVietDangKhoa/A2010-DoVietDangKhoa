@@ -1,9 +1,44 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "customers": [
+    {
+      "id": "KH-0001",
+      "name": "Khoa Updated",
+      "gender": "2",
+      "personalId": "187823298",
+      "email": "abc@gmail.com",
+      "phone": "0900009999",
+      "address": "Nghệ An",
+      "dateOfBirth": "2021-09-09"
+    },
+    {
+      "id": "KH-0004",
+      "name": "Updated",
+      "gender": "0",
+      "personalId": "123456789",
+      "email": "abc@gmail.com",
+      "phone": "0900009999",
+      "address": "da nang",
+      "dateOfBirth": "2021-09-16"
+    },
+    {
+      "id": "KH-1998",
+      "name": "Dixie Normus",
+      "gender": "2",
+      "personalId": "13513513415",
+      "email": "dokhoa34@gmail.com",
+      "phone": "0904558312",
+      "address": "413 Nguyễn Tất Thành",
+      "dateOfBirth": "2021-09-01"
+    },
+    {
+      "id": "KH-1997",
+      "name": "new",
+      "gender": "0",
+      "personalId": "13513513415",
+      "email": "abc@gmail.com",
+      "phone": "0904558312",
+      "address": "413 Nguyễn Tất Thành",
+      "dateOfBirth": "2021-09-14"
+    }
+  ]
 }

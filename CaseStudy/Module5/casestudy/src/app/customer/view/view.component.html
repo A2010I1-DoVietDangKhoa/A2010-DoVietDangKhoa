@@ -11,13 +11,13 @@
   </div>
   <div>
     <strong>Gender</strong>
-    <div *ngIf="customer.gender === 1">
+    <div *ngIf="customer.gender == 1">
       <p>Male</p>
     </div>
-    <div *ngIf="customer.gender === 2">
+    <div *ngIf="customer.gender == 2">
       <p>Female</p>
     </div>
-    <div *ngIf="customer.gender === 0">
+    <div *ngIf="customer.gender == 0">
       <p>Unknown</p>
     </div>
   </div>
