@@ -38,6 +38,14 @@
           <div class="alert alert-danger col-12 mt-2" *ngIf="form.get('gender')?.invalid && form.get('gender')?.touched &&
              form.get('gender')?.errors?.required">Must pick a gender</div>
         </div>
+        <div class="form-group row ">
+          <label for="customerType" class="col-2">Type <span class="text-danger">*</span></label>
+          <select formControlName="customerType" [compareWith]="compareFn" id="customerType" class="col-10 form-control">
+            <option *ngFor="let cusType of customerType" [ngValue]="cusType">{{cusType.customerTypeName}}</option>
+          </select>
+          <div class="alert alert-danger col-12 mt-2" *ngIf="form.get('customerType')?.invalid && form.get('customerType')?.touched &&
+             form.get('customerType')?.errors?.required">Must pick a type</div>
+        </div>
         <div class="form-group row">
           <label for="personalId" class="col-2">Personal ID<span class="text-danger">*</span></label>
           <input class="form-control col-10 " id="personalId" formControlName="personalId">
@@ -74,14 +82,6 @@
           <div class="alert alert-danger col-12 mt-2" *ngIf="form.get('dateOfBirth')?.invalid && form.get('dateOfBirth')?.touched &&
              form.get('dateOfBirth')?.errors?.required">Date of birth can't be empty</div>
         </div>
-<!--        <div class="form-group row ">-->
-<!--          <label for="idTypeCustomer" class="col-2">Type <span class="text-danger">*</span></label>-->
-<!--          <select formControlName="idTypeCustomer" [compareWith]="compareFn" id="idTypeCustomer" class="col-10 form-control">-->
-<!--            <option *ngFor="let cusType of customerType" [ngValue]="cusType">{{cusType.name}}</option>-->
-<!--          </select>-->
-<!--          <div class="alert alert-danger col-12 mt-2" *ngIf="createCustomerForm.get('idTypeCustomer')?.invalid && createCustomerForm.get('idTypeCustomer')?.touched &&-->
-<!--             createCustomerForm.get('idTypeCustomer')?.errors?.required">Loại Khách hàng Không được để trống</div>-->
-<!--        </div>-->
         <div class="form-group row">
           <span type="hidden" class="col-3"></span>
           <span type="hidden" class="col-2"></span>

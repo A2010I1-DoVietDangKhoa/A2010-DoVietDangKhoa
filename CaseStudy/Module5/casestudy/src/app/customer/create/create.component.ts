@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../customer.service";
 import {Router} from "@angular/router";
 import {Customer} from "../Customer";
+import {CustomerType} from "../CustomerType";
+import {CustomerTypeService} from "../customer-type.service";
 
 @Component({
   selector: 'app-create',
@@ -11,8 +13,10 @@ import {Customer} from "../Customer";
 })
 export class CreateComponent implements OnInit {
   form: FormGroup;
+  customerType: CustomerType[];
 
   constructor(public customerService: CustomerService,
+              public customerTypeService: CustomerTypeService,
               private router : Router) { }
 
   ngOnInit(): void {
@@ -25,8 +29,15 @@ export class CreateComponent implements OnInit {
       phone: new FormControl('', [Validators.required, Validators.pattern("^(090)+[0-9]{7}")]),
       address: new FormControl('', [Validators.required]),
       dateOfBirth: new FormControl('', [Validators.required]),
-      //idTypeCustomer: new FormControl('', [Validators.required]),
-    })
+      customerType: new FormControl('', [Validators.required]),
+    });
+    this.getAllCustomerType();
+  }
+
+  getAllCustomerType() {
+    this.customerTypeService.getAllType().subscribe(res => {
+      this.customerType = res;
+    });
   }
 
   get f(){

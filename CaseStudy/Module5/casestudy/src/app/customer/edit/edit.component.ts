@@ -3,6 +3,8 @@ import {Customer} from "../Customer";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CustomerType} from "../CustomerType";
+import {CustomerTypeService} from "../customer-type.service";
 
 @Component({
   selector: 'app-edit',
@@ -13,9 +15,11 @@ export class EditComponent implements OnInit {
   id: string;
   customer: Customer;
   form: FormGroup;
+  customerType: CustomerType[];
 
   constructor(
     public customerService: CustomerService,
+    public customerTypeService: CustomerTypeService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -33,8 +37,16 @@ export class EditComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.pattern("^(090)+[0-9]{7}")]),
       address: new FormControl('', [Validators.required]),
-      dateOfBirth: new FormControl('', [Validators.required])
-    })
+      dateOfBirth: new FormControl('', [Validators.required]),
+      customerType: new FormControl('', [Validators.required])
+    });
+    this.getAllCustomerType();
+  }
+
+  getAllCustomerType() {
+    this.customerTypeService.getAllType().subscribe(res => {
+      this.customerType = res;
+    });
   }
 
   get f(){

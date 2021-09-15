@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Customer} from "../Customer";
 import {CustomerService} from "../customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CustomerType} from "../CustomerType";
+import {CustomerTypeService} from "../customer-type.service";
 
 @Component({
   selector: 'app-view',
@@ -11,8 +13,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ViewComponent implements OnInit {
   id: string;
   customer: Customer;
+  customerType: CustomerType;
 
   constructor(public customerService: CustomerService,
+              public customerTypeService: CustomerTypeService,
               private route: ActivatedRoute,
               private router: Router) { }
 

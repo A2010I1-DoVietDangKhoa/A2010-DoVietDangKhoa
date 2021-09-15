@@ -1,42 +1,103 @@
-<div class="container">
-  <h3 class="text-center">View Customer</h3>
+<!--<div class="container">-->
+<!--  <h3 class="text-center">View Customer</h3>-->
 
-  <div>
-    <strong>ID</strong>
-    <p>{{ customer.id }}</p>
-  </div>
-  <div>
-    <strong>Name</strong>
-    <p>{{ customer.name }}</p>
-  </div>
-  <div>
-    <strong>Gender</strong>
-    <div *ngIf="customer.gender == 1">
-      <p>Male</p>
-    </div>
-    <div *ngIf="customer.gender == 2">
-      <p>Female</p>
-    </div>
-    <div *ngIf="customer.gender == 0">
-      <p>Unknown</p>
-    </div>
-  </div>
-  <div>
-    <strong>Personal ID</strong>
-    <p>{{ customer.personalId }}</p>
-  </div>
-  <div>
-    <strong>Phone</strong>
-    <p>{{ customer.phone }}</p>
-  </div>
-  <div>
-    <strong>Email</strong>
-    <p>{{ customer.email }}</p>
-  </div>
-  <div>
-    <strong>Address</strong>
-    <p>{{ customer.address }}</p>
-  </div>
+<!--  <div>-->
+<!--    <strong>ID</strong>-->
+<!--    <p>{{ customer.id }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Name</strong>-->
+<!--    <p>{{ customer.name }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Gender</strong>-->
+<!--    <div *ngIf="customer.gender == 1">-->
+<!--      <p>Male</p>-->
+<!--    </div>-->
+<!--    <div *ngIf="customer.gender == 2">-->
+<!--      <p>Female</p>-->
+<!--    </div>-->
+<!--    <div *ngIf="customer.gender == 0">-->
+<!--      <p>Unknown</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Customer type</strong>-->
+<!--    <p>{{ customer.customerType.customerTypeName }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Personal ID</strong>-->
+<!--    <p>{{ customer.personalId }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Phone</strong>-->
+<!--    <p>{{ customer.phone }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Email</strong>-->
+<!--    <p>{{ customer.email }}</p>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <strong>Address</strong>-->
+<!--    <p>{{ customer.address }}</p>-->
+<!--  </div>-->
 
-  <a href="#" routerLink="/customer" class="btn btn-primary">Back</a>
+<!--  <a href="#" routerLink="/customer" class="btn btn-primary">Back</a>-->
+<!--</div>-->
+<div id="pageContent" class="container mb-4">
+  <div class="row d-flex text-center">
+    <h2 class="col py-3">Customer Detail</h2>
+  </div>
+  <table class="table w-50 mx-auto">
+    <tr>
+      <th>ID</th>
+      <td>{{customer.id}}</td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{customer.name}}</td>
+    </tr>
+    <tr>
+      <th>Date Of Birth</th>
+      <td>{{customer.dateOfBirth}}</td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td *ngIf="customer.gender == 1">
+        Male
+      </td>
+      <td *ngIf="customer.gender == 2">
+        Female
+      </td>
+      <td *ngIf="customer.gender == 0">
+        Unknown
+      </td>
+    </tr>
+    <tr>
+      <th>Customer Type</th>
+      <td>{{customer.customerType.customerTypeName}}</td>
+    </tr>
+    <tr>
+      <th>Personal ID</th>
+      <td>{{customer.personalId}}</td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td>{{customer.phone}}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{customer.email}}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{customer.address}}</td>
+    </tr>
+    <tr class="text-left">
+      <th></th>
+      <td>
+      <a href="#" routerLink="/customer" class="btn btn-primary">Back</a>
+      </td>
+    </tr>
+  </table>
 </div>

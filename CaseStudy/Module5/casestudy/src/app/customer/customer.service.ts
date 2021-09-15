@@ -9,7 +9,7 @@ import {catchError} from "rxjs/operators";
 })
 export class CustomerService {
   customers: Customer[] = [];
-  readonly API_URL = 'http://localhost:3000/customers';
+  private API_URL = 'http://localhost:3000/customers';
   // httpOptions = {
   //   headers: new HttpHeaders({
   //     'Content-Type': 'application/json'
@@ -43,6 +43,10 @@ export class CustomerService {
   delete(id: string): Observable<Customer>{
     return this.httpClient.delete<Customer>(this.API_URL + '/' + id)
     //  .pipe(catchError(this.errorHandler))
+  }
+
+  search(nameSearch: string, customerTypeName: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(this.API_URL + '?name_like=' + nameSearch + '&customerType.customerTypeName_like=' + customerTypeName);
   }
 
   errorHandler(error:any) {
